@@ -1,0 +1,20 @@
+{
+  "name": "Sahaay",
+  "version": "1.0.0",
+  "description": "WEB UI for Sahaay",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "dependencies": {
+    "express": "^4.11.0",
+    "express-session": "^1.15.6",
+    "pg": "^7.8.2",
+    "twilio": "^3.29.1"
+  },
+  "author": "Atashi Khatua",
+  "license": "",
+  "engines": {
+    "node": "8.11.3"
+  }
+}

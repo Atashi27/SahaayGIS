@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sahaay</title>
+  <link rel="shortcut icon" href="/images/logo_c.png" />
+  <!-- Added JQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    $(function(){
+      $("#header").load("/header1"); 
+    });
+    $(document).ready(function(){
+        $('#query').keypress(function(e){
+          if(e.keyCode==13)
+          $('#search-button').click();
+        });
+    });
+  </script>
+  <style type="text/css">
+  /* For desktop */
+  @media only screen and (min-width:360px) {}
+
+  /* For mobile devices */
+  @media only screen and (max-width:360px) {
+    #results {
+      padding: 0;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div id="header"></div>
+  <br>
+  <div class="text-center">
+    <label>
+      <input class="form-control" id="query" placeholder="Search here" type="text" /><br>
+      <button id="search-button" class="btn" onclick="search_query()">Search</button>
+    </label>
+    <div id="container">
+      <ul id="results"></ul>
+    </div>
+  </div>
+  <script>
+  var vid_data;
+  var id_list = [];
+  var API_KEY = "AIzaSyCd00jxfl7g4KY4WdpyFsabcJHcqxK0GjA";
+
+  // Method for the setting up Youtube Data api v3
+  function search_query() {
+    gapi.client.setApiKey(API_KEY);
+    gapi.client.load('youtube', 'v3', function() {
+      load_Request();
+    });
+  }
+
+  // Method for requesting the videos 
+  function load_Request() {
+    var query = $('#query').val();
+    query = query + ' first-aid tips in hindi';
+    console.log("query is-->", query);
+    var request = gapi.client.youtube.search.list({
+      q: query,
+      part: 'snippet',
+      order: "title",
+      maxResults: 6
+    });
+    // Fetching the videos
+    request.execute(function(response) {
+      $('#results').empty()
+      var srchItems = response.result.items;
+      $.each(srchItems, function(index, item) {
+        vidTitle = item.snippet.title;
+        videoid = item.id.videoId;
+        id_list.push(videoid);
+        vid_data = '<br><div><iframe class="video" src="//www.youtube.com/embed/' + videoid + '"></iframe></div>';
+        $('#results').append('<div class="col-sm-4">' + vidTitle + vid_data + '</div>');
+      })
+    })
+  }
+  </script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+</body>
+
+</html>

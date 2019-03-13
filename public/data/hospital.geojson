@@ -1,0 +1,995 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9037,19.0792 ]
+    },
+    "properties": {
+    "address":"Jayant Arcade, 4th Floor, Rajawadi, M.G.Road, Ghatkopar(E), Mumbai, Maharashtra ",
+    "name":"Bakul Parekh Children's Hospital",
+    "contact_no":2221026858,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.bpch.in",
+    "rating":3.3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9057,19.0783 ]
+    },
+    "properties": {
+    "address":"1, 2, 3, Gautam Building, Opposite Balaji Temple, Tilak Road, Ghatkopar (E), Mumbai, Maharashtra",
+    "name":"Dr Trivedis Maternity and Nursing Home",
+    "contact_no":2261480707,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.nilesaakarivf.in",
+    "rating":2.3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9062,19.0853 ]
+    },
+    "properties": {
+    "address":"Shradhanand Road, Ghatkopar (W), Mumbai, Maharashtra",
+    "name":"H. J. Doshi Ghatkopar Hindu Sabha Hospital",
+    "contact_no":2225094451,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"yes",
+    "maternity":"yes",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.hjdoshi.com",
+    "rating":3.9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8829242,19.0625228 ]
+    },
+    "properties": {
+    "address":"S.G.Barve Road, Kurla, Mumbai-400070, Maharashtra",
+    "name":"Dr .Desais Nursing Home",
+    "contact_no":2226525251,
+    "category":"private",
+    "timings":"10-13,18-20",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"drdesaidesaimaternitynursinghome.justdial.com",
+    "rating":4.2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.843,19.0769 ]
+    },
+    "properties": {
+    "address":"121, Nehru Nagar, Kurla (E), Mumbai, Maharashtra",
+    "name":"Ashvini Maternity and Surgical Nursing Home",
+    "contact_no":2225140472,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.ashwinimaternity.com",
+    "rating":4.3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8847191,19.0767937 ]
+    },
+    "properties": {
+    "address":"Kirol Road, Ali Yavar Jung, Kurla (W), Off LBS Road, Mumbai- 400070, Maharashtra ",
+    "name":"Kohinoor Hospital",
+    "contact_no":2267556755,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"yes",
+    "cardiology":"yes",
+    "neurology":"yes",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"www.kohinoorhospitals.in",
+    "rating":3.8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9047,19.0844 ]
+    },
+    "properties": {
+    "address":"Kirol Road, Opp LBS Road, Kurla(W), Mumbai, Maharashtra",
+    "name":"Shreeji Hospital",
+    "contact_no":2225153465,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"yes",
+    "maternity":"yes",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.shreejihospital.in",
+    "rating":4.5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9049,19.0825 ]
+    },
+    "properties": {
+    "address":"Nilkanth Shopping Centre Corner, Cama Lane, Ghatkopar (W), Mumbai, Maharashtra",
+    "name":"Varun Cardiac Clinic",
+    "contact_no":2225010600,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"varuncardiacclinic.justdial.com",
+    "rating":4.4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9051026,19.082354 ]
+    },
+    "properties": {
+    "address":"101-102, Gayatridham, Derasar Lane, Ghatkopar (E), Mumbai, Maharashtra ",
+    "name":"Aryan Hospital and Iccu - Kurla-Mumbai",
+    "contact_no":2225275999,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"www.medscapeindia.com",
+    "rating":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8770505,19.0754649 ]
+    },
+    "properties": {
+    "address":"Sagar Palace B Wing, Sonapur Lane, F.P.P. Marg, Off L B S Marg, Kurla (W), Mumbai, Maharashtra",
+    "name":"CGHS Dispensary No.6, Ghatkopar",
+    "contact_no":2225149229,
+    "category":"public",
+    "timings":"7-14",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.cghs.nic.in",
+    "rating":3.7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9067,19.0825 ]
+    },
+    "properties": {
+    "address":"Samaj Bhavan, 5th Floor, Joshi Lane, M G Road, Ghatkopar, Mumbai, Maharashtra",
+    "name":"Nayan Eye Centre",
+    "contact_no":9820998830,
+    "category":"private",
+    "timings":"10-13,17-20",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"yes",
+    "website":"nayaneyecentre.in",
+    "rating":4.7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9066,19.0748 ]
+    },
+    "properties": {
+    "address":"Chandrika Bldg., Ground Floor, R.B.Mehta Rd, Ghatkopar (E), Mumbai, Maharashtra",
+    "name":"Dr Mehta Nursing Home",
+    "contact_no":2225062742,
+    "category":"private",
+    "timings":"10-20",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"drmehtanursinghome.justdial.com",
+    "rating":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9055,19.0762 ]
+    },
+    "properties": {
+    "address":"198/1, Garodia Palace, Garodia Nagar, 90 Feet Road, Ghatkopar (E), Mumbai, Maharashtra",
+    "name":"Ashirwad Heart Hospital",
+    "contact_no":2221025911,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"ashirwadhearthospital.com",
+    "rating":3.1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9038,19.0695 ]
+    },
+    "properties": {
+    "address":"1, Vivek - 67, Tilak Road, Ghatkopar (E), Mumbai, Maharashtra",
+    "name":"Rane Heart Hospital",
+    "contact_no":2225258404,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.raneheartcare.com ",
+    "rating":3.7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8819,19.0811 ]
+    },
+    "properties": {
+    "address":"37, Pestom Sagar, Road No.2, Chembur, Mumbai, Maharashtra",
+    "name":"City Hospital And Reserch Centre",
+    "contact_no":2225041888,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"yes",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"city-hospital.com",
+    "rating":3.3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9011,19.0598 ]
+    },
+    "properties": {
+    "address":"Sagar Palace B Wing, Sonapur Lane, F.P.P. Marg, Off L B S Marg, Kurla (W), Mumbai, Maharashtra",
+    "name":"Kolekar Hospital",
+    "contact_no":2222520115,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"kolekarhospital.justdial.com",
+    "rating":4.3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.899,19.0597 ]
+    },
+    "properties": {
+    "address":"Plot No. 955, 201, Coral Classic, 956, 20th Rd, Chembur Gaothan, Chembur (E), Mumbai-400071, Maharashtra ",
+    "name":"Aayush Eye Clinic",
+    "contact_no":2225288306,
+    "category":"private",
+    "timings":"10-13,17-20",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"yes",
+    "website":"aayusheye.com",
+    "rating":4.5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9058,19.0784 ]
+    },
+    "properties": {
+    "address":"103, Tilak Rd, Maheshwar Nagar, Sindhu Wadi, Ghatkopar (E), Mumbai-400077, Maharashtra ",
+    "name":"Aadhar Orthodic Hospital",
+    "contact_no":2221023211,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"aadharorthopaedichospital.justdial.com",
+    "rating":4.3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9083,19.0866 ]
+    },
+    "properties": {
+    "address":"22, 2nd Floor Laxmi Shopping Centre, Ghatkopar(W), Mumbai-400086, Maharashtra ",
+    "name":"Nidan Hospital",
+    "contact_no":2225165130,
+    "category":"private",
+    "timings":"8-20",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"nidandiagnosticcentre.com",
+    "rating":3.1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9061,19.0879 ]
+    },
+    "properties": {
+    "address":"Dipti Solitaire, 101, MG Road, Above Axis Bank, Kapol wadi, Pant Nagar, Ghatkopar (W), Mumbai-400086, Maharashtra ",
+    "name":"Sharan Hospital",
+    "contact_no":8071280749,
+    "category":"public",
+    "timings":"9-21",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"yes",
+    "ophthalmology":"yes",
+    "website":"drshaivalchauhansharanhospital.justdial.com",
+    "rating":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.906,19.0868 ]
+    },
+    "properties": {
+    "address":"Ground floor, Devika Niwas, next to MG Road, Kapol wadi, Ghatkopar(W), Mumbai- 400086, Maharashtra",
+    "name":"Dr. Vinod Joshi Maternity Nursing Home",
+    "contact_no":2225133323,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"drvinodjoshimaternitynursinghome.justdial.com",
+    "rating":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8857,19.0778 ]
+    },
+    "properties": {
+    "address":" Shop No.12, Building 19 B, Kohinoor City, Phase -2, Near Kohinoor Hospital, Premier Residencies, Kurla(W), Mumbai-400070, Maharashtra",
+    "name":"Aesthetica  Clinic",
+    "contact_no":7303344369,
+    "category":"private",
+    "timings":"10-21",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.aestheticaclinic.com",
+    "rating":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.903,19.0757 ]
+    },
+    "properties": {
+    "address":"C-5, Satyam Shopping Centre, Mahatma Gandhi Road, Ghatkopar (E), Mumbai 400077, Maharashtra",
+    "name":"Tara Neo-Surg. Hospital",
+    "contact_no":2221021603,
+    "category":"private",
+    "timings":"9-24",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.pedsurgeon.com",
+    "rating":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.903,19.0601 ]
+    },
+    "properties": {
+    "address":"106, Charisma Centre, 1st Floor, Opp Vagads, Above Cambridge Showroom, Chembur (E), Mumbai 400071, , Maharashtra",
+    "name":"Nivaran Dental Diagnostic Centre",
+    "contact_no":7208001050,
+    "category":"private",
+    "timings":"8-21",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"nivarandentaldiagnosticcentrechembur.justdial.com",
+    "rating":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8991,19.0832 ]
+    },
+    "properties": {
+    "address":"Patelwadi Kurla, Vidyavihar Society, Kurla, Mumbai 400070, Maharashtra",
+    "name":"Varsha Hospital",
+    "contact_no":2256133327,
+    "category":"private",
+    "timings":"10-21",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"varshahospitalmumbai.justdial.com",
+    "rating":4.3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9057,19.0743 ]
+    },
+    "properties": {
+    "address":"90 Feet Road, Sudarshan Society, Garodia Nagar, Ghatkopar (E), Mumbai-400071, Maharashtra ",
+    "name":"Pancholi Hospital",
+    "contact_no":2225066108,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"pancholihospitalmumbai.justdial.com",
+    "rating":3.5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.88,19.0783 ]
+    },
+    "properties": {
+    "address":"Plot No. 345, 345/1 & 238, AH Wadia Marg, Old Agra Road, Opp. Shalimar Hotel, Off L. B. S. Road, Kurla (W), Mumbai-400070, Maharashtra",
+    "name":"Habib Hospital",
+    "contact_no":2225031000,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"no",
+    "ophthalmology":"yes",
+    "website":"habibhospital.com",
+    "rating":3.5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8974,19.0559 ]
+    },
+    "properties": {
+    "address":"Door No. 423 AB, 10th Road, Opposite Post Office, Jai Ambe Nagar, Chembur Gaothan, Chembur (E), Mumbai-400071, Maharashtra",
+    "name":"Joy Hospital",
+    "contact_no":2225223939,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"www.lapsurgeon.in",
+    "rating":3.2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8895,19.0565 ]
+    },
+    "properties": {
+    "address":"365, Swastik Park, Chembur (E), Mumbai-400071, Maharashtra",
+    "name":"Sushrut Hospital",
+    "contact_no":2225265555,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"sushruthospital.org",
+    "rating":4.5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8336,19.0575 ]
+    },
+    "properties": {
+    "address":"Waterfield Road, Bandra (W), Mumbai-400050, Maharashtra",
+    "name":"Bhaba Hospital",
+    "contact_no":2222642541,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"yes",
+    "ophthalmology":"yes",
+    "website":"bhabhahospitalmumbai.justdial.com",
+    "rating":3.6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9104,19.0757 ]
+    },
+    "properties": {
+    "address":"93, Baristar Nath Road, Garodia Nagar, Ghatkopar (E), Mumbai-400077, Maharashtra ",
+    "name":"Aaradhyaji Medical Center",
+    "contact_no":8291851581,
+    "category":"private",
+    "timings":"7-20",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"aaradhyaji-lions-ghatkopar-medical-centre.business.site",
+    "rating":3.9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9012,19.0787 ]
+    },
+    "properties": {
+    "address":"7, M G Road, Near Somaiya College, Ghatkopar East, Rajawadi Colony, Ghatkopar (E), Mumbai-400077, Maharashtra",
+    "name":"Rajawadi Hospital",
+    "contact_no":2221025610,
+    "category":"public",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"rajawadihospitalmumbai.justdial.com",
+    "rating":3.8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9038,19.0695 ]
+    },
+    "properties": {
+    "address":"37, Pestom Sagar Rd Number 2, Pestom Sagar Colony, Chembur (E), Mumbai-400089, Maharashtra",
+    "name":"Mumbai Heart Clinic",
+    "contact_no":2225258404,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"www.asianheartinstitute.org",
+    "rating":4.6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9073832,19.089666 ]
+    },
+    "properties": {
+    "address":"Gandhi Nagar, Kirti Vihar, Ghatkopar (W), Mumbai-400086, Maharashtra",
+    "name":"Sarvodaya Hospital",
+    "contact_no":2225162253,
+    "category":"private",
+    "timings":"9-16",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"yes",
+    "website":"www.sarvodayahospital.com",
+    "rating":3.7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8900049,19.087175 ]
+    },
+    "properties": {
+    "address":"Om Sri Sai Dham CHS, Andheri - Ghatkopar Road Asalpha, Jambhulpada, Prem Nagar, Azad Nagar, Ghatkopar (W), Mumbai-400084, Maharashtra",
+    "name":"Disha Hospital",
+    "contact_no":9004179994,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"www.dishaeye.org",
+    "rating":3.4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8709186,19.0521328 ]
+    },
+    "properties": {
+    "address":"Somaiya Ayurvihar Complex, Eastern Express Highway, Sion (E), Mumbai-400022, Maharashtra",
+    "name":"K.J. Somaiya Hospital",
+    "contact_no":2224090253,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"yes",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"yes",
+    "website":"https://www.somaiya-ayurvihar.org",
+    "rating":3.5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8719839,19.053734 ]
+    },
+    "properties": {
+    "address":"Sion (W), Chuna Bhatti, Mumbai-400022, Maharashtra",
+    "name":"Bombay Hospital & Medical Research Centre",
+    "contact_no":2222067676,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"yes",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"bombayhospital.com",
+    "rating":3.8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8837379,19.0481734 ]
+    },
+    "properties": {
+    "address":"Ujagar Compound, Opp. Deonar Bus Depot Main Gate, MBPT Colony, Deonar, Chembur (E), Mumbai-400088, Maharashtra ",
+    "name":"Apollo Spectra Hospital",
+    "contact_no":2243344600,
+    "category":"public",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"yes",
+    "neurology":"yes",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"yes",
+    "website":"www.apollospectra.com",
+    "rating":4.7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8944,19.0461 ]
+    },
+    "properties": {
+    "address":"Inlaks Hospital Road, Chembur Colony, Indira Nagar, Chembur (E), Mumbai- 400074, Maharashtra",
+    "name":"Inlaks General Hospital",
+    "contact_no":2261500300,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"www.inlakshospital.com",
+    "rating":2.9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8968,19.056 ]
+    },
+    "properties": {
+    "address":"Plot No 425, 10th Road Near Sandu Garden, Jai Ambe Nagar, Chembur Gaothan, Chembur (E), Mumbai-400071, Maharashtra ",
+    "name":"Zen Multi Speciality Hospital",
+    "contact_no":2225260066,
+    "category":"public",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"yes",
+    "maternity":"yes",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"www.zenhospital.in",
+    "rating":4.2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.887,19.0536 ]
+    },
+    "properties": {
+    "address":"Sion - Trombay Rd, Suman Nagar, Chembur (E), Mumbai-400071, Maharashtra ",
+    "name":"Surana Sethia Hospital",
+    "contact_no":2233783378,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"yes",
+    "ophthalmology":"yes",
+    "website":"suranahospital.in",
+    "rating":4.3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8831,19.0815 ]
+    },
+    "properties": {
+    "address":"House No 225/c, Kurla West,, House No 225/c, Hallow Pull Rd, Christian Gaon, Kurla (E), Mumbai-400070, Maharashtra",
+    "name":"Christian Village Municipal Hospital",
+    "contact_no":2267309709,
+    "category":"public",
+    "timings":"10-16",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"christianvillagedispensary.justdial.com",
+    "rating":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.882,19.0818 ]
+    },
+    "properties": {
+    "address":"Next To Subiksha, W, New Dwarkapuri Building, LBS Rd, Christian Gaon, Kurla, Mumbai-400070, Maharashtra",
+    "name":"Masoom Child Hospital",
+    "contact_no":2225040692,
+    "category":"private",
+    "timings":"10-19",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"no",
+    "ophthalmology":"no",
+    "website":"masoomchildrenhospital.justdial.com",
+    "rating":4.4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8801377,19.0807355 ]
+    },
+    "properties": {
+    "address":"Next to Fauzia hospital and Ashok Leyland Showroom, Vrindavan, LBS Rd, Kurla (W), Kurla, Mumbai-400070, Maharashtra",
+    "name":"Agashe Hospital",
+    "contact_no":2242435000,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"www.punesurgeon.com",
+    "rating":4.7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8801073,19.0795856 ]
+    },
+    "properties": {
+    "address":"Shop No-1,2 & 3, Aero View, Beside Sahara Hotel, Kanta, Kurla (W), Mumbai-400070, Maharashtra",
+    "name":"Care Hospital",
+    "contact_no":2225034949,
+    "category":"private",
+    "timings":"24*7",
+    "burn_care_unit":"no",
+    "cardiology":"no",
+    "neurology":"no",
+    "maternity":"no",
+    "orthopaedics":"yes",
+    "ophthalmology":"no",
+    "website":"www.carehospitals.com",
+    "rating":3.2
+    }
+  }
+]
+}

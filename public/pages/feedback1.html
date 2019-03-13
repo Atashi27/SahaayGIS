@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+  $.validator.setDefaults({
+	  highlight: function(element){
+		  $(element)
+		  .closest('.form-group')
+		  .addClass('has-error')
+	  },
+	  unhighlight: function(element){
+		  $(element)
+		  .closest('.form-group')
+		  .removeClass('has-error')
+	  }
+  });
+
+  $.validate({
+    rules:
+    {	
+	password: "required",
+	    birthDate: "required",
+	    weight: {
+		required:true,
+		number:true
+	    },
+	    height:  {
+		required:true,
+		number:true
+	    },
+	    email: {
+		    required: true,
+		    email: true
+	    }
+    },
+    messages:{			
+	    email: {
+	    required: true,
+	    email: true
+	  }
+    },
+    password: {
+	    required: " Please enter password"
+    },
+    birthDate: {
+	    required: " Please enter birthdate"
+    },
+    email: {
+	    required: ' Please enter email',
+	    email: ' Please enter valid email'
+    },
+    weight: {
+	    required: " Please enter your weight",
+	    number: " Only numbers allowed"
+    },
+    height: {
+	    required: " Please enter your height",
+	    number: " Only numbers allowed"
+    },
+  });
+});
+</script>
+
+<style>
+
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+
+*[role="form"] h2 { 
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sahaay</title>
+  <link rel="shortcut icon" href="/images/logo_c.png" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    $(function(){
+        $("#header").load("/header1"); 
+      });
+    </script>
+
+
+</head>
+
+
+
+<body>
+
+<div id="header"></div>
+  <br>
+<div class="container" id="formModal">
+            <form class="form-horizontal" role="form"  method="post" action="/feedback1">
+                <h2>Feedback</h2>
+                <div class="form-group">
+                    <label for="Name" class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Name" placeholder="Name" class="form-control" name="name" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Rating</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="rate1Radio" value="1" name="rating">1
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="rate2Radio" value="2" name="gender">2
+                                </label>
+                            </div>
+							<div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="rate3Radio" value="3" name="rating">3
+                                </label>
+                            </div>
+							<div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="rate4Radio" value="4" name="rating">4
+                                </label>
+                            </div>
+							<div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="rate5Radio" value="5" name="rating">5
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->	
+                <div class="form-group">
+                    <label for="comment" class="col-sm-3 control-label">Suggestions*</label>
+                    <div class="col-sm-9">
+                        <input type="textarea" id="suggestions"  class="form-control" name="suggestions" style="height:100px">
+                    </div>
+                </div>
+               
+                
+                
+                
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <span class="help-block">*Required fields</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Submit</button>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+   </body>
+</html>
+        
