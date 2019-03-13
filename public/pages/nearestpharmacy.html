@@ -215,7 +215,7 @@
     };
   }
 
-  mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284cWd3bm11byJ9.V6Hg2oYJwMAxeoR9GEzkAA';
+  mapboxgl.accessToken = 'pk.eyJ1IjoibWVkaWFzc2lzdGFuY2UiLCJhIjoiY2p0NnNjOHpjMGhiNzN5bnZlcWU1cXgzdCJ9.xyaS9DcRxEvmJ3jodgmRjA';
   var pharmacy, start, end;
   // This adds the map to your page
   var map = new mapboxgl.Map({
@@ -291,14 +291,29 @@
       var lat = userlocation.coords.latitude;
       var lng = userlocation.coords.longitude;
       start = [lng, lat];
-      var options = { units: 'meters' };
-      pharmacy.features.forEach(function(pharmacy) {
-        Object.defineProperty(pharmacy.properties, 'distance', {
-          value: turf.distance(start, pharmacy.geometry, options),
-          writable: true,
-          enumerable: true,
-          configurable: true
-        });
+      var options = { units: 'kilometers' };
+      var date = new Date();
+      time = date.getHours();
+      pharmacy.features.forEach(function(onepharmacy) {
+        var status = "Closed";
+        if (onepharmacy.properties.timings == "24*7") {
+          status = "Open";
+        } else if (onepharmacy.properties.timings.includes(',')) {
+          var timings = onepharmacy.properties.timings.split(',');
+          for (var i = 0; i < timings.length; i++) {
+            var timing = timings[i].split('-');
+            if (time >= timing[0] && time < timing[1])
+              status = "Open"
+          }
+        } else {
+          var timing = onepharmacy.properties.timings.split('-');
+          if (time >= timing[0] && time < timing[1])
+            status = "Open"
+        }
+        onepharmacy.properties["status"] = String(status);
+      });
+      pharmacy.features.forEach(function(onepharmacy) {
+        onepharmacy.properties["distance"] = turf.distance(start, onepharmacy.geometry, options);
       });
       pharmacy.features.sort(function(a, b) {
         if (a.properties.distance > b.properties.distance) {
@@ -315,31 +330,6 @@
         listings.removeChild(listings.firstChild);
       }
       buildLocationList(pharmacy);
-
-      function sortLonLat(pharmacyIdentifier) {
-        var lats = [pharmacy.features[pharmacyIdentifier].geometry.coordinates[1], start[1]];
-        var lons = [pharmacy.features[pharmacyIdentifier].geometry.coordinates[0], start[0]];
-
-        var sortedLons = lons.sort(function(a, b) {
-          if (a > b) {
-            return 1;
-          }
-          if (a.distance < b.distance) {
-            return -1;
-          }
-          return 0;
-        });
-        var sortedLats = lats.sort(function(a, b) {
-          if (a > b) {
-            return 1;
-          }
-          if (a.distance < b.distance) {
-            return -1;
-          }
-          return 0;
-        });
-      }
-      sortLonLat(0);
       getRoute(end);
     });
   });
@@ -405,9 +395,12 @@
       // Create a new div with the class 'details' for each pharmacy and fill it with the  contact number
       var details = listing.appendChild(document.createElement('div'));
       //details.innerHTML = '<p>' + prop.address + '</p>';
-      details.innerHTML += 'Phone: ' + prop.contact_no;
+      if (prop.status) {
+        details.innerHTML += prop.status + ' &middot; ';
+      }
+      details.innerHTML += prop.contact_no;
       if (prop.distance) {
-        var roundedDistance = Math.floor(prop.distance) / 1000;
+        var roundedDistance = Math.floor(prop.distance*100) / 100;
         details.innerHTML += '<p><strong>' + roundedDistance + ' km away</strong></p>';
       }
       link.addEventListener('click', function(e) {

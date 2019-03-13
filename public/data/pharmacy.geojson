@@ -10,7 +10,8 @@
     "properties": {
     "name":"Manoj Medical & General Stores",
     "address":"Shop No.6 Building No. 24, Chatrapati Shivaji Terminus Road, Kurla (W), Mumbai, Maharashtra 400070",
-    "contact_no":9892828511
+    "contact_no":9892828511,
+    "timings":"9-24"
     }
   },
   {
@@ -22,7 +23,8 @@
     "properties": {
     "name":"Deepak Medical Stores",
     "address":"C/8, J K Industrial Estate, Linking Road, Shastri Nagar, Santacruz (W), Mumbai, Maharashtra 400054",
-    "contact_no":9784693866
+    "contact_no":9784693866,
+    "timings":"10-24"
     }
   },
   {
@@ -34,7 +36,8 @@
     "properties": {
     "name":"Kurla Medical & General Stores",
     "address":"Shop No. 3, B Wing, Kurla Kadam Housing Society Li, Akbar Sultan Khan Chowk, Bhiva Bapu Magre Marg, Nehru Nagar, Kurla (E), Mumbai, Maharashtra 400024",
-    "contact_no":9920096027
+    "contact_no":9920096027,
+    "timings":"10-23"
     }
   },
   {
@@ -46,7 +49,8 @@
     "properties": {
     "name":"Modern Medico",
     "address":"Chota Ghol Building,Opposite K B Babha Hospital, A H Wadia Marg, Old Agra Road, Shell Colony, Sahakar Nagar, Kurla, Mumbai, Maharashtra 400070",
-    "contact_no":2226505545
+    "contact_no":2226505545,
+    "timings":"8-23"
     }
   },
   {
@@ -58,7 +62,8 @@
     "properties": {
     "name":"Sheetal Chemist",
     "address":"Sai Niketan, Shop No 5, Plot No 175,Near Sheetal Cinema, LBS Rd, Kurla (W), Mumbai, Maharashtra 400070",
-    "contact_no":9892837199
+    "contact_no":9892837199,
+    "timings":"9-24"
     }
   },
   {
@@ -70,7 +75,8 @@
     "properties": {
     "name":"Noor Chemist Druggist & General Stores",
     "address":"M K Height, Shop No.1,Rajkotwala Bldg,, Pipe Line Rd, Kurla (W), Mumbai, Maharashtra 400070",
-    "contact_no":2226524352
+    "contact_no":2226524352,
+    "timings":"9-24"
     }
   },
   {
@@ -82,7 +88,8 @@
     "properties": {
     "name":"Ranjan medical",
     "address":"Shop No.10, Golden Plaza CHS, Dion Sheltep, S. G. Barve Margr, Nehru Nagar, Kurla (E), Mumbai, Maharashtra 400070",
-    "contact_no":9664347781
+    "contact_no":9664347781,
+    "timings":"7-23"
     }
   },
   {
@@ -94,7 +101,8 @@
     "properties": {
     "name":"Anand Medical & General Stores",
     "address":"178-B, Sidh Mahal, Belgrami Road, Kurla (W), Mumbai, Maharashtra 400070",
-    "contact_no":2226505940
+    "contact_no":2226505940,
+    "timings":"10-24"
     }
   },
   {
@@ -106,7 +114,8 @@
     "properties": {
     "name":"Master Medical & General Stores",
     "address":"Shop No. 5, Ghag Bhuvan No. 104, Belgrami Rd, Chhadva Nagar, Kurla (W), Mumbai, Maharashtra 400070",
-    "contact_no":2226503680
+    "contact_no":2226503680,
+    "timings":"10-24"
     }
   },
   {
@@ -118,7 +127,8 @@
     "properties": {
     "name":"Jyoti Medical Stores",
     "address":"Shop No: 5, Sahkar Building, Kurla Station Rd, Brahmanwadi, Kurla, Mumbai, Maharashtra 400070",
-    "contact_no":2226500528
+    "contact_no":2226500528,
+    "timings":"9-21"
     }
   },
   {
@@ -130,7 +140,8 @@
     "properties": {
     "name":"Mallinath Medical & General Stores",
     "address":"90 Feet Road, 90 Feet Road, Sudarshan Society, Barrister Nath Pai Nagar, Ghatkopar (E), Mumbai, Maharashtra 400077",
-    "contact_no":2225062428
+    "contact_no":2225062428,
+    "timings":"9-23"
     }
   },
   {
@@ -142,7 +153,8 @@
     "properties": {
     "name":"Jai hind medical stores",
     "address":"Near Sarvodaya Hospital, Shop No 5, Hirachad Desai Muncipal Market, Hirachad Desai Road, Opposite Central Go, Mumbai, Maharashtra 400086",
-    "contact_no":2225770664
+    "contact_no":2225770664,
+    "timings":"8-23"
     }
   },
   {
@@ -154,7 +166,8 @@
     "properties": {
     "name":"Shree Siddhi Medical",
     "address":"Shop No.2,Ground Floor,C Wing Prem Smruti Chs.Ltd., Rajawadi Ghat Kooper, Rajawadi Colony, Mumbai, Maharashtra 400077",
-    "contact_no":2228746523
+    "contact_no":2228746523,
+    "timings":"9-21"
     }
   },
   {
@@ -166,7 +179,8 @@
     "properties": {
     "name":"Shree Mandeo Medical",
     "address":"Shop no10, Sardar house, Rajawadi Road, Rajawadi Colony, Ghatkopar (E), Mumbai, Maharashtra 400077",
-    "contact_no":9920851698
+    "contact_no":9920851698,
+    "timings":"8-23"
     }
   },
   {
@@ -178,7 +192,112 @@
     "properties": {
     "name":"Mauli Medical and General Stores",
     "address":"Kirol Village, Vidyavihar Society, Ghatkopar (W), Mumbai, Maharashtra 400086",
-    "contact_no":8080184339
+    "contact_no":8080184339,
+    "timings":"8-23"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8988,19.078 ]
+    },
+    "properties": {
+    "name":"Rajwadi Medical & General Stores",
+    "address":"Chetan Building, Shop No.1, Rajawadi Road, Rajawadi Colony, Ghatkopar East, Mumbai, Maharashtra 400077",
+    "contact_no":2221021813,
+    "timings":"9-21"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9572,19.1701 ]
+    },
+    "properties": {
+    "name":"Generico - Generic Medical Shop",
+    "address":"Shop No. 3, Desai Wadi, Gopal Krishna Gokhale Rd, Shree Ji Society, Mulund East, Mumbai, Maharashtra 400081",
+    "contact_no":7977043853,
+    "timings":"10-22"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8972,19.0905 ]
+    },
+    "properties": {
+    "name":"Sahara Medical And General Stores",
+    "address":"Shop No.01 Azad Nagar Mohili Stone, Ghatkopar West, Mumbai, Maharashtra 400086",
+    "contact_no":9768572018,
+    "timings":"10-23"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8823,19.0762 ]
+    },
+    "properties": {
+    "name":"Gautam Medical & General Store",
+    "address":"shop no. 4, Opposite Sansar Hotel, Halav Pool Rd, Kurla West, Kurla, Mumbai, Maharashtra 400070",
+    "contact_no":2225032465,
+    "timings":"10-23"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.885,19.0835 ]
+    },
+    "properties": {
+    "name":"Life Care Medical & General Stores",
+    "address":"Shop No. 3, The Kurla Shelter Co-Operative Housing Society, Near Bank of Baroda, Premier Road, Christian Gaon, Kurla, Mumbai, Maharashtra 400072",
+    "contact_no":2225033404,
+    "timings":"10-23"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8817,19.0638 ]
+    },
+    "properties": {
+    "name":"Ajit Medical & General Stores",
+    "address":"Shop No E/10, S G Brave Marg,, Nehru Nagar, Kurla East, Mumbai, Maharashtra 400024",
+    "contact_no":2225225512,
+    "timings":"9-23"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8876,19.088 ]
+    },
+    "properties": {
+    "name":"Kamani Medical And General Stores",
+    "address":"Shop Number 2/3, Jai Ambe Housing Society, Sunder Baug Lane, Kamani, Kurla (W), Sunder Baug Ln, Ashok Nagar, Kurla, Mumbai, Maharashtra 400070",
+    "contact_no":9960219835,
+    "timings":"9-23"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8891,19.0837 ]
+    },
+    "properties": {
+    "name":"Naaz Medical & General Store",
+    "address":"Gala No.3, Balakram Society Behind Naaz Hotel Navpada, Kurla West, Mumbai, Maharashtra 400070",
+    "contact_no":9967488738,
+    "timings":"9-23"
     }
   }
 ]

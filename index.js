@@ -4,21 +4,26 @@ var app = express();
 var path = require("path");
 var bodyParser = require('body-parser');
 var session = require('express-session');
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-});
+//HEROKU code
+// const { Pool } = require('pg');
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: true
+// });
+
+//LOCALHOST code
 var config = {
   user: 'postgres',
   database: 'postgres',
   password: 'star',
   port: 5432,
-  max: 10, // max number of connection can be open to database
-  idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+  max: 10,
+  idleTimeoutMillis: 30000,
 };
+var pool = new pg.Pool(config);
+
 app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: true }));
-// var pool = new pg.Pool(config);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var sess;
@@ -30,20 +35,6 @@ app.use("/header1", express.static(__dirname + "/public/pages/header1.html"));
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname + "/index.html"));
 });
-
-app.get('/db', async (req, res) => {
-  try {
-    const client = await pool.connect()
-    const result = await client.query('SELECT * FROM test_table');
-    const results = { 'results': (result) ? result.rows : null };
-    res.render('pages/db', results);
-    client.release();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
-})
-
 
 app.get("/nearesthospital", function(req, res) {
   res.sendFile(path.join(__dirname + "/public/pages/nearesthospital.html"));
@@ -100,8 +91,6 @@ app.get("/nearestpharmacy", function(req, res) {
 app.get("/nearestpharmacy1", function(req, res) {
   res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy1.html"));
 });
-
-
 
 app.post('/users', function(req, res) {
   pool.connect(function(err, client, done) {
