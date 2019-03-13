@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.postgres://kdtyywrerrwvie:80ce2ac1ab1f8f9c7a63b0301d9514adfe9f8d6187b59913a6dcb63d0e3e8537@ec2-23-23-241-119.compute-1.amazonaws.com:5432/d61fs4ghbsj3g5,
+  connectionString: process.env.DATABASE_URL,
   ssl: true
 });
 var config = {
@@ -30,19 +30,6 @@ app.use("/header1", express.static(__dirname + "/public/pages/header1.html"));
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname + "/index.html"));
 });
-
-app.get('/db', async (req, res) => {
-    try {
-      const client = await pool.connect()
-      const result = await client.query('SELECT * FROM test_table');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  })
 
 app.get("/nearesthospital", function(req, res) {
   res.sendFile(path.join(__dirname + "/public/pages/nearesthospital.html"));
