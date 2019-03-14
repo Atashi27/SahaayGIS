@@ -96,6 +96,10 @@
     $(function(){
         $("#header").load("/header1"); 
       });
+	  
+	  function myFunction(){
+		alert("Feedback successfully submitted");
+  }
     </script>
 </head>
 
@@ -108,7 +112,7 @@
       <div class="form-group">
         <label for="Name" class="col-sm-3 control-label">Name</label>
         <div class="col-sm-9">
-          <input type="text" id="Name" placeholder="Name" class="form-control" name="name" autofocus>
+          <input type="text" id="Name" placeholder="Name" class="form-control" name="name" autofocus required>
         </div>
       </div>
       <div class="form-group">
@@ -146,7 +150,7 @@
       <div class="form-group">
         <label for="comment" class="col-sm-3 control-label">Suggestions*</label>
         <div class="col-sm-9">
-          <input type="textarea" id="suggestions" class="form-control" name="suggestions" style="height:100px">
+          <input type="textarea" id="suggestions" class="form-control" name="suggestions" style="height:100px" autofocus required>
         </div>
       </div>
       <div class="form-group">
@@ -154,7 +158,7 @@
           <span class="help-block">*Required fields</span>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Submit</button>
+      <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal" onclick="myFunction()">Submit</button>
     </form> <!-- /form -->
   </div> <!-- ./container -->
 </body>
