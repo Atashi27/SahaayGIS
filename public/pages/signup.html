@@ -2,115 +2,48 @@
 <html>
 
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <title>Sahaay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/images/logo_c.png" />
+  <!-- Added JQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
-  
   $(function() {
-    $.validator.setDefaults({
-      highlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .addClass('has-error')
-      },
-      unhighlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .removeClass('has-error')
-      }
-    });
-
-    $.validate({
-      rules: {
-        password: "required",
-        birthDate: "required",
-        weight: {
-          required: true,
-          number: true
-        },
-        height: {
-          required: true,
-          number: true
-        },
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      messages: {
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      password: {
-        required: " Please enter password"
-      },
-      birthDate: {
-        required: " Please enter birthdate"
-      },
-      email: {
-        required: ' Please enter email',
-        email: ' Please enter valid email'
-      },
-      weight: {
-        required: " Please enter your weight",
-        number: " Only numbers allowed"
-      },
-      height: {
-        required: " Please enter your height",
-        number: " Only numbers allowed"
-      },
-    });
+    $("#header").load("/header");
   });
-  
-  function myFunction(){
-		alert("Successfully Register");
-  }
   </script>
   <style>
     *[role="form"] {
-    max-width: 530px;
-    padding: 15px;
-    margin: 0 auto;
-    border-radius: 0.3em;
-    background-color: #f2f2f2;
-}
+      max-width: 530px;
+      padding: 15px;
+      margin: 0 auto;
+      border-radius: 0.3em;
+      background-color: #f2f2f2;
+    }
 
-*[role="form"] h2 { 
-    font-family: 'Open Sans' , sans-serif;
-    font-size: 40px;
-    font-weight: 600;
-    color: #000000;
-    margin-top: 5%;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
+    *[role="form"] h2 { 
+      font-family: 'Open Sans' , sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      color: #000000;
+      margin-top: 5%;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+    }
 
-img.avatar {
-  width: 10%;
-  border-radius: 20%;
-}
-
-</style>
-  <title>Sahaay</title>
-  <link rel="shortcut icon" href="/images/logo_c.png" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script>
-    $(function(){
-        $("#header").load("/header"); 
-      });
-    </script>
+    img.avatar {
+      width: 10%;
+      border-radius: 20%;
+    }
+  </style>
 </head>
 
 <body>
@@ -118,64 +51,62 @@ img.avatar {
   <br>
   <div class="container" id="formModal">
     <form class="form-horizontal" role="form" method="post" action="/users" onSubmit="alert('Registration Successfull');">
-	<div class="imgcontainer">
+      <div class="imgcontainer">
         <img src="/images/img_avatar2.png" alt="Avatar" class="avatar">
       </div>
-      
       <h2>Registration</h2>
       <div class="form-group">
         <label for="Name" class="col-sm-3 control-label">Name*</label>
         <div class="col-sm-9">
-          <input type="text" id="Name" placeholder="Sahaay" class="form-control" name="name" autofocus required>
+          <input type="text" id="Name" placeholder="eg. John Doe" class="form-control" name="name" autofocus required>
         </div>
       </div>
       <div class="form-group">
         <label for="email" class="col-sm-3 control-label">Email* </label>
         <div class="col-sm-9">
-          <input type="email" id="email" placeholder="sahaay@gmail.com" class="form-control" name="email" autofocus required>
+          <input type="email" id="email" placeholder="eg. xyz@gmail.com" class="form-control" name="email" autofocus required>
         </div>
       </div>
       <div class="form-group">
         <label for="password" class="col-sm-3 control-label">Password*</label>
         <div class="col-sm-9">
-          <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Sahaay1234" class="form-control" name="password" autofocus required>
+          <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="******" class="form-control" name="password" autofocus required>
         </div>
       </div>
       <div class="form-group">
         <label for="bloodgrp" class="col-sm-3 control-label">Blood Group*</label>
         <div class="col-sm-9">
-          <select>
-				<option value="Blood Group" selected disabled>Blood Group</option>
-				<option value="A+">A+</option>
-				<option value="A-">A-</option>
-				<option value="B+">B+</option>
-				<option value="B-">B-</option>
-				<option value="AB+">AB+</option>
-				<option value="AB-">AB-</option>
-				<option value="O+">O+</option>
-				<option value="O-">O-</option>
-		  </select>
+          <select class="form-control" id="bloodgrp" name="bloodgrp">
+            <option value="bg" selected disabled>Select</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+          </select>
         </div>
       </div>
       <div class="form-group">
-        <label for="age" class="col-sm-3 control-label">Date Of Birth*</label>
+        <label for="dob" class="col-sm-3 control-label">Date Of Birth*</label>
         <div class="col-sm-9">
-          <input type="date" id="date" class="form-control" name="date" autofocus required>
+          <input type="date" id="dob" class="form-control" name="dob" autofocus required>
         </div>
       </div>
-	  <div class="form-group">
-        <label for="height" class="col-sm-3 control-label">height</label>
+      <div class="form-group">
+        <label for="height" class="col-sm-3 control-label">Height</label>
         <div class="col-sm-9">
-          <input type="number" id="height" class="form-control" placeholder="Height in centimeters" name="height" autofocus>
+          <input type="number" id="height" class="form-control" placeholder="(in feet)" name="height" autofocus>
         </div>
       </div>
       <div class="form-group">
         <label for="weight" class="col-sm-3 control-label">Weight</label>
         <div class="col-sm-9">
-          <input type="number" id="weight" class="form-control" placeholder="Weight in kgs" name="weight" autofocus>
+          <input type="number" id="weight" class="form-control" placeholder="(in kgs)" name="weight" autofocus>
         </div>
       </div>
-      
       <div class="form-group">
         <label class="control-label col-sm-3">Gender</label>
         <div class="col-sm-6">
@@ -196,40 +127,37 @@ img.avatar {
       <div class="form-group">
         <label for="allergies" class="col-sm-3 control-label">Allergies</label>
         <div class="col-sm-9">
-          <input type="text" id="allergies" placeholder="Eg:Pollen grains,Dust" class="form-control" name="allergies" autofocus>
+          <input type="text" id="allergies" placeholder="eg. pollen grains, dust" class="form-control" name="allergies" autofocus>
         </div>
       </div>
       <div class="form-group">
         <label for="address" class="col-sm-3 control-label">Address*</label>
         <div class="col-sm-9">
-          <input type="text" id="address" placeholder="102-LBS Road,Opposite Holy Cross Church,Kurla(W)" class="form-control" name="address" autofocus required>
+          <input type="text" id="address" placeholder="eg. 24,Park street" class="form-control" name="address" autofocus required>
         </div>
       </div>
-	  <div class="form-group">
+      <div class="form-group">
         <label for="address" class="col-sm-3 control-label">Pincode*</label>
         <div class="col-sm-9">
-          <input type="number" id="pincode" pattern="[0-9]{6}" title="Six Digit Pincode" placeholder="400070" class="form-control" name="pincode" autofocus required>
+          <input type="number" id="pincode" pattern="[0-9]{6}" title="Six Digit Pincode" placeholder="XXXXXX" class="form-control" name="pincode" autofocus required>
         </div>
       </div>
-      
       <div class="form-group">
         <label for="phoneNumber" class="col-sm-3 control-label">Phone number*</label>
         <div class="col-sm-9">
-          <input type="tel" id="phoneNumber" pattern="^\d{10}$" placeholder="8668652013" class="form-control" name="contact" autofocus required>
+          <input type="tel" id="phoneNumber" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact" autofocus required>
         </div>
       </div>
-	  <div class="form-group">
+      <div class="form-group">
         <label for="phoneNumber" class="col-sm-3 control-label">Emergency Contact*</label>
         <div class="col-sm-9">
-          <input type="tel" id="phoneNumber" pattern="^\d{10}$" placeholder="9989564123" class="form-control" name="contact" autofocus required>
+          <input type="tel" id="phoneNumber" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact" autofocus required>
           <span class="help-block">Phone numbers won't be disclosed anywhere </span>
         </div>
       </div>
-      
-	  
       <div class="form-group">
         <div class="col-sm-9 col-sm-offset-3">
-          <span class="help-block">*Required fields</span>
+          <span class="help-block">* Required fields</span>
         </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Register</button>

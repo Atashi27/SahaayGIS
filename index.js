@@ -33,7 +33,7 @@ var sess;
 app.use("/images", express.static(__dirname + "/public/images"));
 app.use("/data", express.static(__dirname + "/public/data"));
 app.use("/header", express.static(__dirname + "/public/pages/header.html"));
-app.use("/header1", express.static(__dirname + "/public/pages/header1.html"));
+app.use("/loggedinheader", express.static(__dirname + "/public/pages/loggedinheader.html"));
 
 app.get("/", function(req, res) {
   sess = req.session;
@@ -42,18 +42,6 @@ app.get("/", function(req, res) {
   } else {
     res.sendFile(path.join(__dirname + "/index.html"));
   }
-});
-
-app.get("/nearesthospital", function(req, res) {
-  res.sendFile(path.join(__dirname + "/public/pages/nearesthospital.html"));
-});
-
-app.get("/nearestpharmacy", function(req, res) {
-  res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy.html"));
-});
-
-app.get("/tips", function(req, res) {
-  res.sendFile(path.join(__dirname + "/public/pages/tips.html"));
 });
 
 app.get("/signup", function(req, res) {
@@ -74,10 +62,6 @@ app.get("/login", function(req, res) {
   }
 });
 
-app.get("/dashboard", function(req, res) {
-  res.sendFile(path.join(__dirname + "/public/pages/dashboard.html"));
-});
-
 app.get("/hospitalfeedback", function(req, res) {
   res.sendFile(path.join(__dirname + "/public/pages/hospitalfeedback.html"));
 });
@@ -92,40 +76,30 @@ app.get("/logout", function(req, res) {
   });
 });
 
-app.get("/nearesthospital1", function(req, res) {
+app.get("/nearesthospital", function(req, res) {
   sess = req.session;
   if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/nearesthospital1.html"));
+    res.sendFile(path.join(__dirname + "/public/pages/nearesthospital.html"));
   } else {
     res.write('<h1>Please login first.</h1>');
     res.end('<a href=' + '/login' + '>Login</a>');
   }
 });
 
-app.get("/filterhospital1", function(req, res) {
+app.get("/tips", function(req, res) {
   sess = req.session;
   if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/filterhospital1.html"));
+    res.sendFile(path.join(__dirname + "/public/pages/tips.html"));
   } else {
     res.write('<h1>Please login first.</h1>');
     res.end('<a href=' + '/login' + '>Login</a>');
   }
 });
 
-app.get("/tips1", function(req, res) {
+app.get("/nearestpharmacy", function(req, res) {
   sess = req.session;
   if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/tips1.html"));
-  } else {
-    res.write('<h1>Please login first.</h1>');
-    res.end('<a href=' + '/login' + '>Login</a>');
-  }
-});
-
-app.get("/nearestpharmacy1", function(req, res) {
-  sess = req.session;
-  if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy1.html"));
+    res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy.html"));
   } else {
     res.write('<h1>Please login first.</h1>');
     res.end('<a href=' + '/login' + '>Login</a>');

@@ -9,16 +9,55 @@
   <!-- Added Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- For video -->
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+  <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
   <script>
     $(function(){
-      $("#header").load("/header"); 
+      $("#header").load("/loggedinheader"); 
     });
     $(document).ready(function(){
-        $('#query').keypress(function(e){
-          if(e.keyCode==13)
-          $('#search-button').click();
-        });
+      $('#query').keypress(function(e){
+        if(e.keyCode==13)
+        $('#search-button').click();
+      });
     });
+    var vid_data;
+    var id_list = [];
+    var API_KEY = "AIzaSyCd00jxfl7g4KY4WdpyFsabcJHcqxK0GjA";
+
+    // Method for the setting up Youtube Data api v3
+    function search_query() {
+      gapi.client.setApiKey(API_KEY);
+      gapi.client.load('youtube', 'v3', function() {
+        load_Request();
+      });
+    }
+
+    // Method for requesting the videos 
+    function load_Request() {
+      var query = $('#query').val();
+      query = query + ' first-aid tips in hindi';
+      console.log("query is-->", query);
+      var request = gapi.client.youtube.search.list({
+        q: query,
+        part: 'snippet',
+        order: "title",
+        maxResults: 6
+      });
+      // Fetching the videos
+      request.execute(function(response) {
+        $('#results').empty()
+        var srchItems = response.result.items;
+        $.each(srchItems, function(index, item) {
+          vidTitle = item.snippet.title;
+          videoid = item.id.videoId;
+          id_list.push(videoid);
+          vid_data = '<br><div><iframe class="video" src="//www.youtube.com/embed/' + videoid + '"></iframe></div>';
+          $('#results').append('<div class="col-sm-4 text-center">' + vidTitle + vid_data + '</div>');
+        })
+      })
+    }
   </script>
   <style type="text/css">
   /* For desktop */
@@ -53,46 +92,6 @@
   <div id="container">
     <ul id="results"></ul>
   </div>
-  <script>
-  var vid_data;
-  var id_list = [];
-  var API_KEY = "AIzaSyCd00jxfl7g4KY4WdpyFsabcJHcqxK0GjA";
-
-  // Method for the setting up Youtube Data api v3
-  function search_query() {
-    gapi.client.setApiKey(API_KEY);
-    gapi.client.load('youtube', 'v3', function() {
-      load_Request();
-    });
-  }
-
-  // Method for requesting the videos 
-  function load_Request() {
-    var query = $('#query').val();
-    query = query + ' first-aid tips in hindi';
-    console.log("query is-->", query);
-    var request = gapi.client.youtube.search.list({
-      q: query,
-      part: 'snippet',
-      order: "title",
-      maxResults: 6
-    });
-    // Fetching the videos
-    request.execute(function(response) {
-      $('#results').empty()
-      var srchItems = response.result.items;
-      $.each(srchItems, function(index, item) {
-        vidTitle = item.snippet.title;
-        videoid = item.id.videoId;
-        id_list.push(videoid);
-        vid_data = '<br><div><iframe class="video" src="//www.youtube.com/embed/' + videoid + '"></iframe></div>';
-        $('#results').append('<div class="col-sm-4">' + vidTitle + vid_data + '</div>');
-      })
-    })
-  }
-  </script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 </body>
 
 </html>

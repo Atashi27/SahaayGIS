@@ -2,103 +2,39 @@
 <html>
 
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <title>Sahaay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/images/logo_c.png" />
+  <!-- Added JQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
   $(function() {
-    $.validator.setDefaults({
-      highlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .addClass('has-error')
-      },
-      unhighlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .removeClass('has-error')
-      }
-    });
-
-    $.validate({
-      rules: {
-        password: "required",
-        birthDate: "required",
-        weight: {
-          required: true,
-          number: true
-        },
-        height: {
-          required: true,
-          number: true
-        },
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      messages: {
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      password: {
-        required: " Please enter password"
-      },
-      birthDate: {
-        required: " Please enter birthdate"
-      },
-      email: {
-        required: ' Please enter email',
-        email: ' Please enter valid email'
-      },
-      weight: {
-        required: " Please enter your weight",
-        number: " Only numbers allowed"
-      },
-      height: {
-        required: " Please enter your height",
-        number: " Only numbers allowed"
-      },
-    });
+    $("#header").load("/loggedinheader");
   });
   </script>
   <style>
     *[role="form"] {
-    max-width: 530px;
-    padding: 15px;
-    margin: 0 auto;
-    border-radius: 0.3em;
-    background-color: #f2f2f2;
-}
+      max-width: 530px;
+      padding: 15px;
+      margin: 0 auto;
+      border-radius: 0.3em;
+      background-color: #f2f2f2;
+    }
 
-*[role="form"] h2 { 
-    font-family: 'Open Sans' , sans-serif;
-    font-size: 40px;
-    font-weight: 600;
-    color: #000000;
-    margin-top: 5%;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
-</style>
-  
-  <title>Sahaay</title>
-  <link rel="shortcut icon" href="/images/logo_c.png" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script>
-    $(function(){
-        $("#header").load("/header1"); 
-      });
-
-    </script>
+    *[role="form"] h2 { 
+      font-family: 'Open Sans' , sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      color: #000000;
+      margin-top: 5%;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+  </style>
 </head>
 
 <body>
@@ -110,61 +46,54 @@
       <div class="form-group">
         <label for="Name" class="col-sm-3 control-label">Name</label>
         <div class="col-sm-9">
-          <input type="text" id="name" placeholder="Name" class="form-control" name="name" autofocus required>
+          <input type="text" id="name" placeholder="eg. John Doe" class="form-control" name="name" autofocus required>
         </div>
       </div>
-	  <div class="form-group">
+      <div class="form-group">
         <label for="Name" class="col-sm-3 control-label">Hospital Name</label>
         <div class="col-sm-9">
-          <input type="text" id="name" placeholder="Kohinoor Hospital" class="form-control" name="Hospital_name" autofocus required>
+          <input type="text" id="name" placeholder="eg. Kohinoor Hospital" class="form-control" name="Hospital_name" autofocus required>
         </div>
-      </div>  
-	  <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1-Bad 2-Average 3-Good 4-Very Good 5-Excellent</label>
-		<div class="form-group">
-        <label>&nbsp&nbsp&nbsp&nbsp How satisfied are you with the cleanliness and appearance of our facility?</label>
-		
-        <div class="col-sm-15">
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label>Ratings for cleanliness and appearance of the hospital facility</label>
           <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               <label class="radio-inline">
-                <input type="radio" id="rate1Radio" value="1" name="rating">1
+                <input type="radio" id="rate1Radio" value="1" name="cleanlinessrating">1(Poor)
               </label>
             </div>
             <div class="col-sm-2">
               <label class="radio-inline">
-                <input type="radio" id="rate2Radio" value="2" name="gender">2
+                <input type="radio" id="rate2Radio" value="2" name="cleanlinessrating">2
               </label>
             </div>
             <div class="col-sm-2">
               <label class="radio-inline">
-                <input type="radio" id="rate3Radio" value="3" name="rating">3
+                <input type="radio" id="rate3Radio" value="3" name="cleanlinessrating">3
               </label>
             </div>
             <div class="col-sm-2">
               <label class="radio-inline">
-                <input type="radio" id="rate4Radio" value="4" name="rating">4
+                <input type="radio" id="rate4Radio" value="4" name="cleanlinessrating">4
               </label>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               <label class="radio-inline">
-                <input type="radio" id="rate5Radio" value="5" name="rating">5
+                <input type="radio" id="rate5Radio" value="5" name="cleanlinessrating">5(Excellent)
               </label>
             </div>
           </div>
         </div>
       </div> <!-- /.form-group -->
-      
-
-	  
-	  
       <div class="form-group">
-        <label>&nbsp&nbsp&nbsp&nbsp How would you rate the overall care you received?</label>
-		
-        <div class="col-sm-15">
+        <div class="col-sm-12">
+          <label>Overall rating</label>
           <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               <label class="radio-inline">
-                <input type="radio" id="rate1Radio" value="1" name="rating">1
+                <input type="radio" id="rate1Radio" value="1" name="rating">1(Poor)
               </label>
             </div>
             <div class="col-sm-2">
@@ -182,42 +111,40 @@
                 <input type="radio" id="rate4Radio" value="4" name="rating">4
               </label>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               <label class="radio-inline">
-                <input type="radio" id="rate5Radio" value="5" name="rating">5
+                <input type="radio" id="rate5Radio" value="5" name="rating">5(Excellent)
               </label>
             </div>
           </div>
         </div>
       </div> <!-- /.form-group -->
-<div class="form-group">
-        <label>&nbsp&nbsp&nbsp&nbsp Will you like to recommend the Hospital to a friend or family member?</label>
-
-        <div class="col-sm-6">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label>Will you like to recommend the Hospital to a friend or family member?</label>
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 col-sm-offset-2">
               <label class="radio-inline">
-                <input type="radio" id="ans1Radio" value="yes" name="ans">yes
+                <input type="radio" id="ans1Radio" value="yes" name="ans">Yes
               </label>
             </div>
             <div class="col-sm-4">
               <label class="radio-inline">
-                <input type="radio" id="ans2Radio" value="no" name="gender">No
+                <input type="radio" id="ans2Radio" value="no" name="ans">No
               </label>
-            </div>
             </div>
           </div>
-        
-      </div> <!-- /.form-group -->	  
+        </div>
+      </div> <!-- /.form-group -->
       <div class="form-group">
-        <label for="comment" class="col-sm-3 control-label">Suggestions*</label>
+        <label for="comment" class="col-sm-3 control-label">Suggestions</label>
         <div class="col-sm-9">
-          <input type="textarea" id="suggestions" class="form-control" name="suggestions" style="height:100px" autofocus required>
+          <input type="textarea" id="suggestions" class="form-control" name="suggestions" style="height:100px" autofocus>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-9 col-sm-offset-3">
-          <span class="help-block">*Required fields</span>
+          <span class="help-block">* Required fields</span>
         </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Submit</button>
