@@ -74,6 +74,14 @@ app.get("/login", function(req, res) {
   }
 });
 
+app.get("/dashboard", function(req, res) {
+  res.sendFile(path.join(__dirname + "/public/pages/dashboard.html"));
+});
+
+app.get("/hospitalfeedback", function(req, res) {
+  res.sendFile(path.join(__dirname + "/public/pages/hospitalfeedback.html"));
+});
+
 app.get("/logout", function(req, res) {
   req.session.destroy(function(err) {
     if (err) {

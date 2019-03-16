@@ -10,8 +10,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.11.0",
     "express-session": "^1.15.6",
-    "pg": "^7.8.2",
-    "twilio": "^3.29.1"
+    "pg": "^7.9.0",
+    "twilio": "^3.29.2"
   },
   "author": "Atashi Khatua",
   "license": "",
