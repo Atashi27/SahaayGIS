@@ -64,8 +64,8 @@ app.get("/dashboard", function(req, res) {
   res.sendFile(path.join(__dirname + "/public/pages/dashboard.html"));
 });
 
-app.get("/feedback1", function(req, res) {
-  res.sendFile(path.join(__dirname + "/public/pages/feedback1.html"));
+app.get("/hospitalfeedback", function(req, res) {
+  res.sendFile(path.join(__dirname + "/public/pages/hospitalfeedback.html"));
 });
 
 app.get("/logout", function(req, res) {

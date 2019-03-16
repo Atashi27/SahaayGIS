@@ -5,6 +5,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript">
   $(function() {
     $.validator.setDefaults({
@@ -85,7 +86,7 @@
 }
 
 </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <title>Sahaay</title>
   <link rel="shortcut icon" href="/images/logo_c.png" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -96,10 +97,7 @@
     $(function(){
         $("#header").load("/header1"); 
       });
-	  
-	  function myFunction(){
-		alert("Feedback successfully submitted");
-  }
+
     </script>
 </head>
 
@@ -107,39 +105,47 @@
   <div id="header"></div>
   <br>
   <div class="container" id="formModal">
-    <form class="form-horizontal" role="form" method="post" action="/feedback1">
+    <form class="form-horizontal" role="form" method="post" action="/hospitalfeedback" onSubmit="alert('Thank you for your feedback.');">
       <h2>Feedback</h2>
       <div class="form-group">
         <label for="Name" class="col-sm-3 control-label">Name</label>
         <div class="col-sm-9">
-          <input type="text" id="Name" placeholder="Name" class="form-control" name="name" autofocus required>
+          <input type="text" id="name" placeholder="Name" class="form-control" name="name" autofocus required>
         </div>
       </div>
-      <div class="form-group">
-        <label class="control-label col-sm-3">Rating</label>
-        <div class="col-sm-6">
+	  <div class="form-group">
+        <label for="Name" class="col-sm-3 control-label">Hospital Name</label>
+        <div class="col-sm-9">
+          <input type="text" id="name" placeholder="Kohinoor Hospital" class="form-control" name="Hospital_name" autofocus required>
+        </div>
+      </div>  
+	  <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1-Bad 2-Average 3-Good 4-Very Good 5-Excellent</label>
+		<div class="form-group">
+        <label>&nbsp&nbsp&nbsp&nbsp How satisfied are you with the cleanliness and appearance of our facility?</label>
+		
+        <div class="col-sm-15">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-2">
               <label class="radio-inline">
                 <input type="radio" id="rate1Radio" value="1" name="rating">1
               </label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
               <label class="radio-inline">
                 <input type="radio" id="rate2Radio" value="2" name="gender">2
               </label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
               <label class="radio-inline">
                 <input type="radio" id="rate3Radio" value="3" name="rating">3
               </label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
               <label class="radio-inline">
                 <input type="radio" id="rate4Radio" value="4" name="rating">4
               </label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
               <label class="radio-inline">
                 <input type="radio" id="rate5Radio" value="5" name="rating">5
               </label>
@@ -147,6 +153,62 @@
           </div>
         </div>
       </div> <!-- /.form-group -->
+      
+
+	  
+	  
+      <div class="form-group">
+        <label>&nbsp&nbsp&nbsp&nbsp How would you rate the overall care you received?</label>
+		
+        <div class="col-sm-15">
+          <div class="row">
+            <div class="col-sm-2">
+              <label class="radio-inline">
+                <input type="radio" id="rate1Radio" value="1" name="rating">1
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <label class="radio-inline">
+                <input type="radio" id="rate2Radio" value="2" name="gender">2
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <label class="radio-inline">
+                <input type="radio" id="rate3Radio" value="3" name="rating">3
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <label class="radio-inline">
+                <input type="radio" id="rate4Radio" value="4" name="rating">4
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <label class="radio-inline">
+                <input type="radio" id="rate5Radio" value="5" name="rating">5
+              </label>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /.form-group -->
+<div class="form-group">
+        <label>&nbsp&nbsp&nbsp&nbsp Will you like to recommend the Hospital to a friend or family member?</label>
+
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-4">
+              <label class="radio-inline">
+                <input type="radio" id="ans1Radio" value="yes" name="ans">yes
+              </label>
+            </div>
+            <div class="col-sm-4">
+              <label class="radio-inline">
+                <input type="radio" id="ans2Radio" value="no" name="gender">No
+              </label>
+            </div>
+            </div>
+          </div>
+        
+      </div> <!-- /.form-group -->	  
       <div class="form-group">
         <label for="comment" class="col-sm-3 control-label">Suggestions*</label>
         <div class="col-sm-9">
@@ -158,7 +220,7 @@
           <span class="help-block">*Required fields</span>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal" onclick="myFunction()">Submit</button>
+      <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Submit</button>
     </form> <!-- /form -->
   </div> <!-- ./container -->
 </body>
