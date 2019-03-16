@@ -125,7 +125,7 @@ app.route('/feedback')
   .post((req, res) => {
     pool.connect(function(err, client, done) {
       if (err) {
-        console.log("not able to get connection " + err);
+        console.log("Connection error: " + err);
         res.status(400).send(err);
       }
       client.query('INSERT INTO feedback(name, email, comment) VALUES($1, $2, $3)', [req.body.name, req.body.email, req.body.comment]);
@@ -134,14 +134,14 @@ app.route('/feedback')
     });
   });
 
-app.route('/feedback1')
+app.route('/hospitalfeedback')
   .get((req, res) => {
-    res.sendFile(path.join(__dirname + "/public/pages/feedback1.html"));
+    res.sendFile(path.join(__dirname + "/public/pages/hospitalfeedback.html"));
   })
   .post((req, res) => {
     pool.connect(function(err, client, done) {
       if (err) {
-        console.log("not able to get connection " + err);
+        console.log("Connection error: " + err);
         res.status(400).send(err);
       }
       client.query('INSERT INTO service_feedback(name, email, rating, suggestions) VALUES($1, $2, $3, $4)', [req.body.name, sess.email, req.body.rating, req.body.suggestions]);
@@ -156,7 +156,7 @@ app.post('/sub', function(req, res) {
   client = require('twilio')(accountSid, authToken);
   client.messages
     .create({
-      body: 'Emergency!!' + email,
+      body: 'Emergency!!' + sess.email,
       from: '+18647131453',
       to: '+918668626097'
     })

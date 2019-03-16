@@ -22,7 +22,10 @@
       color: #e60000;
       font-size: 200%;
     }
-
+    #emergencybutton{
+      margin: 10px;
+      padding: 5px;
+    }
     #newheader #logo {
       height: 150px;
       margin: 0;
@@ -85,7 +88,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="/sub"><span></span> Emergency</a>
+          <form role="form" method="post" action="/sub">
+            <button type="submit" class="btn btn-block" id="emergencybutton" data-toogle="modal" data-target="#formModal">Emergency</button>
+          </form>
         </li>
         <li>
           <a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
