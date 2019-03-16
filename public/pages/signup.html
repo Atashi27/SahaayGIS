@@ -16,12 +16,12 @@
   });
   </script>
   <style>
-      /* For desktop */
+    /* For desktop */
     @media only screen and (min-width:360px) {}
 
     /* For mobile devices */
     @media only screen and (max-width:360px) {}
-    
+
     #signup {
       max-width: 530px;
       padding: 15px;
@@ -56,33 +56,46 @@
   <div id="header"></div>
   <br>
   <div class="container" id="formModal">
-    <form id="signup" class="form-horizontal" role="form" method="post" action="/users" onSubmit="alert('Registration Successfull');">
+    <form id="signup" class="form-horizontal" role="form" method="post" action="/signup" onSubmit="alert('Registration Successfull');">
       <div class="imgcontainer">
         <img src="/images/img_avatar2.png" alt="Avatar" class="avatar">
       </div>
       <h2>Registration</h2>
       <div class="form-group">
-        <label for="Name" class="col-sm-3 control-label">Name*</label>
+        <label for="Name" class="col-sm-3 control-label">Name *</label>
         <div class="col-sm-9">
-          <input type="text" id="Name" placeholder="eg. John Doe" class="form-control" name="name" autofocus required>
+          <input type="text" id="name" placeholder="eg. John Doe" class="form-control" name="name" autofocus required>
         </div>
       </div>
       <div class="form-group">
-        <label for="email" class="col-sm-3 control-label">Email* </label>
+        <label for="email" class="col-sm-3 control-label">Email * </label>
         <div class="col-sm-9">
           <input type="email" id="email" placeholder="eg. xyz@gmail.com" class="form-control" name="email" autofocus required>
         </div>
       </div>
       <div class="form-group">
-        <label for="password" class="col-sm-3 control-label">Password*</label>
+        <label for="password" class="col-sm-3 control-label">Password *</label>
         <div class="col-sm-9">
           <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="******" class="form-control" name="password" autofocus required>
         </div>
       </div>
       <div class="form-group">
-        <label for="bloodgrp" class="col-sm-3 control-label">Blood Group*</label>
+        <label for="phoneNumber" class="col-sm-3 control-label">Contact number *</label>
         <div class="col-sm-9">
-          <select class="form-control" id="bloodgrp" name="bloodgrp">
+          <input type="tel" id="contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact_no" autofocus required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber" class="col-sm-3 control-label">Emergency Contact *</label>
+        <div class="col-sm-9">
+          <input type="tel" id="emergency_contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="emergency_contact_no" autofocus required>
+          <span class="help-block">Phone numbers won't be disclosed anywhere </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bloodgrp" class="col-sm-3 control-label">Blood Group *</label>
+        <div class="col-sm-9">
+          <select class="form-control" id="blood_group" name="blood_group" required>
             <option value="bg" selected disabled>Select</option>
             <option value="A+">A+</option>
             <option value="A-">A-</option>
@@ -96,40 +109,40 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="dob" class="col-sm-3 control-label">Date Of Birth*</label>
+        <label for="dob" class="col-sm-3 control-label">Date Of Birth *</label>
         <div class="col-sm-9">
-          <input type="date" id="dob" class="form-control" name="dob" autofocus required>
+          <input type="date" id="dob" class="form-control" name="dob" autofocus required style="line-height: inherit;">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Gender *</label>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-4">
+              <label class="radio-inline">
+                <input type="radio" id="gender" value="Female" name="gender" required>Female
+              </label>
+            </div>
+            <div class="col-sm-4">
+              <label class="radio-inline">
+                <input type="radio" id="gender" value="Male" name="gender" required>Male
+              </label>
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group">
         <label for="height" class="col-sm-3 control-label">Height</label>
         <div class="col-sm-9">
-          <input type="number" id="height" class="form-control" placeholder="(in feet)" name="age" autofocus>
+          <input type="number" id="height" class="form-control" placeholder="(in centimeters)" name="height" autofocus>
         </div>
       </div>
       <div class="form-group">
         <label for="weight" class="col-sm-3 control-label">Weight</label>
         <div class="col-sm-9">
-          <input type="number" id="weight" class="form-control" placeholder="(in kgs)" name="weight" autofocus>
+          <input type="number" id="weight" class="form-control" placeholder="(in kilograms)" name="weight" autofocus>
         </div>
       </div>
-      <div class="form-group">
-        <label class="control-label col-sm-3">Gender</label>
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-4">
-              <label class="radio-inline">
-                <input type="radio" id="femaleRadio" value="Female" name="gender">Female
-              </label>
-            </div>
-            <div class="col-sm-4">
-              <label class="radio-inline">
-                <input type="radio" id="maleRadio" value="Male" name="gender">Male
-              </label>
-            </div>
-          </div>
-        </div>
-      </div> <!-- /.form-group -->
       <div class="form-group">
         <label for="allergies" class="col-sm-3 control-label">Allergies</label>
         <div class="col-sm-9">
@@ -137,28 +150,15 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="address" class="col-sm-3 control-label">Address*</label>
+        <label for="address" class="col-sm-3 control-label">Address *</label>
         <div class="col-sm-9">
           <input type="text" id="address" placeholder="eg. 24,Park street" class="form-control" name="address" autofocus required>
         </div>
       </div>
       <div class="form-group">
-        <label for="address" class="col-sm-3 control-label">Pincode*</label>
+        <label for="address" class="col-sm-3 control-label">Pincode *</label>
         <div class="col-sm-9">
           <input type="number" id="pincode" pattern="[0-9]{6}" title="Six Digit Pincode" placeholder="XXXXXX" class="form-control" name="pincode" autofocus required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="phoneNumber" class="col-sm-3 control-label">Phone number*</label>
-        <div class="col-sm-9">
-          <input type="tel" id="phoneNumber" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact" autofocus required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="phoneNumber" class="col-sm-3 control-label">Emergency Contact*</label>
-        <div class="col-sm-9">
-          <input type="tel" id="phoneNumber" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact" autofocus required>
-          <span class="help-block">Phone numbers won't be disclosed anywhere </span>
         </div>
       </div>
       <div class="form-group">
@@ -167,8 +167,8 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Register</button>
-    </form> <!-- /form -->
-  </div> <!-- ./container -->
+    </form>
+  </div>
 </body>
 
 </html>
