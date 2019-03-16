@@ -16,7 +16,13 @@
   });
   </script>
   <style>
-    *[role="form"] {
+    /* For desktop */
+    @media only screen and (min-width:360px) {}
+
+    /* For mobile devices */
+    @media only screen and (max-width:360px) {}
+
+    #feedback {
       max-width: 530px;
       padding: 15px;
       margin: 0 auto;
@@ -24,15 +30,15 @@
       background-color: #f2f2f2;
     }
 
-    *[role="form"] h2 { 
-      font-family: 'Open Sans' , sans-serif;
+    #feedback h2 { 
+      font-family: sans-serif;
       font-size: 40px;
-      font-weight: 600;
-      color: #000000;
-      margin-top: 5%;
+      font-weight: 500;
+      margin-top: 2%;
+      margin-bottom:4%;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 4px;
+      letter-spacing: 2px;
     }
   </style>
 </head>
