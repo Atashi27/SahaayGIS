@@ -153,7 +153,7 @@ app.route('/feedback')
         console.log("Connection error: " + err);
         res.status(400).send(err);
       }
-      client.query('INSERT INTO feedback(name, email, comment) VALUES($1, $2, $3)', [req.body.name, req.body.email, req.body.comment]);
+      client.query('INSERT INTO service_feedback(user_id, initiative, ratings, liking, suggestions, recommend, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, NOW())', [sess.email, req.body.initiative, req.body.ratings, req.body.liking, req.body.suggestions, req.body.recommend]);
       done();
       res.redirect('/');
     });
@@ -174,7 +174,7 @@ app.route('/hospitalfeedback')
         console.log("Connection error: " + err);
         res.status(400).send(err);
       }
-      client.query('INSERT INTO service_feedback(name, email, rating, suggestions) VALUES($1, $2, $3, $4)', [req.body.name, sess.email, req.body.rating, req.body.suggestions]);
+      client.query('INSERT INTO hospital_feedback(user_id, hospital_name, cleanliness_rating, availability_rating, preparedness_rating, overall_rating, recommend, comments, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, $7, $8, NOW())', [sess.email, req.body.hospital_name, req.body.cleanliness_rating, req.body.availability_rating, req.body.preparedness_rating, req.body.overall_rating, req.body.recommend, req.body.comments]);
       done();
       res.redirect('/');
     });
@@ -191,6 +191,18 @@ app.post('/sub', function(req, res) {
       to: '+918668626097'
     })
     .then(message => console.log(message.sid));
+});
+
+app.post('/gohospital', function(req, res) {
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Connection error: " + err);
+      res.status(400).send(err);
+    }
+    client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.email, req.body.hospital_name]);
+    done();
+    res.redirect('/');
+  });
 });
 
 app.route('/login')

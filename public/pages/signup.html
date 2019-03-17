@@ -158,11 +158,11 @@
       <div class="form-group">
         <label for="address" class="col-sm-3 control-label">Pincode *</label>
         <div class="col-sm-9">
-          <input type="number" id="pincode" pattern="[0-9]{6}" title="Six Digit Pincode" placeholder="XXXXXX" class="form-control" name="pincode" autofocus required>
+          <input type="number" id="pincode" pattern="^\d{6}$" title="Must contain 6 digits" placeholder="XXXXXX" class="form-control" name="pincode" autofocus required>
         </div>
       </div>
       <div class="form-group">
-        <div class="col-sm-9 col-sm-offset-3">
+        <div class="col-sm-4 col-sm-offset-8">
           <span class="help-block">* Required fields</span>
         </div>
       </div>
