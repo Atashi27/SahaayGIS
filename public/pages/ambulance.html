@@ -1,133 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title></title>
-  <meta charset="utf-8">
+  <title>Sahaay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+  <link rel="shortcut icon" href="/images/logo_c.png" />
+  <!-- Added JQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    $("#header").load("/header");
+  });
+  </script>
   <style>
-	  * {
-  box-sizing: border-box;
-}
+  /* Remove the navbar's default margin-bottom and rounded borders */
+  .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
 
+  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+  .row.content {
+    height: 450px
+  }
 
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
+  /* Set gray background color and 100% height */
+  .sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+
+  /* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
     .sidenav {
-      padding-top: 20px;
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
+      height: auto;
       padding: 15px;
     }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
+
+    .row.content {
+      height: auto;
     }
+  }
   </style>
 </head>
+
 <body>
-	<br>
-	<div class="header">
-	<h1 align="center"> Ambulance Services</h1>
-	
- <div class="col-sm-11 text-left" > 
-	 
-		  <ul>
-			  <h5>
-				  The provincial ambulance services have developed into highly trained professional emergency medical services over the last few years. This rapid development seems to have caught the medical profession by surprise, so much so that in recent months some medical practitioners were of the opinion that ambulance personnel were being trained to do more than they should. Unfortunately many doctors still seem to view the ambulance service as mainly a patient transport service and not as the emergency medical service it has become. It would be in the interest of the patient if a sound working relationship between pre-hospital, hospital and private medical practitioners could be established and that each group becomes familiar with the capabilities of the other. It is equally important that ambulance personnel be welcomed into the health profession of which they are now an integral part
-				  <br>
-				    <br>
-<li><b>Government Ambulance Service </b>
-<br>
-Operating separately from (although alongside) the
-fire and police service of the area, these ambulances are funded by local, provincial or
-national government. </li>
-<li> <b>Volunteer Ambulance Service  </b>
-<br>
-Charities or non-profit companies operate
-ambulances, both in an emergency and patient transport function. They may be linked to
-a voluntary fire service, with volunteers providing both services. There are charities
-which focus on providing ambulances for the community, or for cover at private events </li>
-<li><b>Private Ambulance Service </b>
-<br>
- Normal commercial companies with paid employees, but often on contract to the local or national government. Private companies may provide
-only the patient transport elements of ambulance care (i.e. non urgent), but in some places, they are contracted to provide emergency care, or to form a 'second tier'
-response, where they only respond to emergencies when all of the full-time emergency ambulance crews are busy.This system has the benefit of
-keeping emergency crews available all the time for genuine emergencies.  </li>
-
-<li><b> Hospital Based Service</b>
-<br>
-–Hospitals may provide their own ambulance service as a
-service to the community, or where ambulance care is unreliable or chargeable. Their
-use would be dependent on using the services of the providing hospital.  </li>
-
-<li><b> Company Ambulance </b>
-<br>
-Many large factories and other industrial centres, such as
-chemical plants, oil refineries, breweries and distilleries have ambulance services
-provided by employers as a means of protecting their interests and the welfare of their
-staff. These are often used as first response vehicles in the event of a fire or explosion. </li>
-
-
-<li><b> Fire or Police Linked Service </b>
-<br>
-In countries such as the U.S.A., Japan, and France;
-ambulances can be operated by the local fire or police service. This is particularly
-common in rural areas, where maintaining a separate service is not necessarily cost
-effective. In some cases this can lead to an illness or injury being attended by a vehicle
-other than an ambulance, such as a fire truck.</li>
-
-
-</h5>
-</ul>
-      
-</div>
-
-<div class="container-fluid text-center">    
-  <div class="row content">
+  <div id="header"></div>
+  <h1 align="center"> Ambulance Services</h1>
+  <div class="col-sm-11 text-left">
+    <ul>
+      <h5>
+        The provincial ambulance services have developed into highly trained professional emergency medical services over the last few years. This rapid development seems to have caught the medical profession by surprise, so much so that in recent months some medical practitioners were of the opinion that ambulance personnel were being trained to do more than they should. Unfortunately many doctors still seem to view the ambulance service as mainly a patient transport service and not as the emergency medical service it has become. It would be in the interest of the patient if a sound working relationship between pre-hospital, hospital and private medical practitioners could be established and that each group becomes familiar with the capabilities of the other. It is equally important that ambulance personnel be welcomed into the health profession of which they are now an integral part
+        <br><br>
+        <li><b>Government Ambulance Service </b><br>
+          Operating separately from (although alongside) the
+          fire and police service of the area, these ambulances are funded by local, provincial or
+          national government. 
+        </li>
+        <li><b>Volunteer Ambulance Service </b><br>
+          Charities or non-profit companies operate
+          ambulances, both in an emergency and patient transport function. They may be linked to
+          a voluntary fire service, with volunteers providing both services. There are charities
+          which focus on providing ambulances for the community, or for cover at private events 
+        </li>
+        <li><b>Private Ambulance Service</b><br>
+          Normal commercial companies with paid employees, but often on contract to the local or national government. Private companies may provide
+          only the patient transport elements of ambulance care (i.e. non urgent), but in some places, they are contracted to provide emergency care, or to form a 'second tier'
+          response, where they only respond to emergencies when all of the full-time emergency ambulance crews are busy.This system has the benefit of
+          keeping emergency crews available all the time for genuine emergencies. 
+        </li>
+        <li><b> Hospital Based Service</b><br>
+          –Hospitals may provide their own ambulance service as a
+          service to the community, or where ambulance care is unreliable or chargeable. Their
+          use would be dependent on using the services of the providing hospital. 
+        </li>
+        <li><b> Company Ambulance </b><br>
+          Many large factories and other industrial centres, such as
+          chemical plants, oil refineries, breweries and distilleries have ambulance services
+          provided by employers as a means of protecting their interests and the welfare of their
+          staff. These are often used as first response vehicles in the event of a fire or explosion. 
+        </li>
+        <li><b> Fire or Police Linked Service </b><br>
+          In countries such as the U.S.A., Japan, and France;
+          ambulances can be operated by the local fire or police service. This is particularly
+          common in rural areas, where maintaining a separate service is not necessarily cost
+          effective. In some cases this can lead to an illness or injury being attended by a vehicle
+          other than an ambulance, such as a fire truck.
+        </li>
+      </h5>
+    </ul>
+  </div>
+  <div class="container-fluid text-center">
+    <div class="row content">
     </div>
- 
-   
-<div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-		   <img src="25.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="200">
-        <h3>When It's An Emergency</h3>
-        <p> <h5>You should call for an ambulance when it is obvious that you or another person is seriously ill and in need of immediate emergency and hospital medical care..</p> </h5>
-        <p></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="/images/25.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="200">
+          <h3>When It's An Emergency</h3>
+          <p>
+            <h5>You should call for an ambulance when it is obvious that you or another person is seriously ill and in need of immediate emergency and hospital medical care..</h5>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <img src="/images/24.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="200">
+          <h3>First Aid</h3>
+          <p>
+            <h5>First aid is the assistance given to any person suffering a sudden illness or injury, with care provided to preserve life, prevent the condition from worsening, and/or promote recovery.
+          </p>
+          </h5>
+        </div>
+        <div class="col-sm-4">
+          <img src="/images/26.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="200">
+          <h3>Medical Transportation</h3>
+          <p>
+            <h5>An ambulance is a vehicle for transportation of sick or injured people to, from or between places of treatment for an illness or injury,and in some instances will also provide out of hospital .</h5>
+          </p>
+        </div>
       </div>
-      <div class="col-sm-4">
-		  <img src="24.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="200">
-        <h3>First Aid</h3>
-        <p><h5>First aid is the assistance given to any person suffering a sudden illness or injury, with care provided to preserve life, prevent the condition from worsening, and/or promote recovery.</p> </h5>
-      </div>
-      <div class="col-sm-4">
-		   <img src="26.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="200">
-        <h3>Medical Transportation</h3>
-        <p> <h5>An ambulance is a vehicle for transportation of sick or injured people to, from or between places of treatment for an illness or injury,and in some instances will also provide out of hospital .</h5></p>
-      </div>
+      </p>
     </div>
+    </p>
+  </div>
 </body>
+</body>
+
 </html>

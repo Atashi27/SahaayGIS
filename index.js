@@ -81,6 +81,41 @@ app.get("/nearestpharmacy", function(req, res) {
   }
 });
 
+app.get("/hospital", function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.redirect('/');
+  } else {
+    res.sendFile(path.join(__dirname + "/public/pages/hospital.html"));
+  }
+});
+
+app.get("/ambulance", function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.redirect('/');
+  } else {
+    res.sendFile(path.join(__dirname + "/public/pages/ambulance.html"));
+  }
+});
+
+app.get("/user", function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.redirect('/');
+  } else {
+    res.sendFile(path.join(__dirname + "/public/pages/user.html"));
+  }
+});
+
+app.get("/viewprofile", function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.redirect('/');
+  } else {
+    res.sendFile(path.join(__dirname + "/public/pages/viewprofile.html"));
+  }
+});
 
 app.route('/signup')
   .get((req, res) => {
