@@ -15,58 +15,69 @@
     $("#header").load("/header");
   });
   </script>
-
-<style>
-   
+  <style>
     /* For desktop */
-  @media only screen and (min-width:360px) {
+    @media only screen and (min-width:360px) {
       #signup {
-    max-width: 530px;
-    padding: 15px;
-    margin: 0 auto;
-    border-radius: 0.3em;
-    background-color: #f2f2f2;
-}
+          max-width: 530px;
+          padding: 15px;
+          margin: 0 auto;
+          border-radius: 0.3em;
+          background-color: #f2f2f2;
+      }
+      #signup h2 { 
+        font-family: sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        color: #000000;
+        margin-top: 5%;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+      }
 
-
-
-  }
-
-  /* For mobile devices */
-  @media only screen and (max-width:360px) {
-      #signup {
-    max-width: 350px;
-    padding: 15px;
-    margin: 0 auto;
-    border-radius: 0.3em;
-    background-color: #f2f2f2;
-	font-family: 'Open Sans' , sans-serif;
-    font-size: 12px;
-    
-}
-
-  #signup h2 { 
-    font-family: 'Open Sans' , sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #000000;
-    margin-top: 5%;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-
-img.avatar {
-  width: 10%;
-  border-radius: 20%;
+      img.avatar {
+        width: 15%;
+        border-radius: 20%;
+      }
     }
-  }
 
-</style>
+    /* For mobile devices */
+    @media only screen and (max-width:360px) {
+      #signup {
+        max-width: 350px;
+        padding: 15px;
+        margin: 0 auto;
+        border-radius: 0.3em;
+        background-color: #f2f2f2;
+        font-family: 'Open Sans' , sans-serif;
+        font-size: 12px;      
+      }
+
+      #signup h2 { 
+        font-family: 'Open Sans' , sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #000000;
+        margin-top: 5%;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+      }
+
+      img.avatar {
+        width: 10%;
+        border-radius: 20%;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -111,7 +122,6 @@ img.avatar {
       </div>
       <div class="form-group">
         <label for="bloodgrp" class="col-sm-3 control-label">Blood Group *</label>
-
         <div class="col-sm-9">
           <select class="form-control" id="blood_group" name="blood_group" required>
             <option value="bg" selected disabled>Select</option>
@@ -176,7 +186,7 @@ img.avatar {
       <div class="form-group">
         <label for="address" class="col-sm-3 control-label">Pincode *</label>
         <div class="col-sm-9">
-          <input type="number" id="pincode" pattern="^\d{6}$" title="Must contain 6 digits" placeholder="XXXXXX" class="form-control" name="pincode" autofocus required>
+          <input type="text" id="pincode" pattern="^\d{6}$" title="Must contain 6 digits" placeholder="XXXXXX" class="form-control" name="pincode" autofocus required>
         </div>
       </div>
       <div class="form-group">
