@@ -3,6 +3,10 @@
 
 <head>
   <title>Sahaay</title>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="/images/logo_c.png" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -13,10 +17,7 @@
     $("#header").load("/header");
   });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+ 
   <script type="text/javascript">
   $(function() {
     $.validator.setDefaults({
@@ -77,6 +78,44 @@
   });
   </script>
   <style>
+ /* For mobile devices */
+  @media only screen and (max-width:360px) {
+      *[role="form"] {
+    max-width: 350px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+	font-family: 'Open Sans' , sans-serif;
+    font-size: 12px;
+    
+}
+
+*[role="form"] h2 { 
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 10%;
+  border-radius: 20%;
+}
+
+
+  }
+
+  /* For Desktop */
+  @media only screen and (min-width:360px) {
     *[role="form"] {
     max-width: 530px;
     padding: 15px;
@@ -105,7 +144,9 @@ img.avatar {
   border-radius: 20%;
 }
 
-</style>
+  
+  }
+  </style>
 </head>
 
 <body>
