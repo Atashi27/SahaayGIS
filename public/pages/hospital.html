@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  background: gray;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+	
+  float: left;
+  width: 50%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: right;
+  width: 50%;
+  padding-left: 28px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Add a card effect for articles */
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Hospital guidelines</h1>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Basic Emergency Responses</h2>
+      <img src="20.jpg"   width="500" height="250">
+      <p>
+		  <ul>
+<li>Loss of consciousness</li>
+<li>Chest pain. </li>
+<li>Excessive bleeding</li>
+<li>Seizures</li>
+<li>Head injury</li>
+<li>Compound fractures</li>
+<li>Allergic reactions with shortness of breath, excessive swelling</li>
+<li>Ingestion or inhalation of a toxic substance</li>
+<li>Lacerations of the eyeball</li> </ul>
+      
+    </div>
+    <div class="card">
+      <h2>Other Recommendation</h2>
+<img src="21.jpg"   width="500" height="250">
+      <p>Make sure that all your vaccinations are up-to-date  <br>
+ Choose a meeting place with your family in case you are separated  <br>
+ Write down location and include in your kit  <br>
+Wear a medical ID or medical alert bracelet or other form of identification in case you are
+ evacuated to a relief shelter  <br>
+For children, write down name of school, address and phone number  <br></p>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Quick Response</h2>
+     
+       <img src="22.jpg"   width="500" height="250">
+       <ul>
+<li>Dial the ambulance number 108 immediately</li>
+ <li>Do not move victim unless safety dictates</li>
+ <li>If trained, use pressure to stop bleeding</li>
+ <li>Use CPR if no pulse and not breathing</li>
+</ul>
+    </div>
+    <div class="card">
+      <h3>Emergency Training and CPR Course (s) are universally helpful</h3>
+      <img src="23.png"   width="500" height="250">
+       <p> None of us know when a medical emergency might occur and knowing CPR can prove to be immensely helpful when it comes to dealing with an emergency.<br>
+        This is good information for everyone to be aware of, whether you’re in a family or a work setting. Medical professionals are  capable of diagnosing and treating an emergency but one cannot ignore the fact that knowing what to do when an emergency strikes can greatly help in minimizing the impact of the accident. 
+        <br>It’s often possible to avoid the worst risks of an emergency if one is equipped to respond quickly enough and intervene with the necessary first steps.</p>
+    </div>
+    
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
