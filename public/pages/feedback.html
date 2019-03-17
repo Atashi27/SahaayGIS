@@ -2,97 +2,36 @@
 <html>
 
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <title>Sahaay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/images/logo_c.png" />
+  <!-- Added JQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
   $(function() {
-    $.validator.setDefaults({
-      highlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .addClass('has-error')
-      },
-      unhighlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .removeClass('has-error')
-      }
-    });
-
-    $.validate({
-      rules: {
-        password: "required",
-        birthDate: "required",
-        weight: {
-          required: true,
-          number: true
-        },
-        height: {
-          required: true,
-          number: true
-        },
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      messages: {
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      password: {
-        required: " Please enter password"
-      },
-      birthDate: {
-        required: " Please enter birthdate"
-      },
-      email: {
-        required: ' Please enter email',
-        email: ' Please enter valid email'
-      },
-      weight: {
-        required: " Please enter your weight",
-        number: " Only numbers allowed"
-      },
-      height: {
-        required: " Please enter your height",
-        number: " Only numbers allowed"
-      },
-    });
+    $("#header").load("/loggedinheader");
   });
   </script>
   <style>
+
    
     /* For desktop */
   @media only screen and (min-width:360px) {
-     *[role="form"] {
+     #feedback {
     max-width: 530px;
     padding: 15px;
     margin: 0 auto;
     border-radius: 0.3em;
     background-color: #f2f2f2;
-}
+    }}
 
-*[role="form"] h2 { 
-    font-family: 'Open Sans' , sans-serif;
-    font-size: 40px;
-    font-weight: 600;
-    color: #000000;
-    margin-top: 5%;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
-  }
 
   /* For mobile devices */
   @media only screen and (max-width:360px) {
-   *[role="form"] {
+     #feedback {
     max-width:350px;
     padding: 15px;
     margin: 0 auto;
@@ -103,7 +42,7 @@
     
 }
 
-*[role="form"] h2 { 
+ #feedback h2 { 
     font-family: 'Open Sans' , sans-serif;
     font-size: 18px;
     font-weight: 600;
@@ -113,61 +52,90 @@
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-
-  
   }
- 
-
-
-
-</style>
-  
-  <title>Sahaay</title>
-  <link rel="shortcut icon" href="/images/logo_c.png" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script>
-    $(function(){
-        $("#header").load("/header"); 
-      });
-	 
-    </script>
+  </style>
 </head>
 
 <body>
   <div id="header"></div>
   <br>
   <div class="container" id="formModal">
-    <form class="form-horizontal" role="form" method="post" action="/feedback" onSubmit="alert('Thank you for your feedback.');">
-      <h2>Feedback</h2>
+    <form id="feedback" class="form-horizontal" role="form" method="post" action="/feedback" onSubmit="alert('Thank you for your feedback.');">
+      <h2>Service Feedback</h2>
       <div class="form-group">
-        <label for="Name" class="col-sm-3 control-label">Name</label>
-        <div class="col-sm-9">
-          <input type="text" id="name" placeholder="Sahaay" class="form-control" name="name" autofocus required>
+        <label for="initiative" class="col-sm-6 control-label">Do you like Sahaay's initiative? *</label>
+        <div class="col-sm-2 col-sm-offset-1">
+          <label class="radio-inline">
+            <input type="radio" id="initiative_yes" value="Yes" name="initiative" required>Yes
+          </label>
+        </div>
+        <div class="col-sm-3">
+          <label class="radio-inline">
+            <input type="radio" id="initiative_no" value="No" name="initiative" required>No
+          </label>
         </div>
       </div>
       <div class="form-group">
-        <label for="email" class="col-sm-3 control-label">Email* </label>
-        <div class="col-sm-9">
-          <input type="email" id="email" placeholder="sahaay@gmail.com" class="form-control" name="email" autofocus required>
+        <label for="ratings" class="col-sm-3 control-label">Rate Us *</label>
+        <div class="col-sm-2 col-sm-offset-1">
+          <label class="radio-inline">
+            <input type="radio" id="ratings_1" value="1" name="ratings" required>1(Poor)
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="ratings_2" value="2" name="ratings" required>2
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="ratings_3" value="3" name="ratings" required>3
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="ratings_4" value="4" name="ratings" required>4
+          </label>
+        </div>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="ratings_5" value="5" name="ratings" required>5(Excellent)
+          </label>
         </div>
       </div>
       <div class="form-group">
-        <label for="comment" class="col-sm-3 control-label">Comment*</label>
-        <div class="col-sm-9">
-          <input type="textarea" id="comment" class="form-control" name="comment" style="height:100px" autofocus required>
+        <label for="liking" class="col-sm-3 control-label">Features you like</label>
+        <div class="col-sm-8">
+          <input type="textarea" id="liking" class="form-control" name="liking" style="height:100px" autofocus>
         </div>
       </div>
       <div class="form-group">
-        <div class="col-sm-9 col-sm-offset-3">
-          <span class="help-block">*Required fields</span>
+        <label for="suggestions" class="col-sm-3 control-label">Suggestions</label>
+        <div class="col-sm-8">
+          <input type="textarea" id="suggestions" class="form-control" name="suggestions" style="height:100px" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="recommend" class="col-sm-6 control-label">Will you recommend Sahaay to a friend or family member? *</label>
+        <div class="col-sm-2 col-sm-offset-1">
+          <label class="radio-inline">
+            <input type="radio" id="recommend_yes" value="Yes" name="recommend" required>Yes
+          </label>
+        </div>
+        <div class="col-sm-3">
+          <label class="radio-inline">
+            <input type="radio" id="recommend_no" value="No" name="recommend" required>No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-8">
+          <span class="help-block">* Required fields</span>
         </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Submit</button>
-    </form> <!-- /form -->
-  </div> <!-- ./container -->
+    </form>
+  </div>
 </body>
 
 </html>

@@ -22,7 +22,10 @@
       color: #e60000;
       font-size: 200%;
     }
-
+    #emergencybutton{
+      margin: 10px;
+      padding: 5px;
+    }
     #newheader #logo {
       height: 150px;
       margin: 0;
@@ -77,20 +80,21 @@
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/dashboard">Home</a></li>
-        <li><a href="/nearesthospital1">Nearest Hospital</a></li>
-        <li><a href="/nearestpharmacy1">Nearest Pharmacy</a></li>
-        <li><a href="/tips1">Tips</a></li>
-        <li><a href="/hospitalfeedback">Feedback</a></li>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/nearesthospital">Nearest Hospital</a></li>
+        <li><a href="/nearestpharmacy">Nearest Pharmacy</a></li>
+        <li><a href="/tips">Tips</a></li>
+        <li><a href="/feedback">Service Feedback</a></li>
+        <li><a href="/hospitalfeedback">Hospital Feedback</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-		<li>
-		<form role="form" method="post" action="/sub">
-      <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Emergency</button>
-    </form>
-		</li>
         <li>
-          <a href="/login"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+          <form role="form" method="post" action="/sub">
+            <button type="submit" class="btn btn-block" id="emergencybutton" data-toogle="modal" data-target="#formModal">Emergency</button>
+          </form>
+        </li>
+        <li>
+          <a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
         </li>
       </ul>
     </div>

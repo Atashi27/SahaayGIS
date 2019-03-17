@@ -3,84 +3,23 @@
 
 <head>
   <title>Sahaay</title>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="/images/logo_c.png" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <!-- Added JQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script>
+  <script type="text/javascript">
   $(function() {
     $("#header").load("/header");
   });
   </script>
- 
-  <script type="text/javascript">
-  $(function() {
-    $.validator.setDefaults({
-      highlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .addClass('has-error')
-      },
-      unhighlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .removeClass('has-error')
-      }
-    });
-
-    $.validate({
-      rules: {
-        password: "required",
-        birthDate: "required",
-        weight: {
-          required: true,
-          number: true
-        },
-        height: {
-          required: true,
-          number: true
-        },
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      messages: {
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      password: {
-        required: " Please enter password"
-      },
-      birthDate: {
-        required: " Please enter birthdate"
-      },
-      email: {
-        required: ' Please enter email',
-        email: ' Please enter valid email'
-      },
-      weight: {
-        required: " Please enter your weight",
-        number: " Only numbers allowed"
-      },
-      height: {
-        required: " Please enter your height",
-        number: " Only numbers allowed"
-      },
-    });
-  });
-  </script>
   <style>
+
  /* For mobile devices */
   @media only screen and (max-width:360px) {
-      *[role="form"] {
+       #login {
     max-width: 350px;
     padding: 15px;
     margin: 0 auto;
@@ -91,7 +30,7 @@
     
 }
 
-*[role="form"] h2 { 
+ #login h2 { 
     font-family: 'Open Sans' , sans-serif;
     font-size: 18px;
     font-weight: 600;
@@ -116,36 +55,36 @@ img.avatar {
 
   /* For Desktop */
   @media only screen and (min-width:360px) {
-    *[role="form"] {
+     #login {
     max-width: 530px;
     padding: 15px;
     margin: 0 auto;
     border-radius: 0.3em;
     background-color: #f2f2f2;
-}
+    }
 
-*[role="form"] h2 { 
-    font-family: 'Open Sans' , sans-serif;
-    font-size: 40px;
-    font-weight: 600;
-    color: #000000;
-    margin-top: 5%;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
+    #login {
+      max-width: 530px;
+      padding: 15px;
+      margin: 0 auto;
+      border-radius: 0.3em;
+      background-color: #f2f2f2;
+    }
 
-img.avatar {
-  width: 10%;
-  border-radius: 20%;
-}
-
-  
-  }
+    #login h2 { 
+      font-family: sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      margin-top: 2%;
+      margin-bottom:4%;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+    }
   </style>
 </head>
 
@@ -153,7 +92,7 @@ img.avatar {
   <div id="header"></div>
   <br>
   <div class="container" id="formModal">
-    <form class="form-horizontal" role="form" method="post" action="/add">
+    <form id="login" class="form-horizontal" role="form" method="post" action="/login">
       <div class="imgcontainer">
         <img src="/images/img_avatar2.png" alt="Avatar" class="avatar">
       </div>
@@ -161,7 +100,7 @@ img.avatar {
       <div class="form-group">
         <label for="email" class="col-sm-3 control-label">Email* </label>
         <div class="col-sm-9">
-          <input type="email" id="email" placeholder="Sahaay@gmail.com" class="form-control" name="email" autofocus required>
+          <input type="email" id="email" placeholder="eg. xyz@gmail.com" class="form-control" name="email" autofocus required>
         </div>
       </div>
       <div class="form-group">
@@ -171,7 +110,7 @@ img.avatar {
         </div>
       </div>
       <div class="form-group">
-        <div class="col-sm-9 col-sm-offset-3">
+        <div class="col-sm-4 col-sm-offset-8">
           <span class="help-block">*Required fields</span>
         </div>
       </div>

@@ -2,74 +2,25 @@
 <html>
 
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <title>Sahaay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/images/logo_c.png" />
+  <!-- Added JQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
   $(function() {
-    $.validator.setDefaults({
-      highlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .addClass('has-error')
-      },
-      unhighlight: function(element) {
-        $(element)
-          .closest('.form-group')
-          .removeClass('has-error')
-      }
-    });
-
-    $.validate({
-      rules: {
-        password: "required",
-        birthDate: "required",
-        weight: {
-          required: true,
-          number: true
-        },
-        height: {
-          required: true,
-          number: true
-        },
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      messages: {
-        email: {
-          required: true,
-          email: true
-        }
-      },
-      password: {
-        required: " Please enter password"
-      },
-      birthDate: {
-        required: " Please enter birthdate"
-      },
-      email: {
-        required: ' Please enter email',
-        email: ' Please enter valid email'
-      },
-      weight: {
-        required: " Please enter your weight",
-        number: " Only numbers allowed"
-      },
-      height: {
-        required: " Please enter your height",
-        number: " Only numbers allowed"
-      },
-    });
+    $("#header").load("/loggedinheader");
   });
   </script>
   <style>
+
    
     /* For desktop */
   @media only screen and (min-width:360px) {
-     *[role="form"] {
+      #hospitalfeedback {
     max-width: 530px;
     padding: 15px;
     margin: 0 auto;
@@ -77,7 +28,7 @@
     background-color: #f2f2f2;
 }
 
-*[role="form"] h2 { 
+ #hospitalfeedback h2 { 
     font-family: 'Open Sans' , sans-serif;
     font-size: 40px;
     font-weight: 600;
@@ -92,7 +43,7 @@
 
   /* For mobile devices */
   @media only screen and (max-width:360px) {
-   *[role="form"] {
+   #hospitalfeedback {
     max-width: 350px;
     padding: 15px;
     margin: 0 auto;
@@ -103,7 +54,7 @@
     
 }
 
-*[role="form"] h2 { 
+ #hospitalfeedback h2 { 
     font-family: 'Open Sans' , sans-serif;
     font-size: 18px;
     font-weight: 600;
@@ -117,144 +68,163 @@
   
   }
  </style>
-  
-  
-  <title>Sahaay</title>
-  <link rel="shortcut icon" href="/images/logo_c.png" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script>
-    $(function(){
-        $("#header").load("/header1"); 
-      });
-
-    </script>
 </head>
 
 <body>
   <div id="header"></div>
   <br>
   <div class="container" id="formModal">
-    <form class="form-horizontal" role="form" method="post" action="/hospitalfeedback" onSubmit="alert('Thank you for your feedback.');">
-      <h2>Feedback</h2>
+    <form id="hospitalfeedback" class="form-horizontal" role="form" method="post" action="/hospitalfeedback" onSubmit="alert('Thank you for your feedback.');">
+      <h2>Hospital Feedback</h2>
       <div class="form-group">
-        <label for="Name" class="col-sm-3 control-label">Name</label>
-        <div class="col-sm-9">
-          <input type="text" id="name" placeholder="Name" class="form-control" name="name" autofocus required>
-        </div>
-      </div>
-	  <div class="form-group">
-        <label for="Name" class="col-sm-3 control-label">Hospital Name</label>
-        <div class="col-sm-9">
-          <input type="text" id="name" placeholder="Kohinoor Hospital" class="form-control" name="Hospital_name" autofocus required>
-        </div>
-      </div>  
-	  <label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1-Bad 2-Average 3-Good 4-Very Good 5-Excellent</label>
-		<div class="form-group">
-        <label>&nbsp&nbsp&nbsp&nbsp How satisfied are you with the cleanliness and appearance of our facility?</label>
-		
-        <div class="col-sm-15">
-          <div class="row">
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate1Radio" value="1" name="rating">1
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate2Radio" value="2" name="gender">2
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate3Radio" value="3" name="rating">3
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate4Radio" value="4" name="rating">4
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate5Radio" value="5" name="rating">5
-              </label>
-            </div>
-          </div>
-        </div>
-      </div> <!-- /.form-group -->
-      
-
-	  
-	  
-      <div class="form-group">
-        <label>&nbsp&nbsp&nbsp&nbsp How would you rate the overall care you received?</label>
-		
-        <div class="col-sm-15">
-          <div class="row">
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate1Radio" value="1" name="rating">1
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate2Radio" value="2" name="gender">2
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate3Radio" value="3" name="rating">3
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate4Radio" value="4" name="rating">4
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label class="radio-inline">
-                <input type="radio" id="rate5Radio" value="5" name="rating">5
-              </label>
-            </div>
-          </div>
-        </div>
-      </div> <!-- /.form-group -->
-<div class="form-group">
-        <label>&nbsp&nbsp&nbsp&nbsp Will you like to recommend the Hospital to a friend or family member?</label>
-
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-4">
-              <label class="radio-inline">
-                <input type="radio" id="ans1Radio" value="yes" name="ans">yes
-              </label>
-            </div>
-            <div class="col-sm-4">
-              <label class="radio-inline">
-                <input type="radio" id="ans2Radio" value="no" name="gender">No
-              </label>
-            </div>
-            </div>
-          </div>
-        
-      </div> <!-- /.form-group -->	  
-      <div class="form-group">
-        <label for="comment" class="col-sm-3 control-label">Suggestions*</label>
-        <div class="col-sm-9">
-          <input type="textarea" id="suggestions" class="form-control" name="suggestions" style="height:100px" autofocus required>
+        <label for="Name" class="col-sm-4 control-label">Hospital Name *</label>
+        <div class="col-sm-8">
+          <input type="text" id="hospital_name" placeholder="eg. Kohinoor Hospital" class="form-control" name="hospital_name" autofocus required>
         </div>
       </div>
       <div class="form-group">
-        <div class="col-sm-9 col-sm-offset-3">
-          <span class="help-block">*Required fields</span>
+        <label for="cleanliness_rating" class="col-sm-4 control-label">Rate cleanliness *</label>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="cleanliness_rating_1" value="1" name="cleanliness_rating" required>1(Poor)
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="cleanliness_rating_2" value="2" name="cleanliness_rating" required>2
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="cleanliness_rating_3" value="3" name="cleanliness_rating" required>3
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="cleanliness_rating_4" value="4" name="cleanliness_rating" required>4
+          </label>
+        </div>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="cleanliness_rating_5" value="5" name="cleanliness_rating" required>5(Excellent)
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="availability_rating" class="col-sm-4 control-label">Rate availability *</label>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="availability_rating_1" value="1" name="availability_rating" required>1(Poor)
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="availability_rating_2" value="2" name="availability_rating" required>2
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="availability_rating_3" value="3" name="availability_rating" required>3
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="availability_rating_4" value="4" name="availability_rating" required>4
+          </label>
+        </div>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="availability_rating_5" value="5" name="availability_rating" required>5(Excellent)
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="preparedness_rating" class="col-sm-4 control-label">Rate preparedness *</label>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="preparedness_rating_1" value="1" name="preparedness_rating" required>1(Poor)
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="preparedness_rating_2" value="2" name="preparedness_rating" required>2
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="preparedness_rating_3" value="3" name="preparedness_rating" required>3
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="preparedness_rating_4" value="4" name="preparedness_rating" required>4
+          </label>
+        </div>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="preparedness_rating_5" value="5" name="preparedness_rating" required>5(Excellent)
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="overall_rating" class="col-sm-4 control-label">Overall rating *</label>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="overall_rating_1" value="1" name="overall_rating" required>1(Poor)
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="overall_rating_2" value="2" name="overall_rating" required>2
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="overall_rating_3" value="3" name="overall_rating" required>3
+          </label>
+        </div>
+        <div class="col-sm-1">
+          <label class="radio-inline">
+            <input type="radio" id="overall_rating_4" value="4" name="overall_rating" required>4
+          </label>
+        </div>
+        <div class="col-sm-2">
+          <label class="radio-inline">
+            <input type="radio" id="overall_rating_5" value="5" name="overall_rating" required>5(Excellent)
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label for="recommend" class="col-sm-6 control-label">Will you recommend it to a friend or family member? *</label>
+          <div class="row">
+            <div class="col-sm-2 col-sm-offset-1">
+              <label class="radio-inline">
+                <input type="radio" id="recommend_yes" value="Yes" name="recommend" required>Yes
+              </label>
+            </div>
+            <div class="col-sm-3">
+              <label class="radio-inline">
+                <input type="radio" id="recommend_no" value="No" name="recommend" required>No
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comments" class="col-sm-3 control-label">Comments</label>
+        <div class="col-sm-9">
+          <input type="textarea" id="comments" class="form-control" name="comments" style="height:100px" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-8">
+          <span class="help-block">* Required fields</span>
         </div>
       </div>
       <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Submit</button>
-    </form> <!-- /form -->
-  </div> <!-- ./container -->
+    </form>
+  </div>
 </body>
 
 </html>

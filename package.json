@@ -7,6 +7,7 @@
     "test": "start"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.11.0",
     "express-session": "^1.15.6",
     "pg": "^7.9.0",
