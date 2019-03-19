@@ -44,6 +44,24 @@ app.get("/", function(req, res) {
   }
 });
 
+app.get('/login', function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.redirect('/');
+  } else {
+    res.sendFile(path.join(__dirname + "/public/pages/login.html"));
+  }
+})
+
+app.get('/signup', function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.redirect('/');
+  } else {
+    res.sendFile(path.join(__dirname + "/public/pages/signup.html"));
+  }
+});
+
 app.get("/logout", function(req, res) {
   req.session.destroy(function(err) {
     if (err) {
@@ -52,33 +70,6 @@ app.get("/logout", function(req, res) {
       res.redirect('/');
     }
   });
-});
-
-app.get("/nearesthospital", function(req, res) {
-  sess = req.session;
-  if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/nearesthospital.html"));
-  } else {
-    res.redirect('/');
-  }
-});
-
-app.get("/tips", function(req, res) {
-  sess = req.session;
-  if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/tips.html"));
-  } else {
-    res.redirect('/');
-  }
-});
-
-app.get("/nearestpharmacy", function(req, res) {
-  sess = req.session;
-  if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy.html"));
-  } else {
-    res.redirect('/');
-  }
 });
 
 app.get("/hospital", function(req, res) {
@@ -108,35 +99,59 @@ app.get("/user", function(req, res) {
   }
 });
 
-app.get("/viewprofile", function(req, res) {
+app.get("/nearesthospital", function(req, res) {
   sess = req.session;
   if (sess.email) {
-    res.redirect('/');
+    res.sendFile(path.join(__dirname + "/public/pages/nearesthospital.html"));
   } else {
-    res.sendFile(path.join(__dirname + "/public/pages/viewprofile.html"));
+    res.redirect('/');
   }
 });
 
-app.route('/signup')
-  .get((req, res) => {
-    sess = req.session;
-    if (sess.email) {
-      res.redirect('/');
-    } else {
-      res.sendFile(path.join(__dirname + "/public/pages/signup.html"));
+app.get("/tips", function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.sendFile(path.join(__dirname + "/public/pages/tips.html"));
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.get("/nearestpharmacy", function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy.html"));
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.get("/viewprofile", function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+    res.sendFile(path.join(__dirname + "/public/pages/viewprofile.html"));
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.post('/usersignup', function(req, res) {
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Connection error: " + err);
+      res.status(400).send(err);
     }
-  })
-  .post((req, res) => {
-    pool.connect(function(err, client, done) {
+    client.query('INSERT INTO user_details(name,email,password,contact_no,emergency_contact_no, blood_group,dob,gender,height,weight,allergies, address,pincode,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.emergency_contact_no, req.body.blood_group, req.body.dob, req.body.gender, req.body.height, req.body.weight, req.body.allergies, req.body.address, req.body.pincode], function(err, result) {
+      done();
       if (err) {
-        console.log("Connection error: " + err);
+        console.log(err);
         res.status(400).send(err);
       }
-      client.query('INSERT INTO user_details(name,email,password,contact_no,emergency_contact_no, blood_group,dob,gender,height,weight,allergies, address,pincode,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.emergency_contact_no, req.body.blood_group, req.body.dob, req.body.gender, req.body.height, req.body.weight, req.body.allergies, req.body.address, req.body.pincode]);
-      done();
+      // res.status(200).send(result);
       res.redirect('/login');
     });
   });
+});
 
 app.route('/feedback')
   .get((req, res) => {
@@ -153,9 +168,14 @@ app.route('/feedback')
         console.log("Connection error: " + err);
         res.status(400).send(err);
       }
-      client.query('INSERT INTO service_feedback(user_id, initiative, ratings, liking, suggestions, recommend, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, NOW())', [sess.email, req.body.initiative, req.body.ratings, req.body.liking, req.body.suggestions, req.body.recommend]);
-      done();
-      res.redirect('/');
+      client.query('INSERT INTO service_feedback(user_id, initiative, ratings, liking, suggestions, recommend, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, NOW())', [sess.email, req.body.initiative, req.body.ratings, req.body.liking, req.body.suggestions, req.body.recommend], function(err, result) {
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+        // res.status(200).send(result);
+        res.redirect('/');
+      });
     });
   });
 
@@ -174,9 +194,14 @@ app.route('/hospitalfeedback')
         console.log("Connection error: " + err);
         res.status(400).send(err);
       }
-      client.query('INSERT INTO hospital_feedback(user_id, hospital_name, cleanliness_rating, availability_rating, preparedness_rating, overall_rating, recommend, comments, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, $7, $8, NOW())', [sess.email, req.body.hospital_name, req.body.cleanliness_rating, req.body.availability_rating, req.body.preparedness_rating, req.body.overall_rating, req.body.recommend, req.body.comments]);
-      done();
-      res.redirect('/');
+      client.query('INSERT INTO hospital_feedback(user_id, hospital_name, cleanliness_rating, availability_rating, preparedness_rating, overall_rating, recommend, comments, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, $7, $8, NOW())', [sess.email, req.body.hospital_name, req.body.cleanliness_rating, req.body.availability_rating, req.body.preparedness_rating, req.body.overall_rating, req.body.recommend, req.body.comments], function(err, result) {
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+        // res.status(200).send(result);
+        res.redirect('/');
+      });
     });
   });
 
@@ -199,45 +224,39 @@ app.post('/gohospital', function(req, res) {
       console.log("Connection error: " + err);
       res.status(400).send(err);
     }
-    client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.email, req.body.hospital_name]);
-    done();
-    res.redirect('/');
+    client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.email, req.body.hospital_name], function(err, result) {
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      }
+      // res.status(200).send(result);
+      res.redirect('/');
+    });
   });
 });
 
-app.route('/login')
-  .get((req, res) => {
-    sess = req.session;
-    if (sess.email) {
-      res.redirect('/');
-    } else {
-      res.sendFile(path.join(__dirname + "/public/pages/login.html"));
-    }
-  })
-  .post((req, res) => {
-    pool.connect(function(err, client, done) {
-      var email = req.body.email;
-      var password = req.body.password;
-      client.query('SELECT email,password FROM user_details WHERE email = $1 AND password =$2', [email, password], function(error, results) {
-        if (error) {
-          res.send({
-            "code": 400,
-            "failed": "error ocurred"
-          })
-        } else if (results.rowCount == 1) {
-          sess = req.session;
-          sess.email = email;
-          done();
-          res.redirect('/');
-        } else {
-          res.send({
-            "code": 204,
-            "success": "Email and password does not match"
-          });
-        }
-      });
+app.post('/userlogin', function(req, res) {
+  pool.connect(function(err, client, done) {
+    client.query('SELECT email,password FROM user_details WHERE email = $1 AND password =$2', [req.body.email, req.body.password], function(error, results) {
+      if (error) {
+        res.send({
+          "code": 400,
+          "failed": "error ocurred"
+        })
+      } else if (results.rowCount == 1) {
+        sess = req.session;
+        sess.email = req.body.email;
+        done();
+        res.redirect('/');
+      } else {
+        res.send({
+          "code": 204,
+          "success": "Email and password does not match"
+        });
+      }
     });
   });
+});
 
 let port = process.env.PORT;
 if (port == null || port == "") {

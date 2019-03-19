@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <title>Sahaay</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="/images/logo_c.png" />
   <!-- Added JQuery -->
@@ -72,7 +73,7 @@
         margin: 24px 0 12px 0;
       }
 
-      img.avatar {
+      img .avatar {
         width: 10%;
         border-radius: 20%;
       }
@@ -84,118 +85,290 @@
   <div id="header"></div>
   <br>
   <div class="container" id="formModal">
-    <form id="signup" class="form-horizontal" role="form" method="post" action="/signup" onSubmit="alert('Registration Successfull');">
+    <div id="signup" class="form-horizontal" role="form">
       <div class="imgcontainer">
-        <img src="/images/img_avatar2.png" alt="Avatar" class="avatar">
+        <img src="/images/img_avatar.png" alt="Avatar" class="avatar">
       </div>
       <h2>Registration</h2>
-      <div class="form-group">
-        <label for="Name" class="col-sm-3 control-label">Name *</label>
-        <div class="col-sm-9">
-          <input type="text" id="name" placeholder="eg. John Doe" class="form-control" name="name" autofocus required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="email" class="col-sm-3 control-label">Email * </label>
-        <div class="col-sm-9">
-          <input type="email" id="email" placeholder="eg. xyz@gmail.com" class="form-control" name="email" autofocus required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password" class="col-sm-3 control-label">Password *</label>
-        <div class="col-sm-9">
-          <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="******" class="form-control" name="password" autofocus required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="phoneNumber" class="col-sm-3 control-label">Contact number *</label>
-        <div class="col-sm-9">
-          <input type="tel" id="contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact_no" autofocus required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="phoneNumber" class="col-sm-3 control-label">Emergency Contact *</label>
-        <div class="col-sm-9">
-          <input type="tel" id="emergency_contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="emergency_contact_no" autofocus required>
-          <span class="help-block">Phone numbers won't be disclosed anywhere </span>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="bloodgrp" class="col-sm-3 control-label">Blood Group *</label>
-        <div class="col-sm-9">
-          <select class="form-control" id="blood_group" name="blood_group" required>
-            <option value="bg" selected disabled>Select</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="dob" class="col-sm-3 control-label">Date Of Birth *</label>
-        <div class="col-sm-9">
-          <input type="date" id="dob" class="form-control" name="dob" autofocus required style="line-height: inherit;">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-sm-3">Gender *</label>
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-4">
-              <label class="radio-inline">
-                <input type="radio" id="gender" value="Female" name="gender" required>Female
-              </label>
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="registration" class="active"><a href="#user" aria-controls="user" role="tab" data-toggle="tab">User</a></li>
+            <li role="registration"><a href="#hospital" aria-controls="hospital" role="tab" data-toggle="tab">Hospital</a></li>
+            <li role="registration"><a href="#ambulance" aria-controls="ambulance" role="tab" data-toggle="tab">Ambulance</a></li>
+          </ul>
+          <br>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane  active" id="user">
+              <form method="post" action="/usersignup" onSubmit="alert('Registration Successfull');">
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Name *</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="name" placeholder="eg. John Doe" class="form-control" name="name" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email" class="col-sm-3 control-label">Email * </label>
+                  <div class="col-sm-9">
+                    <input type="email" id="email" placeholder="eg. xyz@gmail.com" class="form-control" name="email" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-sm-3 control-label">Password *</label>
+                  <div class="col-sm-9">
+                    <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="******" class="form-control" name="password" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="phoneNumber" class="col-sm-3 control-label">Contact number *</label>
+                  <div class="col-sm-9">
+                    <input type="tel" id="contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact_no" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="phoneNumber" class="col-sm-3 control-label">Emergency Contact *</label>
+                  <div class="col-sm-9">
+                    <input type="tel" id="emergency_contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="emergency_contact_no" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="blood_group" class="col-sm-3 control-label">Blood Group *</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" id="blood_group" name="blood_group" required>
+                      <option value="bg" selected disabled>Select</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="dob" class="col-sm-3 control-label">Date Of Birth *</label>
+                  <div class="col-sm-9">
+                    <input type="date" id="dob" class="form-control" name="dob" autofocus required style="line-height: inherit;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-3">Gender *</label>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <label class="radio-inline">
+                          <input type="radio" id="gender" value="Female" name="gender" required>Female
+                        </label>
+                      </div>
+                      <div class="col-sm-4">
+                        <label class="radio-inline">
+                          <input type="radio" id="gender" value="Male" name="gender" required>Male
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="height" class="col-sm-3 control-label">Height</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="height" class="form-control" placeholder="(in centimeters)" name="height" autofocus>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="weight" class="col-sm-3 control-label">Weight</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="weight" class="form-control" placeholder="(in kilograms)" name="weight" autofocus>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="allergies" class="col-sm-3 control-label">Allergies</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="allergies" placeholder="eg. pollen grains, dust" class="form-control" name="allergies" autofocus>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address" class="col-sm-3 control-label">Address *</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="address" placeholder="eg. 24,Park street" class="form-control" name="address" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address" class="col-sm-3 control-label">Pincode *</label>
+                  <div class="col-sm-9">
+                    <input type="number" id="pincode" pattern="[0-9]{6}" title="Six Digit Pincode" placeholder="XXXXXX" class="form-control" name="pincode" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4 col-sm-offset-8">
+                    <span class="help-block">* Required fields</span>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Register</button>
+              </form>
             </div>
-            <div class="col-sm-4">
-              <label class="radio-inline">
-                <input type="radio" id="gender" value="Male" name="gender" required>Male
-              </label>
+            <div role="tabpanel" class="tab-pane" id="hospital">
+              <form method="post" action="/hospitalsignup" onSubmit="alert('Registration Successfull');">
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label">Name *</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="name" placeholder="eg. Kohinoor Hospital" class="form-control" name="name" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email" class="col-sm-3 control-label">Email * </label>
+                  <div class="col-sm-9">
+                    <input type="email" id="email" placeholder="eg. xyz@gmail.com" class="form-control" name="email" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-sm-3 control-label">Password*</label>
+                  <div class="col-sm-9">
+                    <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="******" class="form-control" name="password" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="category" class="col-sm-3 control-label">Category *</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" id="category" name="category" required>
+                      <option value="select" selected disabled>Select</option>
+                      <option value="Public">Public</option>
+                      <option value="Private">Private</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address" class="col-sm-3 control-label">Address *</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="address" placeholder="eg. 24,Park street" class="form-control" name="address" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="latitude" class="col-sm-3 control-label">Latitude*</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="latitude" placeholder="eg. 19.0987 " class="form-control" name="latitude" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="longitude" class="col-sm-3 control-label">Longitude*</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="longitude" placeholder="eg. 79.0987 " class="form-control" name="longitude" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="services" class="col-sm-3 control-label">Services *</label>
+                  <div class="col-sm-9">
+                    <input type="checkbox" name="services" value="Burns">Burn care unit<br>
+                    <input type="checkbox" name="services" value="Cardiology"> Cardiology<br>
+                    <input type="checkbox" name="services" value="Neurology">Neurology<br>
+                    <input type="checkbox" name="services" value="Maternity"> Maternity ward<br>
+                    <input type="checkbox" name="services" value="Orthopedics">Orthopaedics<br>
+                    <input type="checkbox" name="services" value="Opthalmology">Ophthalmology<br>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="timings" class="col-sm-3 control-label">Timings*</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="timings" placeholder="(in 24 hrs format) " class="form-control" name="timings" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="contact_no" class="col-sm-3 control-label">Contact number *</label>
+                  <div class="col-sm-9">
+                    <input type="tel" id="contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact_no" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="website" class="col-sm-3 control-label">Website</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="website" placeholder="eg. www.kohinoorhospital.com " class="form-control" name="website" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="ratings" class="col-sm-3 control-label"> Google Ratings</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="ratings" placeholder="(out of 5) " class="form-control" name="ratings" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4 col-sm-offset-8">
+                    <span class="help-block">* Required fields</span>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Register</button>
+              </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="ambulance">
+              <form method="post" action="/ambulancesignup" onSubmit="alert('Registration Successfull');">
+                <div class="form-group">
+                  <label for="name" class="col-sm-4 control-label">Operator Name*</label>
+                  <div class="col-sm-8">
+                    <input type="text" id="name" placeholder="eg. Samrat " class="form-control" name="name" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="contact_no" class="col-sm-4 control-label">Operator Contact details*</label>
+                  <div class="col-sm-8">
+                    <input type="tel" id="contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact_no" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="vehicle_no" class="col-sm-4 control-label">Ambulance Vehicle number *</label>
+                  <div class="col-sm-8">
+                    <input type="text" id="vehicle_no" pattern="^\d{10}$" title="Must contain 10 characters" placeholder="eg.MH02EC1467" class="form-control" name="vehicle_no" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-sm-4 control-label">Password*</label>
+                  <div class="col-sm-8">
+                    <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="******" class="form-control" name="password" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="type" class="col-sm-5 control-label">Type of ambulance*</label>
+                  <div class="col-sm-7">
+                    <select name="type">
+                      <option value="select" selected disabled>Select</option>
+                      <option value="Normal">Normal</option>
+                      <option value="Specialized">Specialized</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="first_aid_kit" class="col-sm-5 control-label">First-aid kit available</label>
+                  <div class="col-sm-7">
+                    <select name="first_aid_kit">
+                      <option value="select" selected disabled>Select</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="oxygen_mask" class="col-sm-5 control-label">Oxygen mask available</label>
+                  <div class="col-sm-7">
+                    <select name="oxygen_mask">
+                      <option value="select" selected disabled>Select</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4 col-sm-offset-8">
+                    <span class="help-block">* Required fields</span>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Register</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
-      <div class="form-group">
-        <label for="height" class="col-sm-3 control-label">Height</label>
-        <div class="col-sm-9">
-          <input type="number" id="height" class="form-control" placeholder="(in centimeters)" name="height" autofocus>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="weight" class="col-sm-3 control-label">Weight</label>
-        <div class="col-sm-9">
-          <input type="number" id="weight" class="form-control" placeholder="(in kilograms)" name="weight" autofocus>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="allergies" class="col-sm-3 control-label">Allergies</label>
-        <div class="col-sm-9">
-          <input type="text" id="allergies" placeholder="eg. pollen grains, dust" class="form-control" name="allergies" autofocus>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="address" class="col-sm-3 control-label">Address *</label>
-        <div class="col-sm-9">
-          <input type="text" id="address" placeholder="eg. 24,Park street" class="form-control" name="address" autofocus required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="address" class="col-sm-3 control-label">Pincode *</label>
-        <div class="col-sm-9">
-          <input type="text" id="pincode" pattern="^\d{6}$" title="Must contain 6 digits" placeholder="XXXXXX" class="form-control" name="pincode" autofocus required>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-4 col-sm-offset-8">
-          <span class="help-block">* Required fields</span>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Register</button>
-    </form>
+    </div>
   </div>
 </body>
 
