@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8' />
+  <title>Sahaay</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel="shortcut icon" href="/images/logo_c.png" />
+  <!-- Add Mapbox GL JS-->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+  <!-- Turf.js plugin -->
+  <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+  <!-- Add jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Add bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  $(function() {
+    $("#header").load("/ambulanceloggedinheader");
+  });
+  </script>
+  <style>
+  /* For desktop */
+  @media only screen and (min-width:360px) {}
+
+  /* For mobile devices */
+  @media only screen and (max-width:360px) {}
+
+  body {
+    color: #404040;
+    margin: 0;
+    padding: 0;
+  }
+
+  .map {
+    position: relative;
+    height: 600px;
+  }
+
+  #instructions {
+    height: 600px;
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 1em;
+    line-height: 2em;
+    overflow: auto;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="header"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10">
+        <div id='map' class='map'> </div>
+      </div>
+      <div id='instructions' class="col-lg-2"></div>
+    </div>
+  </div>
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoibWVkaWFzc2lzdGFuY2UiLCJhIjoiY2p0NnNjOHpjMGhiNzN5bnZlcWU1cXgzdCJ9.xyaS9DcRxEvmJ3jodgmRjA';
+
+  // This adds the map to your page
+  var map = new mapboxgl.Map({
+    container: 'map', // container id specified in the HTML
+    style: 'mapbox://styles/mapbox/traffic-day-v2', // style URL
+    center: [72.8834355, 19.0620527], // initial position in [long, lat] format
+    zoom: 11 // initial zoom
+  });
+
+  $.getJSON("/data/hospital.geojson", function(data) {
+    hospitals = data;
+  });
+
+  // Add geolocate control to the map
+  var geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true //Default: false
+      // timeout: 10000 //Default: Infinity
+    },
+    fitBoundsOptions: {
+      maxZoom: 12.5
+    },
+    trackUserLocation: true,
+    showUserLocation: true
+  });
+  map.addControl(geolocate, 'top-left');
+
+  //Add full screen control to the map
+  map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
+
+  // Add zoom and rotation controls to the map
+  map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+  // This adds the data to the map
+  map.on('load', function(e) {
+    geolocate.trigger();
+    geolocate.on('geolocate', function() {
+      var mylocation = geolocate._lastKnownPosition;
+      var lat = mylocation.coords.latitude;
+      var lng = mylocation.coords.longitude;
+      var instructions = document.getElementById('instructions');
+      instructions.innerHTML = '<form action="/trackmeasambulance" method="post"><input type="text" name="lat" hidden value="' + lat + '"/><input type="text" name="lng" hidden value="' + lng + '"/><input type="submit" id="trackambulance" hidden/></form>';
+      $("#trackambulance").click();
+    });
+  });
+  </script>
+</body>
+
+</html>

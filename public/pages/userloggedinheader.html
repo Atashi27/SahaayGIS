@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    $(document).ready(function() {
+    var url = window.location;
+    console.log(url);
+    $('.navbar .nav').find('.active').removeClass('active');
+    $('.navbar .nav li a').each(function() {
+      if (this.href == url) {
+        $(this).parent().addClass('active');
+      }
+    });
+  });
+  </script>
+  <style>
+    /* For desktop */
+  @media only screen and (min-width:360px) {
+    #newheader {
+      width: 70%;
+      color: #e60000;
+      font-size: 200%;
+    }
+    #emergencybutton{
+      margin: 10px;
+      padding: 5px;
+    }
+    #newheader #logo {
+      height: 150px;
+      margin: 0;
+      border: 0;
+    }
+    .hidethis{
+      display: none;
+    }
+  }
+
+  /* For mobile devices */
+  @media only screen and (max-width:360px) {
+    #page-header {
+      display: none;
+    }
+    .hidethis{
+      padding:0;
+    }
+    #hiddenlogo{
+      height:50px;
+    }
+    .navbar-nav > li > a{
+      font-size:12px;
+      line-height:15px;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div id="page-header">
+    <table id="newheader" align="center">
+      <tr>
+        <th>
+          <img src="/images/logo_c.png" id="logo" align="right" alt="Sahaay LOGO" />
+        </th>
+        <th>
+          <b>SAHAAY- A Medical Assistance System</b>
+        </th>
+      </tr>
+    </table>
+  </div>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand hidethis"><img src="/images/logo_c.png" id="hiddenlogo" /></span>
+    </div>
+    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/nearesthospital">Nearest Hospital</a></li>
+        <li><a href="/nearestpharmacy">Nearest Pharmacy</a></li>
+        <li><a href="/tips">Tips</a></li>
+        <li><a href="/servicefeedback">Service Feedback</a></li>
+        <li><a href="/hospitalfeedback">Hospital Feedback</a></li>
+        <li><a href="/viewprofile">View Profile</a></li>
+        <li><a href="/history">History</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form role="form" method="post" action="/sub">
+            <button type="submit" class="btn btn-block" id="emergencybutton" data-toogle="modal" data-target="#formModal">Emergency</button>
+          </form>
+        </li>
+        <li>
+          <a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</body>
+
+</html>

@@ -33,12 +33,22 @@ var sess;
 app.use("/images", express.static(__dirname + "/public/images"));
 app.use("/data", express.static(__dirname + "/public/data"));
 app.use("/header", express.static(__dirname + "/public/pages/header.html"));
-app.use("/loggedinheader", express.static(__dirname + "/public/pages/loggedinheader.html"));
+app.use("/userloggedinheader", express.static(__dirname + "/public/pages/userloggedinheader.html"));
+app.use("/hospitalloggedinheader", express.static(__dirname + "/public/pages/hospitalloggedinheader.html"));
+app.use("/ambulanceloggedinheader", express.static(__dirname + "/public/pages/ambulanceloggedinheader.html"));
+
 
 app.get("/", function(req, res) {
   sess = req.session;
-  if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/dashboard.html"));
+  if (sess.key) {
+    if (sess.entity == "user") {
+      res.sendFile(path.join(__dirname + "/public/pages/userdashboard.html"));
+    } else if (sess.entity == "hospital") {
+      res.sendFile(path.join(__dirname + "/public/pages/hospitaldashboard.html"));
+    } else if (sess.entity == "ambulance") {
+      res.sendFile(path.join(__dirname + "/public/pages/ambulancedashboard.html"));
+    }
+
   } else {
     res.sendFile(path.join(__dirname + "/index.html"));
   }
@@ -46,7 +56,7 @@ app.get("/", function(req, res) {
 
 app.get('/login', function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.key) {
     res.redirect('/');
   } else {
     res.sendFile(path.join(__dirname + "/public/pages/login.html"));
@@ -55,7 +65,7 @@ app.get('/login', function(req, res) {
 
 app.get('/signup', function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.key) {
     res.redirect('/');
   } else {
     res.sendFile(path.join(__dirname + "/public/pages/signup.html"));
@@ -74,7 +84,7 @@ app.get("/logout", function(req, res) {
 
 app.get("/hospital", function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.key) {
     res.redirect('/');
   } else {
     res.sendFile(path.join(__dirname + "/public/pages/hospital.html"));
@@ -83,7 +93,7 @@ app.get("/hospital", function(req, res) {
 
 app.get("/ambulance", function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.key) {
     res.redirect('/');
   } else {
     res.sendFile(path.join(__dirname + "/public/pages/ambulance.html"));
@@ -92,7 +102,7 @@ app.get("/ambulance", function(req, res) {
 
 app.get("/user", function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.key) {
     res.redirect('/');
   } else {
     res.sendFile(path.join(__dirname + "/public/pages/user.html"));
@@ -101,7 +111,7 @@ app.get("/user", function(req, res) {
 
 app.get("/nearesthospital", function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.entity == "user") {
     res.sendFile(path.join(__dirname + "/public/pages/nearesthospital.html"));
   } else {
     res.redirect('/');
@@ -110,7 +120,7 @@ app.get("/nearesthospital", function(req, res) {
 
 app.get("/tips", function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.entity == "user") {
     res.sendFile(path.join(__dirname + "/public/pages/tips.html"));
   } else {
     res.redirect('/');
@@ -119,8 +129,26 @@ app.get("/tips", function(req, res) {
 
 app.get("/nearestpharmacy", function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.entity == "user") {
     res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy.html"));
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.get("/history", function(req, res) {
+  sess = req.session;
+  if (sess.entity == "user") {
+    res.sendFile(path.join(__dirname + "/public/pages/history.html"));
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.get("/track", function(req, res) {
+  sess = req.session;
+  if (sess.entity == "ambulance") {
+    res.sendFile(path.join(__dirname + "/public/pages/trackambulance.html"));
   } else {
     res.redirect('/');
   }
@@ -128,8 +156,12 @@ app.get("/nearestpharmacy", function(req, res) {
 
 app.get("/viewprofile", function(req, res) {
   sess = req.session;
-  if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/viewprofile.html"));
+  if (sess.entity == "user") {
+    res.sendFile(path.join(__dirname + "/public/pages/viewuserprofile.html"));
+  } else if (sess.entity == "hospital") {
+    res.sendFile(path.join(__dirname + "/public/pages/viewhospitalprofile.html"));
+  } else if (sess.entity == "ambulance") {
+    res.sendFile(path.join(__dirname + "/public/pages/viewambulanceprofile.html"));
   } else {
     res.redirect('/');
   }
@@ -153,11 +185,47 @@ app.post('/usersignup', function(req, res) {
   });
 });
 
-app.route('/feedback')
+app.post('/hospitalsignup', function(req, res) {
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Connection error: " + err);
+      res.status(400).send(err);
+    }
+    client.query('INSERT INTO hospital_details(name,email,password,contact_no,category, address,latitude,longitude,services,timings,website, ratings,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.category, req.body.address, req.body.latitude, req.body.longitude, req.body.services, req.body.timings, req.body.website, req.body.ratings], function(err, result) {
+      done();
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      }
+      // res.status(200).send(result);
+      res.redirect('/login');
+    });
+  });
+});
+
+app.post('/ambulancesignup', function(req, res) {
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Connection error: " + err);
+      res.status(400).send(err);
+    }
+    client.query('INSERT INTO ambulance_details(operator_name,operator_contact_no,vehicle_no, password,type,first_aid_kit,oxygen_mask,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, NOW())', [req.body.operator_name, req.body.operator_contact_no, req.body.vehicle_no, req.body.password, req.body.type, req.body.first_aid_kit, req.body.oxygen_mask], function(err, result) {
+      done();
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      }
+      // res.status(200).send(result);
+      res.redirect('/login');
+    });
+  });
+});
+
+app.route('/servicefeedback')
   .get((req, res) => {
     sess = req.session;
-    if (sess.email) {
-      res.sendFile(path.join(__dirname + "/public/pages/feedback.html"));
+    if (sess.key) {
+      res.sendFile(path.join(__dirname + "/public/pages/servicefeedback.html"));
     } else {
       res.redirect('/');
     }
@@ -168,7 +236,8 @@ app.route('/feedback')
         console.log("Connection error: " + err);
         res.status(400).send(err);
       }
-      client.query('INSERT INTO service_feedback(user_id, initiative, ratings, liking, suggestions, recommend, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, NOW())', [sess.email, req.body.initiative, req.body.ratings, req.body.liking, req.body.suggestions, req.body.recommend], function(err, result) {
+      client.query('INSERT INTO service_feedback(user_id, initiative, ratings, liking, suggestions, recommend, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, NOW())', [sess.key, req.body.initiative, req.body.ratings, req.body.liking, req.body.suggestions, req.body.recommend], function(err, result) {
+        done();
         if (err) {
           console.log(err);
           res.status(400).send(err);
@@ -182,7 +251,7 @@ app.route('/feedback')
 app.route('/hospitalfeedback')
   .get((req, res) => {
     sess = req.session;
-    if (sess.email) {
+    if (sess.key) {
       res.sendFile(path.join(__dirname + "/public/pages/hospitalfeedback.html"));
     } else {
       res.redirect('/');
@@ -194,7 +263,8 @@ app.route('/hospitalfeedback')
         console.log("Connection error: " + err);
         res.status(400).send(err);
       }
-      client.query('INSERT INTO hospital_feedback(user_id, hospital_name, cleanliness_rating, availability_rating, preparedness_rating, overall_rating, recommend, comments, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, $7, $8, NOW())', [sess.email, req.body.hospital_name, req.body.cleanliness_rating, req.body.availability_rating, req.body.preparedness_rating, req.body.overall_rating, req.body.recommend, req.body.comments], function(err, result) {
+      client.query('INSERT INTO hospital_feedback(user_id, hospital_name, cleanliness_rating, availability_rating, preparedness_rating, overall_rating, recommend, comments, submitted_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, $4, $5, $6, $7, $8, NOW())', [sess.key, req.body.hospital_name, req.body.cleanliness_rating, req.body.availability_rating, req.body.preparedness_rating, req.body.overall_rating, req.body.recommend, req.body.comments], function(err, result) {
+        done();
         if (err) {
           console.log(err);
           res.status(400).send(err);
@@ -211,7 +281,7 @@ app.post('/sub', function(req, res) {
   client = require('twilio')(accountSid, authToken);
   client.messages
     .create({
-      body: 'Emergency!!' + sess.email,
+      body: 'Emergency!!' + sess.key,
       from: '+18647131453',
       to: '+918668626097'
     })
@@ -224,7 +294,8 @@ app.post('/gohospital', function(req, res) {
       console.log("Connection error: " + err);
       res.status(400).send(err);
     }
-    client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.email, req.body.hospital_name], function(err, result) {
+    client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.key, req.body.hospital_name], function(err, result) {
+      done();
       if (err) {
         console.log(err);
         res.status(400).send(err);
@@ -235,17 +306,46 @@ app.post('/gohospital', function(req, res) {
   });
 });
 
+app.post('/trackmeasambulance', function(req, res) {
+  var latitude = req.body.lat;
+  var longitude = req.body.lng;
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Connection error: " + err);
+      res.status(400).send(err);
+    }
+    client.query('UPDATE user_ambulance_tracking set ambulancelklat=$1,ambulancelklong=$2, status=$3, last_updated_on=NOW() where ambulance_id=(SELECT ambulance_id from ambulance_details where vehicle_no=$4)', [latitude, longitude, "Ready", sess.key], function(err, result) {
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      } else if (result.rowCount == 0) {
+        client.query('INSERT INTO user_ambulance_tracking(ambulance_id, ambulancelklat,ambulancelklong, status, last_updated_on) VALUES((SELECT ambulance_id from ambulance_details where vehicle_no=$1), $2, $3, $4, NOW())', [sess.key, latitude, longitude, "Ready"], function(error, result) {
+          done();
+          if (error) {
+            console.log(error);
+            res.status(400).send(error);
+          }
+        });
+      } else {
+        done();
+        res.status(200);
+      }
+    });
+  });
+});
+
 app.post('/userlogin', function(req, res) {
   pool.connect(function(err, client, done) {
     client.query('SELECT email,password FROM user_details WHERE email = $1 AND password =$2', [req.body.email, req.body.password], function(error, results) {
       if (error) {
         res.send({
           "code": 400,
-          "failed": "error ocurred"
+          "failed": "Error ocurred"
         })
       } else if (results.rowCount == 1) {
         sess = req.session;
-        sess.email = req.body.email;
+        sess.key = req.body.email;
+        sess.entity = "user";
         done();
         res.redirect('/');
       } else {
@@ -257,6 +357,56 @@ app.post('/userlogin', function(req, res) {
     });
   });
 });
+
+app.post('/hospitallogin', function(req, res) {
+  pool.connect(function(err, client, done) {
+    client.query('SELECT email,password FROM hospital_details WHERE email = $1 AND password =$2', [req.body.email, req.body.password], function(error, results) {
+      if (error) {
+        res.send({
+          "code": 400,
+          "failed": "Error ocurred"
+        })
+      } else if (results.rowCount == 1) {
+        sess = req.session;
+        sess.key = req.body.email;
+        sess.entity = "hospital";
+        done();
+        res.redirect('/');
+      } else {
+        res.send({
+          "code": 204,
+          "success": "Email and password does not match"
+        });
+      }
+    });
+  });
+});
+
+
+app.post('/ambulancelogin', function(req, res) {
+  pool.connect(function(err, client, done) {
+    client.query('SELECT vehicle_no,password FROM ambulance_details WHERE vehicle_no = $1 AND password =$2', [req.body.vehicle_no, req.body.password], function(error, results) {
+      if (error) {
+        res.send({
+          "code": 400,
+          "failed": "Error ocurred"
+        })
+      } else if (results.rowCount == 1) {
+        sess = req.session;
+        sess.key = req.body.vehicle_no;
+        sess.entity = "ambulance";
+        done();
+        res.redirect('/');
+      } else {
+        res.send({
+          "code": 204,
+          "success": "Ambulance vehicle no and password does not match"
+        });
+      }
+    });
+  });
+});
+
 
 let port = process.env.PORT;
 if (port == null || port == "") {

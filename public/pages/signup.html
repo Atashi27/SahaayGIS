@@ -225,9 +225,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="password" class="col-sm-3 control-label">Password*</label>
+                  <label for="password" class="col-sm-3 control-label">Password *</label>
                   <div class="col-sm-9">
                     <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="******" class="form-control" name="password" autofocus required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="contact_no" class="col-sm-3 control-label">Contact number *</label>
+                  <div class="col-sm-9">
+                    <input type="tel" id="contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact_no" autofocus required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -247,13 +253,13 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="latitude" class="col-sm-3 control-label">Latitude*</label>
+                  <label for="latitude" class="col-sm-3 control-label">Latitude *</label>
                   <div class="col-sm-9">
                     <input type="text" id="latitude" placeholder="eg. 19.0987 " class="form-control" name="latitude" autofocus required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="longitude" class="col-sm-3 control-label">Longitude*</label>
+                  <label for="longitude" class="col-sm-3 control-label">Longitude *</label>
                   <div class="col-sm-9">
                     <input type="text" id="longitude" placeholder="eg. 79.0987 " class="form-control" name="longitude" autofocus required>
                   </div>
@@ -261,34 +267,28 @@
                 <div class="form-group">
                   <label for="services" class="col-sm-3 control-label">Services *</label>
                   <div class="col-sm-9">
-                    <input type="checkbox" name="services" value="Burns">Burn care unit<br>
+                    <input type="checkbox" name="services" value="Burn care unit">Burn care unit<br>
                     <input type="checkbox" name="services" value="Cardiology"> Cardiology<br>
                     <input type="checkbox" name="services" value="Neurology">Neurology<br>
-                    <input type="checkbox" name="services" value="Maternity"> Maternity ward<br>
-                    <input type="checkbox" name="services" value="Orthopedics">Orthopaedics<br>
-                    <input type="checkbox" name="services" value="Opthalmology">Ophthalmology<br>
+                    <input type="checkbox" name="services" value="Maternity ward"> Maternity ward<br>
+                    <input type="checkbox" name="services" value="Orthopaedics">Orthopaedics<br>
+                    <input type="checkbox" name="services" value="Ophthalmology">Ophthalmology<br>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="timings" class="col-sm-3 control-label">Timings*</label>
+                  <label for="timings" class="col-sm-3 control-label">Timings *</label>
                   <div class="col-sm-9">
                     <input type="text" id="timings" placeholder="(in 24 hrs format) " class="form-control" name="timings" autofocus required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="contact_no" class="col-sm-3 control-label">Contact number *</label>
-                  <div class="col-sm-9">
-                    <input type="tel" id="contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact_no" autofocus required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="website" class="col-sm-3 control-label">Website</label>
+                  <label for="website" class="col-sm-3 control-label">Website *</label>
                   <div class="col-sm-9">
                     <input type="text" id="website" placeholder="eg. www.kohinoorhospital.com " class="form-control" name="website" autofocus required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="ratings" class="col-sm-3 control-label"> Google Ratings</label>
+                  <label for="ratings" class="col-sm-3 control-label"> Google Ratings *</label>
                   <div class="col-sm-9">
                     <input type="text" id="ratings" placeholder="(out of 5) " class="form-control" name="ratings" autofocus required>
                   </div>
@@ -304,31 +304,31 @@
             <div role="tabpanel" class="tab-pane" id="ambulance">
               <form method="post" action="/ambulancesignup" onSubmit="alert('Registration Successfull');">
                 <div class="form-group">
-                  <label for="name" class="col-sm-4 control-label">Operator Name*</label>
+                  <label for="operator_name" class="col-sm-4 control-label">Operator Name *</label>
                   <div class="col-sm-8">
-                    <input type="text" id="name" placeholder="eg. Samrat " class="form-control" name="name" autofocus required>
+                    <input type="text" id="operator_name" placeholder="eg. Samrat " class="form-control" name="operator_name" autofocus required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="contact_no" class="col-sm-4 control-label">Operator Contact details*</label>
+                  <label for="operator_contact_no" class="col-sm-4 control-label">Operator Contact details *</label>
                   <div class="col-sm-8">
-                    <input type="tel" id="contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="contact_no" autofocus required>
+                    <input type="tel" id="operator_contact_no" pattern="^\d{10}$" title="Must contain 10 digits" placeholder="XXXXXXXXXX" class="form-control" name="operator_contact_no" autofocus required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="vehicle_no" class="col-sm-4 control-label">Ambulance Vehicle number *</label>
                   <div class="col-sm-8">
-                    <input type="text" id="vehicle_no" pattern="^\d{10}$" title="Must contain 10 characters" placeholder="eg.MH02EC1467" class="form-control" name="vehicle_no" autofocus required>
+                    <input type="text" id="vehicle_no" pattern="^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}$" title="Must be in the specified format" placeholder="eg.MH02EC1467" class="form-control" name="vehicle_no" autofocus required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="password" class="col-sm-4 control-label">Password*</label>
+                  <label for="password" class="col-sm-4 control-label">Password *</label>
                   <div class="col-sm-8">
                     <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="******" class="form-control" name="password" autofocus required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="type" class="col-sm-5 control-label">Type of ambulance*</label>
+                  <label for="type" class="col-sm-5 control-label">Type of ambulance *</label>
                   <div class="col-sm-7">
                     <select name="type">
                       <option value="select" selected disabled>Select</option>
@@ -338,7 +338,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="first_aid_kit" class="col-sm-5 control-label">First-aid kit available</label>
+                  <label for="first_aid_kit" class="col-sm-5 control-label">First-aid kit available *</label>
                   <div class="col-sm-7">
                     <select name="first_aid_kit">
                       <option value="select" selected disabled>Select</option>
@@ -348,7 +348,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="oxygen_mask" class="col-sm-5 control-label">Oxygen mask available</label>
+                  <label for="oxygen_mask" class="col-sm-5 control-label">Oxygen mask available *</label>
                   <div class="col-sm-7">
                     <select name="oxygen_mask">
                       <option value="select" selected disabled>Select</option>

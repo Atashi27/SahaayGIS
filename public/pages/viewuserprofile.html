@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sahaay</title>
+  <meta charset="utf-8">
+  <!-- Added JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Added Bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script>
+    $(function() {
+    $("#header").load("/userloggedinheader");
+  });
+  </script>
+  <style type="text/css">
+  /* For desktop */
+  @media only screen and (min-width:360px) {}
+
+  /* For mobile devices */
+  @media only screen and (max-width:360px) {}
+  </style>
+</head>
+
+<body>
+  <div id="header"></div>
+</body>
+
+</html>
