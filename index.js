@@ -120,9 +120,18 @@ app.get("/tips", function(req, res) {
 app.get("/nearestpharmacy", function(req, res) {
   sess = req.session;
   if (sess.email) {
-    res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy.html"));
+		res.sendFile(path.join(__dirname + "/public/pages/nearestpharmacy.html"));
   } else {
-    res.redirect('/');
+		res.redirect('/');
+  }
+});
+
+app.get("/nearestbloodbank", function(req, res) {
+  sess = req.session;
+  if (sess.email) {
+	  res.sendFile(path.join(__dirname + "/public/pages/nearestbloodbank.html"));
+  } else {
+      res.redirect('/');	
   }
 });
 
@@ -206,14 +215,14 @@ app.route('/hospitalfeedback')
   });
 
 app.post('/sub', function(req, res) {
-  const accountSid = 'AC8f2597d0199bedbdbb4f98203d77e21e';
-  const authToken = 'd662dfb87866e64826ac15babb662db3';
+  const accountSid = 'AC0b9cb8dfa9cb0760245f16d22f685d50';
+  const authToken = '9405cc05c122a6e81159f9d96f302079';
   client = require('twilio')(accountSid, authToken);
   client.messages
     .create({
       body: 'Emergency!!' + sess.email,
-      from: '+18647131453',
-      to: '+918668626097'
+      from: '+12012988944',
+      to: '+917506108340'
     })
     .then(message => console.log(message.sid));
 });
