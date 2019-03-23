@@ -138,7 +138,7 @@ app.get("/nearestpharmacy", function(req, res) {
 
 app.get("/nearestbloodbank", function(req, res) {
   sess = req.session;
-  if (sess.email) {
+  if (sess.entity == "user") {
     res.sendFile(path.join(__dirname + "/public/pages/nearestbloodbank.html"));
   } else {
     res.redirect('/');
