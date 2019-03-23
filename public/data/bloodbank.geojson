@@ -1,0 +1,173 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9045,19.0824 ]
+    },
+    "properties": {
+    "name":"Anviksha Pathology Laboratory & Blood Bank",
+    "address":"st Floor, Paras Darshan, M G Road, Above Titan Showroom, Mumbai, Maharashtra 400077",
+    "ratings":"4.2/5",
+    "contact_no":2221026290,
+    "timings":"24*7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9071,19.0896 ]
+    },
+    "properties": {
+    "name":"Samarpan Blood Bank",
+    "address":"Sarvodaya Hospital, Office Building, 2nd Floor, L B S, LBS Rd, Ghatkopar West, Mumbai, Maharashtra 400086",
+    "ratings":"3.1/5",
+    "contact_no":2225100100,
+    "timings":"24*7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8536,19.1043 ]
+    },
+    "properties": {
+    "name":"Sant Nirankari Blood Bank",
+    "address":"O-9, Western Express Hwy, Navpada, Airports Authority Colony, Vile Parle, Mumbai, Maharashtra 400047",
+    "ratings":"5/5",
+    "contact_no":2226195539,
+    "timings":"24*7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9147,19.0429 ]
+    },
+    "properties": {
+    "name":"BARC Blood Bank ",
+    "address":" Anushakti Colony, Anushakti Nagar, Mumbai, Maharashtra 400085",
+    "ratings":"4/5",
+    "contact_no":2225558494,
+    "timings":"24*7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8721,19.1113 ]
+    },
+    "properties": {
+    "name":"Biocell - Premium Cord Blood Bank",
+    "address":"2 ABC Acme Plaza, Andheri - Kurla Rd, Mumbai, Maharashtra 400059",
+    "ratings":"4/5",
+    "contact_no":2267330301,
+    "timings":"9-18"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8833,19.0624 ]
+    },
+    "properties": {
+    "name":"Dr. GOYAL'S Diagnostic center ",
+    "address":"shop no 13,C-wing floor,angolimala chs ltd S.G. brave marg,nahru nagar, Kurla East, Mumbai, Maharashtra 400024",
+    "ratings":"3.7/5",
+    "contact_no":8691085598,
+    "timings":"7-23"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8482,19.0173 ]
+    },
+    "properties": {
+    "name":"Ashirwad Blood Bank",
+    "address":" No.807, 2nd Floor, A-Wing, Imperial Mahal, Above H. D. F. C Bank, Dr Baba Saheb Ambedkar Rd, Dadar East, Mumbai, Maharashtra 400014",
+    "ratings":"3/5",
+    "contact_no":2224153790,
+    "timings":"24*7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8645,19.0435 ]
+    },
+    "properties": {
+    "name":"Sion Blood Bank",
+    "address":"Opposite Sion bus depot, Near Sion circle, Mumbai, Maharashtra 400022",
+    "ratings":"4.8/5",
+    "contact_no":2224022066,
+    "timings":"24*7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  72.8701,19.1302 ]
+    },
+    "properties": {
+    "name":"Blood Devta",
+    "address":"Mahakali Caves Rd, Sunder Nagar, Andheri East, Mumbai, Maharashtra 400059",
+    "ratings":"5/5",
+    "contact_no":9810693398,
+    "timings":"24*7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8416,19.0006 ]
+    },
+    "properties": {
+    "name":"Blood Bank KEM",
+    "address":"30, Parmar Guruji Marg, Parel, Mumbai, Maharashtra 400012",
+    "ratings":"4.5/5",
+    "contact_no":2224135189,
+    "timings":"24*7"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.8656,19.1111 ]
+    },
+    "properties": {
+    "name":"CordLife Sciences India Pvt. Ltd ",
+    "address":"174, Shaheed Bhagat Singh Society, Near Chakala Metro Station, Opp Gurudwara, JB Nagar, Andheri East, Mumbai, Maharashtra 400059",
+    "ratings":"4/5",
+    "contact_no":9167214090,
+    "timings":"10-18:30"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 72.9105,19.0484 ]
+    },
+    "properties": {
+    "name":"Pallavi Blood Bank",
+    "address":" Madan Mohan malviya hospital 2ndfloor, Govandi East, Mumbai, Maharashtra 400088",
+    "ratings":"4.4/5",
+    "contact_no":9653482996,
+    "timings":"24*7"
+    }
+  }
+]
+}
