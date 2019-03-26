@@ -1,5 +1,5 @@
 # Sahaay a Medical Assistance System
-
+Note: This system is live at [https://sahaay.herokuapp.com](https://sahaay.herokuapp.com)
 
 
 ## Getting Started
@@ -8,30 +8,28 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-* Install the [Node.js](https://nodejs.org/en/download/) in your PC.
-* Login to [Google Developer Console](https://console.developers.google.com/).
-* Create a project and search for the Youtube Data Api then enable API for the project you have created.
-* Copy and Paste the API Key in the tips.html page.
-* Generate a mapbox access token and add it to the nearesthospital.html page
+* Install [Node.js](https://nodejs.org/en/download/) in your machine.
+* Login to [Google Developer Console](https://console.developers.google.com/).Create a project and search for the Youtube Data Api then enable API for the project you have created. Copy and Paste the API Key in the public/pages/tips.html page.
+* Signup and login with [mapbox](https://www.mapbox.com/). Generate a mapbox access token and add it to the public/pages/nearesthospital.html, public/pages/nearestbloodbank.html, public/pages/nearestpharmacy.html page
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
-* Open the terminal or powershell and go to the project path and type the below command
+Once u download this repository follow this step by step process to get a development environment running.
+* Import the Sahaay database i.e. sahaayDB.sql file in a new postgres db and change the config in the index.js to redirect to the imported database.
 
+* Open the terminal or powershell and go to the project folder and enter the below command
 
 ```
  npm install
 ```
 
-
-* open terminal or powershell and enter the below command
+* On successfull installation of node_modules enter the below command
 
 ```
 node .
 ```
 
-open the browser and go to localhost:3001
+* Open the browser and go to localhost:3001
 
 ## Authors
 
