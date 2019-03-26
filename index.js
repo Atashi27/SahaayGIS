@@ -318,6 +318,7 @@ app.post('/gohospital', function(req, res) {
 app.post('/trackmeasambulance', function(req, res) {
   var latitude = req.body.lat;
   var longitude = req.body.lng;
+  sess = req.session;
   pool.connect(function(err, client, done) {
     if (err) {
       console.log("Connection error: " + err);
