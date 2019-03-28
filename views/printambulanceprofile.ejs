@@ -90,51 +90,49 @@
         <img src="/images/img_avatar.png" alt="Avatar" class="avatar">
       </div>
       <h2>My Profile</h2>
-         <form>
-                <div class="form-group">
-                  <label for="name" class="col-sm-3 control-label">Name</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="name" value="<%= JSON.stringify(result.rows[0].operator_name) %>" class="form-control" readonly>
-                  </div>
-                </div>
-				 <div class="form-group">
-                  <label for="contact_no" class="col-sm-3 control-label">Contact number</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="contact_no" value="<%= JSON.stringify(result.rows[0].operator_contact_no) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="vehicle_no" class="col-sm-3 control-label">Vehicle number</label>
-                  <div class="col-sm-9">
-                    <input type="text"   value="<%= JSON.stringify(result.rows[0].vehicle_no) %>" class="form-control" readonly>
-                  </div>
-                </div>
-				<div class="form-group">
-                  <label for="Type" class="col-sm-3 control-label">Type</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="Type" value="<%= JSON.stringify(result.rows[0].type) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="first_aid_kit" class="col-sm-3 control-label">First Aid Kit</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="First Aid Kit" value="<%= JSON.stringify(result.rows[0].first_aid_kit) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="oxygen_mask" class="col-sm-3 control-label">Oxygen Mask</label>
-                  <div class="col-sm-9">
-                    <input type="text" name="oxygen_mask" value="<%= JSON.stringify(result.rows[0].oxygen_mask) %>" class="form-control" readonly>
-                  </div>
-                </div>
-               <!-- <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Edit Profile</button> -->
-              </form>
-            
-             
-            </div>
+      <form>
+        <div class="form-group">
+          <label for="name" class="col-sm-3 control-label">Name</label>
+          <div class="col-sm-9">
+            <input type="text" name="name" value="<%= JSON.stringify(result.rows[0].operator_name) %>" class="form-control" readonly>
           </div>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="contact_no" class="col-sm-3 control-label">Contact number</label>
+          <div class="col-sm-9">
+            <input type="text" name="contact_no" value="<%= JSON.stringify(result.rows[0].operator_contact_no) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="vehicle_no" class="col-sm-3 control-label">Vehicle number</label>
+          <div class="col-sm-9">
+            <input type="text" value="<%= JSON.stringify(result.rows[0].vehicle_no) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Type" class="col-sm-3 control-label">Type</label>
+          <div class="col-sm-9">
+            <input type="text" name="Type" value="<%= JSON.stringify(result.rows[0].type) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="first_aid_kit" class="col-sm-3 control-label">First Aid Kit</label>
+          <div class="col-sm-9">
+            <input type="text" name="First Aid Kit" value="<%= JSON.stringify(result.rows[0].first_aid_kit) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="oxygen_mask" class="col-sm-3 control-label">Oxygen Mask</label>
+          <div class="col-sm-9">
+            <input type="text" name="oxygen_mask" value="<%= JSON.stringify(result.rows[0].oxygen_mask) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <!-- <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Edit Profile</button> -->
+      </form>
+    </div>
+  </div>
+  </div>
+  </div>
 </body>
 
 </html>

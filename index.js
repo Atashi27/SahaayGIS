@@ -11,22 +11,22 @@ var app = express();
 app.set('view engine', 'ejs');
 
 // HEROKU code
-//const { Pool } = require('pg');
-//const pool = new Pool({
-//  connectionString: process.env.DATABASE_URL,
-  //ssl: true
-//});
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
+});
 
 //LOCALHOST code
- var config = {
-   user: 'postgres',
-   database: 'postgres',
-   password: 'super',
-   port: 5432,
-   max: 10,
-   idleTimeoutMillis: 30000,
- };
- var pool = new pg.Pool(config);
+// var config = {
+//   user: 'postgres',
+//   database: 'postgres',
+//   password: 'super',
+//   port: 5432,
+//   max: 10,
+//   idleTimeoutMillis: 30000,
+// };
+// var pool = new pg.Pool(config);
 
 app.use(session({ secret: 'godisgreat', saveUninitialized: true, resave: true }));
 
@@ -98,14 +98,14 @@ app.get("/hospital", function(req, res) {
 
 
 
-app.get("/printuserprofile", function(req, res) {  
-    res.sendFile(path.join(__dirname + "/views/printuserprofile.ejs"));
+app.get("/printuserprofile", function(req, res) {
+  res.sendFile(path.join(__dirname + "/views/printuserprofile.ejs"));
 });
-app.get("/printhospitalprofile", function(req, res) {  
-    res.sendFile(path.join(__dirname + "/views/printhospitalprofile.ejs"));
+app.get("/printhospitalprofile", function(req, res) {
+  res.sendFile(path.join(__dirname + "/views/printhospitalprofile.ejs"));
 });
-app.get("/printambulanceprofile", function(req, res) {  
-    res.sendFile(path.join(__dirname + "/views/printambulanceprofile.ejs"));
+app.get("/printambulanceprofile", function(req, res) {
+  res.sendFile(path.join(__dirname + "/views/printambulanceprofile.ejs"));
 });
 
 app.get("/ambulance", function(req, res) {
@@ -382,7 +382,7 @@ app.post('/userlogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.email;
         sess.entity = "user";
-		client.query('UPDATE user_details SET last_login=NOW() where email=$1',[sess.key]);
+        client.query('UPDATE user_details SET last_login=NOW() where email=$1', [sess.key]);
         done();
         res.redirect('/');
       } else {
@@ -407,7 +407,7 @@ app.post('/hospitallogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.email;
         sess.entity = "hospital";
-		client.query('UPDATE hospital_details SET last_login=NOW() where email=$1',[sess.key]);
+        client.query('UPDATE hospital_details SET last_login=NOW() where email=$1', [sess.key]);
         done();
         res.redirect('/');
       } else {
@@ -433,7 +433,7 @@ app.post('/ambulancelogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.vehicle_no;
         sess.entity = "ambulance";
-		client.query('UPDATE ambulance_details SET last_login=NOW() where vehicle_no=$1',[sess.key]);
+        client.query('UPDATE ambulance_details SET last_login=NOW() where vehicle_no=$1', [sess.key]);
         done();
         res.redirect('/');
       } else {
@@ -447,34 +447,34 @@ app.post('/ambulancelogin', function(req, res) {
 });
 
 app.get('/viewuserprofile', function(req, res) {
-  pool.query('SELECT * FROM user_details where email=$1',[sess.key], function(err, result) {
-      if (err) {
-        console.log(err);
-        throw err;
-      } 
-			res.render('printuserprofile', {result});
-	});
+  pool.query('SELECT * FROM user_details where email=$1', [sess.key], function(err, result) {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    res.render('printuserprofile', { result });
   });
+});
 
 app.get('/viewhospitalprofile', function(req, res) {
-  pool.query('SELECT * FROM hospital_details where email=$1',[sess.key], function(err, result) {
-      if (err) {
-        console.log(err);
-        throw err;
-      } 
-			res.render('printhospitalprofile', {result});
-	});
-  });  
+  pool.query('SELECT * FROM hospital_details where email=$1', [sess.key], function(err, result) {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    res.render('printhospitalprofile', { result });
+  });
+});
 
 app.get('/viewambulanceprofile', function(req, res) {
-  pool.query('SELECT * FROM ambulance_details where vehicle_no=$1',[sess.key], function(err, result) {
-      if (err) {
-        console.log(err);
-        throw err;
-      } 
-			res.render('printambulanceprofile', {result});
-	});
+  pool.query('SELECT * FROM ambulance_details where vehicle_no=$1', [sess.key], function(err, result) {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    res.render('printambulanceprofile', { result });
   });
+});
 
 /* 
 // Email Feature
@@ -500,8 +500,8 @@ transporter.sendMail(mailOptions, function(error, info){
     console.log('Email sent: ' + info.response);
   }
 });
- */
- 
+*/
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;

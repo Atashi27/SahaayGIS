@@ -263,7 +263,6 @@
         </div>
       </div>
     </div>
-    
     <hr id="horizontalline">
     <div class="row">
       <div class="col-lg-2 sidebar">
@@ -446,7 +445,7 @@
       if (status != "any") {
         filter.push(['==', 'status', status]);
       }
-      console.log('filter:->',filter);
+      console.log('filter:->', filter);
       map.setFilter('hospitalslayer', filter);
       var features = map.querySourceFeatures("hospitalsSource", {
         filter: filter
@@ -531,7 +530,7 @@
       details.innerHTML += prop.category;
       details.innerHTML += ' &middot; ' + prop.contact_no;
       if (prop.distance) {
-        var roundedDistance = Math.floor(prop.distance*100) / 100;
+        var roundedDistance = Math.floor(prop.distance * 100) / 100;
         details.innerHTML += '<p><strong>' + roundedDistance + ' km away</strong></p>';
       }
       link.addEventListener('click', function(e) {
@@ -607,7 +606,7 @@
         var tripInstructions = [];
         for (var i = 0; i < steps.length; i++) {
           tripInstructions.push('<li>' + steps[i].maneuver.instruction) + '</li>';
-          instructions.innerHTML = '<span class="big">Address: </span>' + endcord.properties.address + '<br><form action="/gohospital" method="post"><input type="text" name="hospital_name" hidden value="'+endcord.properties.name+'"><div style="text-align:center"> <input type="submit" name="go" value="Go now!" style="text-align:center;"/></div></form><h2 align=center>Driving</h2><hr id="horizontalline"><span class="big">Time to reach: ' + Math.floor(data.duration / 60) + ' min </span><span class="big"><br>Road distance: ' + Math.floor(data.distance) / 1000 + ' km </span><br><span class="big">Directions: </span><div id="instructionlist">' + tripInstructions + '</div>';
+          instructions.innerHTML = '<span class="big">Address: </span>' + endcord.properties.address + '<br><form action="/gohospital" method="post"><input type="text" name="hospital_name" hidden value="' + endcord.properties.name + '"><div style="text-align:center"> <input type="submit" name="go" value="Go now!" style="text-align:center;"/></div></form><h2 align=center>Driving</h2><hr id="horizontalline"><span class="big">Time to reach: ' + Math.floor(data.duration / 60) + ' min </span><span class="big"><br>Road distance: ' + Math.floor(data.distance) / 1000 + ' km </span><br><span class="big">Directions: </span><div id="instructionlist">' + tripInstructions + '</div>';
         }
         map.fitBounds([
           [start[0], start[1]],

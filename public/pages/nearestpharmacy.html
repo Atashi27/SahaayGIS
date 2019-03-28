@@ -400,7 +400,7 @@
       }
       details.innerHTML += prop.contact_no;
       if (prop.distance) {
-        var roundedDistance = Math.floor(prop.distance*100) / 100;
+        var roundedDistance = Math.floor(prop.distance * 100) / 100;
         details.innerHTML += '<p><strong>' + roundedDistance + ' km away</strong></p>';
       }
       link.addEventListener('click', function(e) {

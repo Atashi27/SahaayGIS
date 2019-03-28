@@ -90,75 +90,73 @@
         <img src="/images/img_avatar.png" alt="Avatar" class="avatar">
       </div>
       <h2>My Profile</h2>
-         <form>
-                <div class="form-group">
-                  <label for="name" class="col-sm-3 control-label">Name</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="name" value="<%= JSON.stringify(result.rows[0].name) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="phoneNumber" class="col-sm-3 control-label">Contact number</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="contact_no" value="<%= JSON.stringify(result.rows[0].contact_no) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="Category" class="col-sm-3 control-label">Category</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="emergency_contact_no" value="<%= JSON.stringify(result.rows[0].category) %>" class="form-control" readonly>
-                  </div>
-                </div>
-				<div class="form-group">
-                  <label for="address" class="col-sm-3 control-label">Address</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="address" value="<%= JSON.stringify(result.rows[0].address) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="latitude" class="col-sm-3 control-label">Latitude</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="latitude" value="<%= JSON.stringify(result.rows[0].latitude) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="longitude" class="col-sm-3 control-label">Longitude</label>
-                  <div class="col-sm-9">
-                    <input type="text" name="longitude" value="<%= JSON.stringify(result.rows[0].longitude) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="services" class="col-sm-3 control-label">Services</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="services" value="<%= JSON.stringify(result.rows[0].services) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="timings" class="col-sm-3 control-label">Timimgs</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="timings" value="<%= JSON.stringify(result.rows[0].timings) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="website" class="col-sm-3 control-label">Website</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="website"  value="<%= JSON.stringify(result.rows[0].website) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="ratings" class="col-sm-3 control-label">Ratings</label>
-                  <div class="col-sm-9">
-                    <input type="text"  name="ratings" value="<%= JSON.stringify(result.rows[0].ratings) %>" class="form-control" readonly>
-                  </div>
-                </div>
-                <!-- <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Edit Profile</button> -->
-              </form>
-            
-             
-            </div>
+      <form>
+        <div class="form-group">
+          <label for="name" class="col-sm-3 control-label">Name</label>
+          <div class="col-sm-9">
+            <input type="text" name="name" value="<%= JSON.stringify(result.rows[0].name) %>" class="form-control" readonly>
           </div>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="phoneNumber" class="col-sm-3 control-label">Contact number</label>
+          <div class="col-sm-9">
+            <input type="text" name="contact_no" value="<%= JSON.stringify(result.rows[0].contact_no) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Category" class="col-sm-3 control-label">Category</label>
+          <div class="col-sm-9">
+            <input type="text" name="emergency_contact_no" value="<%= JSON.stringify(result.rows[0].category) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address" class="col-sm-3 control-label">Address</label>
+          <div class="col-sm-9">
+            <input type="text" name="address" value="<%= JSON.stringify(result.rows[0].address) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="latitude" class="col-sm-3 control-label">Latitude</label>
+          <div class="col-sm-9">
+            <input type="text" name="latitude" value="<%= JSON.stringify(result.rows[0].latitude) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="longitude" class="col-sm-3 control-label">Longitude</label>
+          <div class="col-sm-9">
+            <input type="text" name="longitude" value="<%= JSON.stringify(result.rows[0].longitude) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="services" class="col-sm-3 control-label">Services</label>
+          <div class="col-sm-9">
+            <input type="text" name="services" value="<%= JSON.stringify(result.rows[0].services) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="timings" class="col-sm-3 control-label">Timimgs</label>
+          <div class="col-sm-9">
+            <input type="text" name="timings" value="<%= JSON.stringify(result.rows[0].timings) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="website" class="col-sm-3 control-label">Website</label>
+          <div class="col-sm-9">
+            <input type="text" name="website" value="<%= JSON.stringify(result.rows[0].website) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ratings" class="col-sm-3 control-label">Ratings</label>
+          <div class="col-sm-9">
+            <input type="text" name="ratings" value="<%= JSON.stringify(result.rows[0].ratings) %>" class="form-control" readonly>
+          </div>
+        </div>
+        <!-- <button type="submit" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal">Edit Profile</button> -->
+      </form>
+    </div>
+  </div>
+  </div>
+  </div>
 </body>
 
 </html>
