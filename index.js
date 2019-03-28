@@ -3,26 +3,30 @@ var pg = require("pg");
 var path = require("path");
 var bodyParser = require('body-parser');
 var session = require('express-session');
+//var nodemailer = require('nodemailer');
 
 var app = express();
 
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
 // HEROKU code
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-});
+//const { Pool } = require('pg');
+//const pool = new Pool({
+//  connectionString: process.env.DATABASE_URL,
+  //ssl: true
+//});
 
 //LOCALHOST code
-// var config = {
-//   user: 'postgres',
-//   database: 'postgres',
-//   password: 'star',
-//   port: 5432,
-//   max: 10,
-//   idleTimeoutMillis: 30000,
-// };
-// var pool = new pg.Pool(config);
+ var config = {
+   user: 'postgres',
+   database: 'postgres',
+   password: 'super',
+   port: 5432,
+   max: 10,
+   idleTimeoutMillis: 30000,
+ };
+ var pool = new pg.Pool(config);
 
 app.use(session({ secret: 'godisgreat', saveUninitialized: true, resave: true }));
 
@@ -31,6 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var sess;
 
 app.use("/images", express.static(__dirname + "/public/images"));
+app.use("/views", express.static(__dirname + "/views"));
 app.use("/data", express.static(__dirname + "/public/data"));
 app.use("/header", express.static(__dirname + "/public/pages/header.html"));
 app.use("/userloggedinheader", express.static(__dirname + "/public/pages/userloggedinheader.html"));
@@ -91,6 +96,18 @@ app.get("/hospital", function(req, res) {
   }
 });
 
+
+
+app.get("/printuserprofile", function(req, res) {  
+    res.sendFile(path.join(__dirname + "/views/printuserprofile.ejs"));
+});
+app.get("/printhospitalprofile", function(req, res) {  
+    res.sendFile(path.join(__dirname + "/views/printhospitalprofile.ejs"));
+});
+app.get("/printambulanceprofile", function(req, res) {  
+    res.sendFile(path.join(__dirname + "/views/printambulanceprofile.ejs"));
+});
+
 app.get("/ambulance", function(req, res) {
   sess = req.session;
   if (sess.key) {
@@ -122,6 +139,15 @@ app.get("/tips", function(req, res) {
   sess = req.session;
   if (sess.entity == "user") {
     res.sendFile(path.join(__dirname + "/public/pages/tips.html"));
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.get("/edituserprofile", function(req, res) {
+  sess = req.session;
+  if (sess.entity == "user") {
+    res.sendFile(path.join(__dirname + "/public/pages/edituserprofile.html"));
   } else {
     res.redirect('/');
   }
@@ -356,6 +382,7 @@ app.post('/userlogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.email;
         sess.entity = "user";
+		client.query('UPDATE user_details SET last_login=NOW() where email=$1',[sess.key]);
         done();
         res.redirect('/');
       } else {
@@ -380,6 +407,7 @@ app.post('/hospitallogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.email;
         sess.entity = "hospital";
+		client.query('UPDATE hospital_details SET last_login=NOW() where email=$1',[sess.key]);
         done();
         res.redirect('/');
       } else {
@@ -405,6 +433,7 @@ app.post('/ambulancelogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.vehicle_no;
         sess.entity = "ambulance";
+		client.query('UPDATE ambulance_details SET last_login=NOW() where vehicle_no=$1',[sess.key]);
         done();
         res.redirect('/');
       } else {
@@ -417,7 +446,62 @@ app.post('/ambulancelogin', function(req, res) {
   });
 });
 
+app.get('/viewuserprofile', function(req, res) {
+  pool.query('SELECT * FROM user_details where email=$1',[sess.key], function(err, result) {
+      if (err) {
+        console.log(err);
+        throw err;
+      } 
+			res.render('printuserprofile', {result});
+	});
+  });
 
+app.get('/viewhospitalprofile', function(req, res) {
+  pool.query('SELECT * FROM hospital_details where email=$1',[sess.key], function(err, result) {
+      if (err) {
+        console.log(err);
+        throw err;
+      } 
+			res.render('printhospitalprofile', {result});
+	});
+  });  
+
+app.get('/viewambulanceprofile', function(req, res) {
+  pool.query('SELECT * FROM ambulance_details where vehicle_no=$1',[sess.key], function(err, result) {
+      if (err) {
+        console.log(err);
+        throw err;
+      } 
+			res.render('printambulanceprofile', {result});
+	});
+  });
+
+/* 
+// Email Feature
+ var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'mediassistancegis@gmail.com',
+    pass: 'GIS18&19'
+  }
+});
+
+var mailOptions = {
+  from: 'mediassistancegis@gmail.com',
+  to: 'atashi.khatua@gmail.com,jenniferrodriques2697@gmail.com,pawarpremlata@gmail.com,madhulikatadas@rediffmail.com',
+  subject: 'Sending Email using Node.js',
+  text: 'Feedback!! '
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+ */
+ 
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
