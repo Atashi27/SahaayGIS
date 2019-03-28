@@ -1,9 +1,17 @@
+// START OF REQUIRE SECTION //
+
 var express = require("express");
 var pg = require("pg");
 var path = require("path");
 var bodyParser = require('body-parser');
 var session = require('express-session');
 //var nodemailer = require('nodemailer');
+
+// END OF REQUIRE SECTION //
+
+
+
+// START OF CONFIG SECTION //
 
 var app = express();
 
@@ -21,7 +29,7 @@ const pool = new Pool({
 // var config = {
 //   user: 'postgres',
 //   database: 'postgres',
-//   password: 'super',
+//   password: 'star',
 //   port: 5432,
 //   max: 10,
 //   idleTimeoutMillis: 30000,
@@ -32,7 +40,6 @@ app.use(session({ secret: 'godisgreat', saveUninitialized: true, resave: true })
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-var sess;
 
 app.use("/images", express.static(__dirname + "/public/images"));
 app.use("/views", express.static(__dirname + "/views"));
@@ -42,23 +49,19 @@ app.use("/userloggedinheader", express.static(__dirname + "/public/pages/userlog
 app.use("/hospitalloggedinheader", express.static(__dirname + "/public/pages/hospitalloggedinheader.html"));
 app.use("/ambulanceloggedinheader", express.static(__dirname + "/public/pages/ambulanceloggedinheader.html"));
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
 
-app.get("/", function(req, res) {
-  sess = req.session;
-  if (sess.key) {
-    if (sess.entity == "user") {
-      res.sendFile(path.join(__dirname + "/public/pages/userdashboard.html"));
-    } else if (sess.entity == "hospital") {
-      res.sendFile(path.join(__dirname + "/public/pages/hospitaldashboard.html"));
-    } else if (sess.entity == "ambulance") {
-      res.sendFile(path.join(__dirname + "/public/pages/ambulancedashboard.html"));
-    }
+console.log("Running at http://localhost:" + port);
+// END OF CONFIG SECTION //
 
-  } else {
-    res.sendFile(path.join(__dirname + "/index.html"));
-  }
-});
 
+
+// START OF EXTERNAL REQUESTS SECTION //
+var sess;
 app.get('/login', function(req, res) {
   sess = req.session;
   if (sess.key) {
@@ -97,17 +100,6 @@ app.get("/hospital", function(req, res) {
 });
 
 
-
-app.get("/printuserprofile", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/printuserprofile.ejs"));
-});
-app.get("/printhospitalprofile", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/printhospitalprofile.ejs"));
-});
-app.get("/printambulanceprofile", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/printambulanceprofile.ejs"));
-});
-
 app.get("/ambulance", function(req, res) {
   sess = req.session;
   if (sess.key) {
@@ -126,28 +118,196 @@ app.get("/user", function(req, res) {
   }
 });
 
+app.post('/usersignup', function(req, res) {
+  sess = req.session;
+  if (sess.key) {
+    res.redirect('/');
+  } else {
+    pool.connect(function(err, client, done) {
+      if (err) {
+        console.log("Connection error: " + err);
+        res.status(400).send(err);
+      }
+      client.query('INSERT INTO user_details(name,email,password,contact_no,emergency_contact_no, blood_group,dob,gender,height,weight,allergies, address,pincode,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.emergency_contact_no, req.body.blood_group, req.body.dob, req.body.gender, req.body.height, req.body.weight, req.body.allergies, req.body.address, req.body.pincode], function(err, result) {
+        done();
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+        // res.status(200).send(result);
+        res.redirect('/login');
+      });
+    });
+  }
+});
+
+app.post('/hospitalsignup', function(req, res) {
+  sess = req.session;
+  if (sess.key) {
+    res.redirect('/');
+  } else {
+    pool.connect(function(err, client, done) {
+      if (err) {
+        console.log("Connection error: " + err);
+        res.status(400).send(err);
+      }
+      client.query('INSERT INTO hospital_details(name,email,password,contact_no,category, address,latitude,longitude,services,timings,website, ratings,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.category, req.body.address, req.body.latitude, req.body.longitude, req.body.services, req.body.timings, req.body.website, req.body.ratings], function(err, result) {
+        done();
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+        // res.status(200).send(result);
+        res.redirect('/login');
+      });
+    });
+  }
+});
+
+app.post('/ambulancesignup', function(req, res) {
+  sess = req.session;
+  if (sess.key) {
+    res.redirect('/');
+  } else {
+    pool.connect(function(err, client, done) {
+      if (err) {
+        console.log("Connection error: " + err);
+        res.status(400).send(err);
+      }
+      client.query('INSERT INTO ambulance_details(operator_name,operator_contact_no,vehicle_no, password,type,first_aid_kit,oxygen_mask,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, NOW())', [req.body.operator_name, req.body.operator_contact_no, req.body.vehicle_no, req.body.password, req.body.type, req.body.first_aid_kit, req.body.oxygen_mask], function(err, result) {
+        done();
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+        // res.status(200).send(result);
+        res.redirect('/login');
+      });
+    });
+  }
+});
+
+app.post('/userlogin', function(req, res) {
+  sess = req.session;
+  if (sess.key) {
+    res.redirect('/');
+  } else {
+    pool.connect(function(err, client, done) {
+      client.query('SELECT email,password FROM user_details WHERE email = $1 AND password =$2', [req.body.email, req.body.password], function(error, results) {
+        if (error) {
+          res.send({
+            "code": 400,
+            "failed": "Error ocurred"
+          })
+        } else if (results.rowCount == 1) {
+          sess = req.session;
+          sess.key = req.body.email;
+          sess.entity = "user";
+          client.query('UPDATE user_details SET last_login=NOW() where email=$1', [sess.key], function(err, result) {
+            if (err) {
+              res.send({
+                "code": 400,
+                "failed": "Error ocurred"
+              })
+            }
+            done();
+            res.redirect('/');
+          });
+        } else {
+          res.send({
+            "code": 204,
+            "success": "Email and password does not match"
+          });
+        }
+      });
+    });
+  }
+});
+
+app.post('/hospitallogin', function(req, res) {
+  sess = req.session;
+  if (sess.key) {
+    res.redirect('/');
+  } else {
+    pool.connect(function(err, client, done) {
+      client.query('SELECT email,password FROM hospital_details WHERE email = $1 AND password =$2', [req.body.email, req.body.password], function(error, results) {
+        if (error) {
+          res.send({
+            "code": 400,
+            "failed": "Error ocurred"
+          })
+        } else if (results.rowCount == 1) {
+          sess = req.session;
+          sess.key = req.body.email;
+          sess.entity = "hospital";
+          client.query('UPDATE hospital_details SET last_login=NOW() where email=$1', [sess.key], function(err, result) {
+            if (err) {
+              res.send({
+                "code": 400,
+                "failed": "Error ocurred"
+              })
+            }
+            done();
+            res.redirect('/');
+          });
+        } else {
+          res.send({
+            "code": 204,
+            "success": "Email and password does not match"
+          });
+        }
+      });
+    });
+  }
+});
+
+app.post('/ambulancelogin', function(req, res) {
+  sess = req.session;
+  if (sess.key) {
+    res.redirect('/');
+  } else {
+    pool.connect(function(err, client, done) {
+      client.query('SELECT vehicle_no,password FROM ambulance_details WHERE vehicle_no = $1 AND password =$2', [req.body.vehicle_no, req.body.password], function(error, results) {
+        if (error) {
+          res.send({
+            "code": 400,
+            "failed": "Error ocurred"
+          })
+        } else if (results.rowCount == 1) {
+          sess = req.session;
+          sess.key = req.body.vehicle_no;
+          sess.entity = "ambulance";
+          client.query('UPDATE ambulance_details SET last_login=NOW() where vehicle_no=$1', [sess.key], function(err, result) {
+            if (err) {
+              res.send({
+                "code": 400,
+                "failed": "Error ocurred"
+              })
+            }
+            done();
+            res.redirect('/');
+          });
+        } else {
+          res.send({
+            "code": 204,
+            "success": "Ambulance vehicle no and password does not match"
+          });
+        }
+      });
+    });
+  }
+});
+
+// END OF EXTERNAL REQUESTS SECTION //
+
+
+
+// START OF USER INTERNAL REQUESTS SECTION //
+
 app.get("/nearesthospital", function(req, res) {
   sess = req.session;
   if (sess.entity == "user") {
     res.sendFile(path.join(__dirname + "/public/pages/nearesthospital.html"));
-  } else {
-    res.redirect('/');
-  }
-});
-
-app.get("/tips", function(req, res) {
-  sess = req.session;
-  if (sess.entity == "user") {
-    res.sendFile(path.join(__dirname + "/public/pages/tips.html"));
-  } else {
-    res.redirect('/');
-  }
-});
-
-app.get("/edituserprofile", function(req, res) {
-  sess = req.session;
-  if (sess.entity == "user") {
-    res.sendFile(path.join(__dirname + "/public/pages/edituserprofile.html"));
   } else {
     res.redirect('/');
   }
@@ -171,6 +331,37 @@ app.get("/nearestbloodbank", function(req, res) {
   }
 });
 
+app.get("/tips", function(req, res) {
+  sess = req.session;
+  if (sess.entity == "user") {
+    res.sendFile(path.join(__dirname + "/public/pages/tips.html"));
+  } else {
+    res.redirect('/');
+  }
+});
+
+app.post('/sub', function(req, res) {
+  const accountSid = 'AC0b9cb8dfa9cb0760245f16d22f685d50';
+  const authToken = '9405cc05c122a6e81159f9d96f302079';
+  client = require('twilio')(accountSid, authToken);
+  client.messages
+    .create({
+      body: 'Emergency!!' + sess.key,
+      from: '+12012988944',
+      to: '+917506108340'
+    })
+    .then(message => console.log(message.sid));
+});
+
+// app.get("/edituserprofile", function(req, res) {
+//   sess = req.session;
+//   if (sess.entity == "user") {
+//     res.sendFile(path.join(__dirname + "/public/pages/edituserprofile.html"));
+//   } else {
+//     res.redirect('/');
+//   }
+// });
+
 app.get("/history", function(req, res) {
   sess = req.session;
   if (sess.entity == "user") {
@@ -178,82 +369,6 @@ app.get("/history", function(req, res) {
   } else {
     res.redirect('/');
   }
-});
-
-app.get("/track", function(req, res) {
-  sess = req.session;
-  if (sess.entity == "ambulance") {
-    res.sendFile(path.join(__dirname + "/public/pages/trackambulance.html"));
-  } else {
-    res.redirect('/');
-  }
-});
-
-app.get("/viewprofile", function(req, res) {
-  sess = req.session;
-  if (sess.entity == "user") {
-    res.sendFile(path.join(__dirname + "/public/pages/viewuserprofile.html"));
-  } else if (sess.entity == "hospital") {
-    res.sendFile(path.join(__dirname + "/public/pages/viewhospitalprofile.html"));
-  } else if (sess.entity == "ambulance") {
-    res.sendFile(path.join(__dirname + "/public/pages/viewambulanceprofile.html"));
-  } else {
-    res.redirect('/');
-  }
-});
-
-app.post('/usersignup', function(req, res) {
-  pool.connect(function(err, client, done) {
-    if (err) {
-      console.log("Connection error: " + err);
-      res.status(400).send(err);
-    }
-    client.query('INSERT INTO user_details(name,email,password,contact_no,emergency_contact_no, blood_group,dob,gender,height,weight,allergies, address,pincode,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.emergency_contact_no, req.body.blood_group, req.body.dob, req.body.gender, req.body.height, req.body.weight, req.body.allergies, req.body.address, req.body.pincode], function(err, result) {
-      done();
-      if (err) {
-        console.log(err);
-        res.status(400).send(err);
-      }
-      // res.status(200).send(result);
-      res.redirect('/login');
-    });
-  });
-});
-
-app.post('/hospitalsignup', function(req, res) {
-  pool.connect(function(err, client, done) {
-    if (err) {
-      console.log("Connection error: " + err);
-      res.status(400).send(err);
-    }
-    client.query('INSERT INTO hospital_details(name,email,password,contact_no,category, address,latitude,longitude,services,timings,website, ratings,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.category, req.body.address, req.body.latitude, req.body.longitude, req.body.services, req.body.timings, req.body.website, req.body.ratings], function(err, result) {
-      done();
-      if (err) {
-        console.log(err);
-        res.status(400).send(err);
-      }
-      // res.status(200).send(result);
-      res.redirect('/login');
-    });
-  });
-});
-
-app.post('/ambulancesignup', function(req, res) {
-  pool.connect(function(err, client, done) {
-    if (err) {
-      console.log("Connection error: " + err);
-      res.status(400).send(err);
-    }
-    client.query('INSERT INTO ambulance_details(operator_name,operator_contact_no,vehicle_no, password,type,first_aid_kit,oxygen_mask,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, NOW())', [req.body.operator_name, req.body.operator_contact_no, req.body.vehicle_no, req.body.password, req.body.type, req.body.first_aid_kit, req.body.oxygen_mask], function(err, result) {
-      done();
-      if (err) {
-        console.log(err);
-        res.status(400).send(err);
-      }
-      // res.status(200).send(result);
-      res.redirect('/login');
-    });
-  });
 });
 
 app.route('/servicefeedback')
@@ -310,19 +425,6 @@ app.route('/hospitalfeedback')
     });
   });
 
-app.post('/sub', function(req, res) {
-  const accountSid = 'AC0b9cb8dfa9cb0760245f16d22f685d50';
-  const authToken = '9405cc05c122a6e81159f9d96f302079';
-  client = require('twilio')(accountSid, authToken);
-  client.messages
-    .create({
-      body: 'Emergency!!' + sess.key,
-      from: '+12012988944',
-      to: '+917506108340'
-    })
-    .then(message => console.log(message.sid));
-});
-
 app.post('/gohospital', function(req, res) {
   pool.connect(function(err, client, done) {
     if (err) {
@@ -339,6 +441,25 @@ app.post('/gohospital', function(req, res) {
       res.redirect('/');
     });
   });
+});
+
+app.get("/printuserprofile", function(req, res) {
+  res.sendFile(path.join(__dirname + "/views/printuserprofile.ejs"));
+});
+
+// END OF USER INTERNAL REQUESTS SECTION //
+
+
+
+// START OF AMBULANCE INTERNAL REQUESTS SECTION //
+
+app.get("/track", function(req, res) {
+  sess = req.session;
+  if (sess.entity == "ambulance") {
+    res.sendFile(path.join(__dirname + "/public/pages/trackambulance.html"));
+  } else {
+    res.redirect('/');
+  }
 });
 
 app.post('/trackmeasambulance', function(req, res) {
@@ -370,142 +491,96 @@ app.post('/trackmeasambulance', function(req, res) {
   });
 });
 
-app.post('/userlogin', function(req, res) {
-  pool.connect(function(err, client, done) {
-    client.query('SELECT email,password FROM user_details WHERE email = $1 AND password =$2', [req.body.email, req.body.password], function(error, results) {
-      if (error) {
-        res.send({
-          "code": 400,
-          "failed": "Error ocurred"
-        })
-      } else if (results.rowCount == 1) {
-        sess = req.session;
-        sess.key = req.body.email;
-        sess.entity = "user";
-        client.query('UPDATE user_details SET last_login=NOW() where email=$1', [sess.key]);
-        done();
-        res.redirect('/');
-      } else {
-        res.send({
-          "code": 204,
-          "success": "Email and password does not match"
-        });
-      }
-    });
-  });
+app.get("/printambulanceprofile", function(req, res) {
+  res.sendFile(path.join(__dirname + "/views/printambulanceprofile.ejs"));
 });
 
-app.post('/hospitallogin', function(req, res) {
-  pool.connect(function(err, client, done) {
-    client.query('SELECT email,password FROM hospital_details WHERE email = $1 AND password =$2', [req.body.email, req.body.password], function(error, results) {
-      if (error) {
-        res.send({
-          "code": 400,
-          "failed": "Error ocurred"
-        })
-      } else if (results.rowCount == 1) {
-        sess = req.session;
-        sess.key = req.body.email;
-        sess.entity = "hospital";
-        client.query('UPDATE hospital_details SET last_login=NOW() where email=$1', [sess.key]);
-        done();
-        res.redirect('/');
-      } else {
-        res.send({
-          "code": 204,
-          "success": "Email and password does not match"
-        });
-      }
-    });
-  });
+// END OF AMBULANCE INTERNAL REQUESTS SECTION //
+
+
+
+// START OF HOSPITAL INTERNAL REQUESTS SECTION //
+
+app.get("/printhospitalprofile", function(req, res) {
+  res.sendFile(path.join(__dirname + "/views/printhospitalprofile.ejs"));
 });
 
+// END OF HOSPITAL INTERNAL REQUESTS SECTION //
 
-app.post('/ambulancelogin', function(req, res) {
-  pool.connect(function(err, client, done) {
-    client.query('SELECT vehicle_no,password FROM ambulance_details WHERE vehicle_no = $1 AND password =$2', [req.body.vehicle_no, req.body.password], function(error, results) {
-      if (error) {
-        res.send({
-          "code": 400,
-          "failed": "Error ocurred"
-        })
-      } else if (results.rowCount == 1) {
-        sess = req.session;
-        sess.key = req.body.vehicle_no;
-        sess.entity = "ambulance";
-        client.query('UPDATE ambulance_details SET last_login=NOW() where vehicle_no=$1', [sess.key]);
-        done();
-        res.redirect('/');
-      } else {
-        res.send({
-          "code": 204,
-          "success": "Ambulance vehicle no and password does not match"
-        });
-      }
-    });
-  });
-});
 
-app.get('/viewuserprofile', function(req, res) {
-  pool.query('SELECT * FROM user_details where email=$1', [sess.key], function(err, result) {
-    if (err) {
-      console.log(err);
-      throw err;
+
+// START OF COMMON REQUESTS FOR USER, HOSPITAL AND AMBULANCE //
+
+app.get("/", function(req, res) {
+  sess = req.session;
+  if (sess.key) {
+    if (sess.entity == "user") {
+      res.sendFile(path.join(__dirname + "/public/pages/userdashboard.html"));
+    } else if (sess.entity == "hospital") {
+      res.sendFile(path.join(__dirname + "/public/pages/hospitaldashboard.html"));
+    } else if (sess.entity == "ambulance") {
+      res.sendFile(path.join(__dirname + "/public/pages/ambulancedashboard.html"));
     }
-    res.render('printuserprofile', { result });
-  });
-});
 
-app.get('/viewhospitalprofile', function(req, res) {
-  pool.query('SELECT * FROM hospital_details where email=$1', [sess.key], function(err, result) {
-    if (err) {
-      console.log(err);
-      throw err;
-    }
-    res.render('printhospitalprofile', { result });
-  });
-});
-
-app.get('/viewambulanceprofile', function(req, res) {
-  pool.query('SELECT * FROM ambulance_details where vehicle_no=$1', [sess.key], function(err, result) {
-    if (err) {
-      console.log(err);
-      throw err;
-    }
-    res.render('printambulanceprofile', { result });
-  });
-});
-
-/* 
-// Email Feature
- var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'mediassistancegis@gmail.com',
-    pass: 'GIS18&19'
-  }
-});
-
-var mailOptions = {
-  from: 'mediassistancegis@gmail.com',
-  to: 'atashi.khatua@gmail.com,jenniferrodriques2697@gmail.com,pawarpremlata@gmail.com,madhulikatadas@rediffmail.com',
-  subject: 'Sending Email using Node.js',
-  text: 'Feedback!! '
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
   } else {
-    console.log('Email sent: ' + info.response);
+    res.sendFile(path.join(__dirname + "/index.html"));
   }
 });
-*/
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8000;
-}
-app.listen(port);
+app.get("/viewprofile", function(req, res) {
+  sess = req.session;
+  if (sess.entity == "user") {
+    pool.query('SELECT * FROM user_details where email=$1', [sess.key], function(err, result) {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+      res.render('printuserprofile', { result });
+    });
+  } else if (sess.entity == "hospital") {
+    pool.query('SELECT * FROM hospital_details where email=$1', [sess.key], function(err, result) {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+      res.render('printhospitalprofile', { result });
+    });
+  } else if (sess.entity == "ambulance") {
+    pool.query('SELECT * FROM ambulance_details where vehicle_no=$1', [sess.key], function(err, result) {
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+      res.render('printambulanceprofile', { result });
+    });
+  } else {
+    res.redirect('/');
+  }
+});
 
-console.log("Running at http://localhost:" + port);
+// END OF COMMON REQUESTS FOR USER, HOSPITAL AND AMBULANCE //
+
+
+// Email Feature
+// var transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: 'mediassistancegis@gmail.com',
+//     pass: 'GIS18&19'
+//   }
+// });
+
+// var mailOptions = {
+//   from: 'mediassistancegis@gmail.com',
+//   to: 'atashi.khatua@gmail.com,jenniferrodriques2697@gmail.com,pawarpremlata@gmail.com,madhulikatadas@rediffmail.com',
+//   subject: 'Sending Email using Node.js',
+//   text: 'Feedback!! '
+// };
+
+// transporter.sendMail(mailOptions, function(error, info) {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Email sent: ' + info.response);
+//   }
+// });
