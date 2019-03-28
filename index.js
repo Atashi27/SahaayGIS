@@ -381,6 +381,7 @@ app.post('/userlogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.email;
         sess.entity = "user";
+		client.query('UPDATE user_details SET last_login=NOW() where email=$1',[sess.key]);
         done();
         res.redirect('/');
       } else {
@@ -405,6 +406,7 @@ app.post('/hospitallogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.email;
         sess.entity = "hospital";
+		client.query('UPDATE hospital_details SET last_login=NOW() where email=$1',[sess.key]);
         done();
         res.redirect('/');
       } else {
@@ -430,6 +432,7 @@ app.post('/ambulancelogin', function(req, res) {
         sess = req.session;
         sess.key = req.body.vehicle_no;
         sess.entity = "ambulance";
+		client.query('UPDATE ambulance_details SET last_login=NOW() where vehicle_no=$1',[sess.key]);
         done();
         res.redirect('/');
       } else {
