@@ -289,6 +289,25 @@
 
   mapboxgl.accessToken = 'pk.eyJ1IjoibWVkaWFzc2lzdGFuY2UiLCJhIjoiY2p0NnNjOHpjMGhiNzN5bnZlcWU1cXgzdCJ9.xyaS9DcRxEvmJ3jodgmRjA';
   var hospitals, start, end;
+  var ambulance = new mapboxgl.Marker({color: 'red'});
+
+  var calledForAmbulance = false;
+  var lastknownambulancelat, lastknownambulancelong;
+
+  function showResult() {
+    calledForAmbulance = true;
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var results = JSON.parse(this.responseText);
+        lastknownambulancelat = results.result.rows[0].ambulancelklat;
+        lastknownambulancelong = results.result.rows[0].ambulancelklong;
+      }
+    };
+    xmlHttp.open("GET", "/bookambulance", true);
+    xmlHttp.send();
+  }
+
   // This adds the map to your page
   var map = new mapboxgl.Map({
     container: 'map', // container id specified in the HTML
@@ -406,7 +425,14 @@
       }
       buildLocationList(hospitals);
       getRoute(end);
+
+      if (calledForAmbulance) {
+        $("#bookambulance").click();
+        ambulance.setLngLat([lastknownambulancelong, lastknownambulancelat])
+          .addTo(map);
+      }
     });
+
     $("#radius").on('change', applyFilters);
     $("#category").on('change', applyFilters);
     $("#services").on('change', applyFilters);
@@ -606,7 +632,7 @@
         var tripInstructions = [];
         for (var i = 0; i < steps.length; i++) {
           tripInstructions.push('<li>' + steps[i].maneuver.instruction) + '</li>';
-          instructions.innerHTML = '<span class="big">Address: </span>' + endcord.properties.address + '<br><form action="/gohospital" method="post"><input type="text" name="hospital_name" hidden value="' + endcord.properties.name + '"><div style="text-align:center"> <input type="submit" name="go" value="Go now!" style="text-align:center;"/></div></form><h2 align=center>Driving</h2><hr id="horizontalline"><span class="big">Time to reach: ' + Math.floor(data.duration / 60) + ' min </span><span class="big"><br>Road distance: ' + Math.floor(data.distance) / 1000 + ' km </span><br><span class="big">Directions: </span><div id="instructionlist">' + tripInstructions + '</div>';
+          instructions.innerHTML = '<span class="big">Address: </span>' + endcord.properties.address + '<br><form action="/gohospital" method="post"><input type="text" name="hospital_name" hidden value="' + endcord.properties.name + '"><div style="text-align:center"> <input type="submit" name="go" value="Go now!"/></div></form><br><div style="text-align:center"> <input type="button" name="bookambulance" id="bookambulance" value="Book Ambulance" onclick="showResult()"/></div><h2 align=center>Driving</h2><hr id="horizontalline"><span class="big">Time to reach: ' + Math.floor(data.duration / 60) + ' min </span><span class="big"><br>Road distance: ' + Math.floor(data.distance) / 1000 + ' km </span><br><span class="big">Directions: </span><div id="instructionlist">' + tripInstructions + '</div>';
         }
         map.fitBounds([
           [start[0], start[1]],

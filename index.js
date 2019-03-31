@@ -19,22 +19,22 @@ var app = express();
 app.set('view engine', 'ejs');
 
 // HEROKU code
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-});
+// const { Pool } = require('pg');
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: true
+// });
 
 //LOCALHOST code
-// var config = {
-//   user: 'postgres',
-//   database: 'postgres',
-//   password: 'star',
-//   port: 5432,
-//   max: 10,
-//   idleTimeoutMillis: 30000,
-// };
-// var pool = new pg.Pool(config);
+var config = {
+  user: 'postgres',
+  database: 'postgres',
+  password: 'star',
+  port: 5432,
+  max: 10,
+  idleTimeoutMillis: 30000,
+};
+var pool = new pg.Pool(config);
 
 app.use(session({ secret: 'godisgreat', saveUninitialized: true, resave: true }));
 
@@ -134,7 +134,6 @@ app.post('/usersignup', function(req, res) {
           console.log(err);
           res.status(400).send(err);
         }
-        // res.status(200).send(result);
         res.redirect('/login');
       });
     });
@@ -151,13 +150,16 @@ app.post('/hospitalsignup', function(req, res) {
         console.log("Connection error: " + err);
         res.status(400).send(err);
       }
-      client.query('INSERT INTO hospital_details(name,email,password,contact_no,category, address,latitude,longitude,services,timings,website, ratings,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.category, req.body.address, req.body.latitude, req.body.longitude, req.body.services, req.body.timings, req.body.website, req.body.ratings], function(err, result) {
+      if (typeof(req.body.services) == 'string')
+        var services = new Array(req.body.services);
+      else
+        var services = req.body.services;
+      client.query('INSERT INTO hospital_details(name,email,password,contact_no,category, address,latitude,longitude,services,timings,website, ratings,created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW())', [req.body.name, req.body.email, req.body.password, req.body.contact_no, req.body.category, req.body.address, req.body.latitude, req.body.longitude, services, req.body.timings, req.body.website, req.body.ratings], function(err, result) {
         done();
         if (err) {
           console.log(err);
           res.status(400).send(err);
         }
-        // res.status(200).send(result);
         res.redirect('/login');
       });
     });
@@ -180,7 +182,6 @@ app.post('/ambulancesignup', function(req, res) {
           console.log(err);
           res.status(400).send(err);
         }
-        // res.status(200).send(result);
         res.redirect('/login');
       });
     });
@@ -392,7 +393,6 @@ app.route('/servicefeedback')
           console.log(err);
           res.status(400).send(err);
         }
-        // res.status(200).send(result);
         res.redirect('/');
       });
     });
@@ -419,7 +419,6 @@ app.route('/hospitalfeedback')
           console.log(err);
           res.status(400).send(err);
         }
-        // res.status(200).send(result);
         res.redirect('/');
       });
     });
@@ -437,14 +436,27 @@ app.post('/gohospital', function(req, res) {
         console.log(err);
         res.status(400).send(err);
       }
-      // res.status(200).send(result);
       res.redirect('/');
     });
   });
 });
 
-app.get("/printuserprofile", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/printuserprofile.ejs"));
+app.get('/bookambulance', function(req, res) {
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Connection error: " + err);
+      res.status(400).send(err);
+    }
+    var readyStatus = 'Ready';
+    client.query('SELECT * FROM user_ambulance_tracking where status=$1', [readyStatus], function(err, result) {
+      done();
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      }
+      res.json({ result });
+    });
+  });
 });
 
 // END OF USER INTERNAL REQUESTS SECTION //
@@ -491,19 +503,11 @@ app.post('/trackmeasambulance', function(req, res) {
   });
 });
 
-app.get("/printambulanceprofile", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/printambulanceprofile.ejs"));
-});
-
 // END OF AMBULANCE INTERNAL REQUESTS SECTION //
 
 
 
 // START OF HOSPITAL INTERNAL REQUESTS SECTION //
-
-app.get("/printhospitalprofile", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/printhospitalprofile.ejs"));
-});
 
 // END OF HOSPITAL INTERNAL REQUESTS SECTION //
 

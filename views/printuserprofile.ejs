@@ -94,37 +94,37 @@
         <div class="form-group">
           <label for="name" class="col-sm-3 control-label">Name</label>
           <div class="col-sm-9">
-            <input type="text" name="name" value="<%= JSON.stringify(result.rows[0].name) %>" class="form-control" readonly>
+            <input type="text" name="name" value="<%= (JSON.stringify(result.rows[0].name)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <div class="form-group">
           <label for="phoneNumber" class="col-sm-3 control-label">Contact number</label>
           <div class="col-sm-9">
-            <input type="text" name="contact_no" value="<%= JSON.stringify(result.rows[0].contact_no) %>" class="form-control" readonly>
+            <input type="text" name="contact_no" value="<%= (JSON.stringify(result.rows[0].contact_no)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <div class="form-group">
           <label for="phoneNumber" class="col-sm-3 control-label">Emergency Contact</label>
           <div class="col-sm-9">
-            <input type="text" name="emergency_contact_no" value="<%= JSON.stringify(result.rows[0].emergency_contact_no) %>" class="form-control" readonly>
+            <input type="text" name="emergency_contact_no" value="<%= (JSON.stringify(result.rows[0].emergency_contact_no)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <div class="form-group">
           <label for="blood_group" class="col-sm-3 control-label">Blood Group</label>
           <div class="col-sm-9">
-            <input type="text" name="dob" value="<%= JSON.stringify(result.rows[0].blood_group) %>" class="form-control" readonly>
+            <input type="text" name="dob" value="<%= (JSON.stringify(result.rows[0].blood_group)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <div class="form-group">
           <label for="dob" class="col-sm-3 control-label">Date Of Birth</label>
           <div class="col-sm-9">
-            <input type="text" value="<%= JSON.stringify(result.rows[0].dob) %>" class="form-control" readonly>
+            <input type="text" value="<%= (JSON.stringify(result.rows[0].dob)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <div class="form-group">
           <label for="gender" class="col-sm-3 control-label">Gender</label>
           <div class="col-sm-9">
-            <input type="text" name="dob" value="<%= JSON.stringify(result.rows[0].gender) %>" class="form-control" readonly>
+            <input type="text" name="dob" value="<%= (JSON.stringify(result.rows[0].gender)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <div class="form-group">
@@ -142,19 +142,19 @@
         <div class="form-group">
           <label for="allergies" class="col-sm-3 control-label">Allergies</label>
           <div class="col-sm-9">
-            <input type="text" name="allergies" value="<%= JSON.stringify(result.rows[0].allergies) %>" class="form-control" readonly>
+            <input type="text" name="allergies" value="<%= (JSON.stringify(result.rows[0].allergies)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <div class="form-group">
           <label for="address" class="col-sm-3 control-label">Address</label>
           <div class="col-sm-9">
-            <input type="text" name="address" value="<%= JSON.stringify(result.rows[0].address) %>" class="form-control" readonly>
+            <input type="text" name="address" value="<%= (JSON.stringify(result.rows[0].address)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <div class="form-group">
           <label for="address" class="col-sm-3 control-label">Pincode</label>
           <div class="col-sm-9">
-            <input type="text" name="pincode" value="<%= JSON.stringify(result.rows[0].pincode) %>" class="form-control" readonly>
+            <input type="text" name="pincode" value="<%= (JSON.stringify(result.rows[0].pincode)).split('"')[1] %>" class="form-control" readonly>
           </div>
         </div>
         <!-- <input type="button" onClick="location.href='/edituserprofile'" value="Edit Profile" class="btn btn-primary btn-block" data-toogle="modal" data-target="#formModal"> -->
