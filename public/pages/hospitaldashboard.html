@@ -22,17 +22,25 @@
       width: 100%;
       height: 50%
     }
+	#imageamb{
+		width: 100%;
+		height: 70%;
+	}
   }
 
   /* For mobile devices */
-  @media only screen and (max-width:360px) {}
-  </style>
+  @media only screen and (max-width:360px) {
+  #imageamb{
+		width: 100%;
+		height: 50%;
+	}
+}</style>
 </head>
 
 <body>
   <div id="header"></div>
   <div class="container">
-    <img src="/images/hospital_gps.png" width="1000" height="500">
+    <img  id="imageamb" src="/images/hospital_gps.png">
   </div>
   <div class="container">
     <div class="row">

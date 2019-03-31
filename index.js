@@ -5,7 +5,7 @@ var pg = require("pg");
 var path = require("path");
 var bodyParser = require('body-parser');
 var session = require('express-session');
-//var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 
 // END OF REQUIRE SECTION //
 
@@ -23,19 +23,19 @@ const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
-});
+}); 
 
 //LOCALHOST code
-// var config = {
-//   user: 'postgres',
-//   database: 'postgres',
-//   password: 'star',
-//   port: 5432,
-//   max: 10,
-//   idleTimeoutMillis: 30000,
-// };
-// var pool = new pg.Pool(config);
-
+ /* var config = {
+   user: 'postgres',
+   database: 'postgres',
+   password: 'super',
+   port: 5432,
+   max: 10,
+   idleTimeoutMillis: 30000,
+};
+ var pool = new pg.Pool(config); */
+ 
 app.use(session({ secret: 'godisgreat', saveUninitialized: true, resave: true }));
 
 app.use(bodyParser.json());
@@ -437,7 +437,28 @@ app.post('/gohospital', function(req, res) {
         console.log(err);
         res.status(400).send(err);
       }
-      // res.status(200).send(result);
+      var transporter = nodemailer.createTransport({
+	  service: 'gmail',
+		auth: {
+		user: 'mediassistancegis@gmail.com',
+		pass: 'GIS18&19'
+			 }
+		});
+
+		var mailOptions = {
+		from: 'mediassistancegis@gmail.com',
+		to: 'atashi.khatua@gmail.com,jenniferrodriques2697@gmail.com,pawarpremlata@gmail.com,madhulikatadas@rediffmail.com',
+		subject: 'Please give us your feedback',
+		text: 'Your feedback and suggestions are important to us.Therefore, we would like to hear about your experience and understand if we met your expectations. All you have to do is visit us http://sahaay.herokuapp.com and fill in the form .Thank you in advance for sharing your opinions with us and we assure you that we will utilise your opinions to serve you better. '
+		};
+
+		transporter.sendMail(mailOptions, function(error, info){
+		if (error) {
+		console.log(error);
+		} else {
+		console.log('Email sent: ' + info.response);
+		}
+		});
       res.redirect('/');
     });
   });
@@ -561,26 +582,3 @@ app.get("/viewprofile", function(req, res) {
 // END OF COMMON REQUESTS FOR USER, HOSPITAL AND AMBULANCE //
 
 
-// Email Feature
-// var transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: 'mediassistancegis@gmail.com',
-//     pass: 'GIS18&19'
-//   }
-// });
-
-// var mailOptions = {
-//   from: 'mediassistancegis@gmail.com',
-//   to: 'atashi.khatua@gmail.com,jenniferrodriques2697@gmail.com,pawarpremlata@gmail.com,madhulikatadas@rediffmail.com',
-//   subject: 'Sending Email using Node.js',
-//   text: 'Feedback!! '
-// };
-
-// transporter.sendMail(mailOptions, function(error, info) {
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log('Email sent: ' + info.response);
-//   }
-// });
