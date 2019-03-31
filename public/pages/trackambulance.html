@@ -64,6 +64,27 @@
   <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoibWVkaWFzc2lzdGFuY2UiLCJhIjoiY2p0NnNjOHpjMGhiNzN5bnZlcWU1cXgzdCJ9.xyaS9DcRxEvmJ3jodgmRjA';
 
+  var viewRequests = false;
+  var lastknownuserlat, lastknownuserlong;
+  var myuser = new mapboxgl.Marker({ color: 'red' });
+
+  function showResult(lat, lng) {
+    viewRequests = true;
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var results = JSON.parse(this.responseText);
+        if (results.result.rowCount == 1) {
+          lastknownuserlat = results.result.rows[0].userlklat;
+          lastknownuserlong = results.result.rows[0].userlklong;
+        }
+      }
+    };
+    xmlHttp.open("POST", "/trackmeasambulance", true);
+    xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlHttp.send("lat=" + lat + "&" + "lng=" + lng);
+  }
+
   // This adds the map to your page
   var map = new mapboxgl.Map({
     container: 'map', // container id specified in the HTML
@@ -104,8 +125,12 @@
       var lat = mylocation.coords.latitude;
       var lng = mylocation.coords.longitude;
       var instructions = document.getElementById('instructions');
-      instructions.innerHTML = '<form action="/trackmeasambulance" method="post"><input type="text" name="lat" hidden value="' + lat + '"/><input type="text" name="lng" hidden value="' + lng + '"/><input type="submit" id="trackambulance" hidden/></form>';
-      $("#trackambulance").click();
+      instructions.innerHTML = '<div style="text-align:center"> <input type="button" name="trackambulance" id="trackambulance" value="Get requests" onclick="showResult(' + lat + ',' + lng + ')"/></div>';
+      if (viewRequests) {
+        $("#trackambulance").click();
+        myuser.setLngLat([lastknownuserlong, lastknownuserlat])
+          .addTo(map);
+      }
     });
   });
   </script>

@@ -82,7 +82,24 @@ app.get('/signup', function(req, res) {
 });
 
 app.get("/logout", function(req, res) {
-  req.session.destroy(function(err) {
+  sess = req.session;
+  if (sess.entity == "ambulance") {
+    pool.connect(function(err, client, done) {
+      if (err) {
+        console.log("Connection error: " + err);
+        res.status(400).send(err);
+      }
+      var status = 'Unavailable';
+      client.query('UPDATE user_ambulance_tracking SET status=$1 where ambulance_id=(SELECT ambulance_id from ambulance_details where vehicle_no=$2)', [status, sess.key], function(err, result) {
+        done();
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+      });
+    });
+  }
+  sess.destroy(function(err) {
     if (err) {
       console.log(err);
     } else {
@@ -465,20 +482,35 @@ app.post('/gohospital', function(req, res) {
   });
 });
 
-app.get('/bookambulance', function(req, res) {
+app.post('/bookambulance', function(req, res) {
+  var latitude = req.body.lat;
+  var longitude = req.body.lng;
+  sess = req.session;
   pool.connect(function(err, client, done) {
     if (err) {
       console.log("Connection error: " + err);
       res.status(400).send(err);
     }
-    var readyStatus = 'Ready';
-    client.query('SELECT * FROM user_ambulance_tracking where status=$1', [readyStatus], function(err, result) {
-      done();
+    client.query('UPDATE user_ambulance_tracking set userlklat=$1,userlklong=$2, last_updated_on=NOW() where user_id=(SELECT user_id from user_details where email=$3)', [latitude, longitude, sess.key], function(err, result) {
       if (err) {
         console.log(err);
         res.status(400).send(err);
+      } else if (result.rowCount == 0) {
+        client.query('INSERT INTO user_ambulance_tracking(user_id, userlklat,userlklong, last_updated_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, NOW())', [sess.key, latitude, longitude], function(error, result) {
+          if (error) {
+            console.log(error);
+            res.status(400).send(error);
+          }
+        });
       }
-      res.json({ result });
+      client.query('SELECT * FROM user_ambulance_tracking where status=$1', ["Ready"], function(err, result) {
+        done();
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+        res.json({ result });
+      });
     });
   });
 });
@@ -507,22 +539,26 @@ app.post('/trackmeasambulance', function(req, res) {
       console.log("Connection error: " + err);
       res.status(400).send(err);
     }
-    client.query('UPDATE user_ambulance_tracking set ambulancelklat=$1,ambulancelklong=$2, status=$3, last_updated_on=NOW() where ambulance_id=(SELECT ambulance_id from ambulance_details where vehicle_no=$4)', [latitude, longitude, "Ready", sess.key], function(err, result) {
+    client.query('UPDATE user_ambulance_tracking set ambulancelklat=$1,ambulancelklong=$2, status=$3, last_updated_on=NOW() where ambulance_id=(SELECT ambulance_id from ambulance_details where vehicle_no=$4)', [latitude, longitude, "Ready", sess.key], function(err, myresult) {
       if (err) {
         console.log(err);
         res.status(400).send(err);
-      } else if (result.rowCount == 0) {
-        client.query('INSERT INTO user_ambulance_tracking(ambulance_id, ambulancelklat,ambulancelklong, status, last_updated_on) VALUES((SELECT ambulance_id from ambulance_details where vehicle_no=$1), $2, $3, $4, NOW())', [sess.key, latitude, longitude, "Ready"], function(error, result) {
-          done();
+      } else if (myresult.rowCount == 0) {
+        client.query('INSERT INTO user_ambulance_tracking(ambulance_id, ambulancelklat,ambulancelklong, status, last_updated_on) VALUES((SELECT ambulance_id from ambulance_details where vehicle_no=$1), $2, $3, $4, NOW())', [sess.key, latitude, longitude, "Ready"], function(error, results) {
           if (error) {
             console.log(error);
             res.status(400).send(error);
           }
         });
-      } else {
-        done();
-        res.status(200);
       }
+      client.query('SELECT * FROM user_ambulance_tracking where ambulance_id=(SELECT ambulance_id from ambulance_details where vehicle_no=$1)', [sess.key], function(err, result) {
+        done();
+        if (err) {
+          console.log(err);
+          res.status(400).send(err);
+        }
+        res.json({ result });
+      });
     });
   });
 });
