@@ -230,45 +230,45 @@ app.post('/userlogin', function(req, res) {
               })
             }
             done();
-			app.post('/gohospital', function(req, res) {
-				pool.connect(function(err, client, done) {
-				if (err) {
-					console.log("Connection error: " + err);
-					res.status(400).send(err);
-				}
-				client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.key, req.body.hospital_name], function(err, result) {
-				done();
-				if (err) {
-					console.log(err);
-					res.status(400).send(err);
-				}
+            app.post('/gohospital', function(req, res) {
+              pool.connect(function(err, client, done) {
+                if (err) {
+                  console.log("Connection error: " + err);
+                  res.status(400).send(err);
+                }
+                client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.key, req.body.hospital_name], function(err, result) {
+                  done();
+                  if (err) {
+                    console.log(err);
+                    res.status(400).send(err);
+                  }
 
-				var transporter = nodemailer.createTransport({
-				service: 'gmail',
-				auth: {
-					user: 'mediassistancegis@gmail.com',
-					pass: 'GIS18&19'
-				}
-				});
+                  var transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                      user: 'mediassistancegis@gmail.com',
+                      pass: 'GIS18&19'
+                    }
+                  });
 
-				var mailOptions = {
-				from: 'mediassistancegis@gmail.com',
-				to: sess.key,
-				subject: 'Please give us your feedback',
-				text: 'Your feedback and suggestions are important to us.Therefore, we would like to hear about your experience and understand if we met your expectations. All you have to do is visit us http://sahaay.herokuapp.com and fill in the form .Thank you in advance for sharing your opinions with us and we assure you that we will utilise your opinions to serve you better. '
-				};
+                  var mailOptions = {
+                    from: 'mediassistancegis@gmail.com',
+                    to: sess.key,
+                    subject: 'Please give us your feedback',
+                    text: 'Your feedback and suggestions are important to us.Therefore, we would like to hear about your experience and understand if we met your expectations. All you have to do is visit us http://sahaay.herokuapp.com and fill in the form .Thank you in advance for sharing your opinions with us and we assure you that we will utilise your opinions to serve you better. '
+                  };
 
-				transporter.sendMail(mailOptions, function(error, info) {
-				if (error) {
-					console.log(error);
-				} else {
-					console.log('Email sent: ' + info.response);
-				}
-				});
-				res.redirect('/');
-			});
-		});
-	});
+                  transporter.sendMail(mailOptions, function(error, info) {
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log('Email sent: ' + info.response);
+                    }
+                  });
+                  res.redirect('/');
+                });
+              });
+            });
 
             res.redirect('/');
           });
@@ -504,7 +504,7 @@ app.post('/bookambulance', function(req, res) {
           }
         });
       }
-      client.query('SELECT * FROM user_ambulance_tracking where status=$1', ["Ready"], function(err, result) {
+      client.query('SELECT * FROM user_ambulance_tracking where status=$1 and user_id=(SELECT user_id from user_details where email=$3)', ["Ready", sess.key], function(err, result) {
         done();
         if (err) {
           console.log(err);
