@@ -504,7 +504,7 @@ app.post('/bookambulance', function(req, res) {
           }
         });
       }
-      client.query('SELECT * FROM user_ambulance_tracking where status=$1 and user_id=(SELECT user_id from user_details where email=$3)', ["Ready", sess.key], function(err, result) {
+      client.query('SELECT * FROM user_ambulance_tracking where status=$1 and user_id=(SELECT user_id from user_details where email=$2)', ["Ready", sess.key], function(err, result) {
         done();
         if (err) {
           console.log(err);
