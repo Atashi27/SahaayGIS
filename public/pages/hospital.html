@@ -15,7 +15,23 @@
     $("#header").load("/header");
   });
   </script>
-  </style>
+ <style type="text/css">
+  /* For desktop */
+  @media only screen and (min-width:360px) {
+    #banner {
+      width: 100%;
+      height: 50%
+    }
+	
+  }
+
+  /* For mobile devices */
+  @media only screen and (max-width:360px) {
+  #image{
+		width: 100%;
+		height: 50%;
+	}
+}</style>
 </head>
 
 <body>
@@ -31,7 +47,7 @@
         <div class="col-sm-4">
           <div class="panel panel-primary">
             <div class="panel-heading">Basic Emergency Responses</div>
-            <div class="panel-body"><img src="/images/20.jpg" width="314" height="200"></div>
+            <div class="panel-body"><img src="/images/20.jpg" id="image" width="314" height="200"></div>
             <div class="panel-footer">
               <p>
                 <ul>
@@ -51,7 +67,7 @@
         <div class="col-sm-4">
           <div class="panel panel-primary">
             <div class="panel-heading">Other Recommendation</div>
-            <img src="/images/21.jpg" alt="Cinque Terre" width="358" height="233">
+            <img src="/images/21.jpg" id="image" alt="Cinque Terre" width="358" height="233">
             <div class="panel-footer">
               <ul>
                 <li>Make sure that all your vaccinations are up-to-date</li>
@@ -66,7 +82,7 @@
         <div class="col-sm-4">
           <div class="panel panel-primary">
             <div class="panel-heading">Quick Response</div>
-            <div class="panel-body"> <img src="/images/bannerimg16.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="200"></div>
+            <div class="panel-body"> <img src="/images/bannerimg16.jpg" id="image" class="rounded-circle" alt="Cinque Terre" width="304" height="200"></div>
             <div class="panel-footer">
               <ul>
                 <li>Dial the ambulance number 108 immediately</li>
@@ -87,7 +103,7 @@
         <div class="col-sm-4">
           <div class="panel panel-primary">
             <div class="panel-heading">Safety measures</div>
-            <div class="panel-body"><img src="/images/25.jpg" class="rounded-circle" alt="Cinque Terre" width="304" height="200"></div>
+            <div class="panel-body"><img src="/images/25.jpg" id="image"  class="rounded-circle" alt="Cinque Terre" width="304" height="200"></div>
             <div class="panel-footer">
               <ul>
                 <li>Dentures and eyeglasses: Dentures and eyeglasses should be stored in the drawer of your bedside table. You are responsible for any personal items you bring to the hospital.
@@ -108,7 +124,7 @@
         <div class="col-sm-4">
           <div class="panel panel-primary">
             <div class="panel-heading">Emergency Training and CPR Course (s) are universally helpful</div>
-            <div class="panel-body"><img src="/images/23.png" class="rounded-circle" alt="Cinque Terre" width="304" height="200"></div>
+            <div class="panel-body"><img src="/images/23.png" id="image"  class="rounded-circle" alt="Cinque Terre" width="304" height="200"></div>
             <div class="panel-footer">
               <ul>
                 <li> None of us know when a medical emergency might occur and knowing CPR can prove to be immensely helpful when it comes to dealing with an emergency</li>
