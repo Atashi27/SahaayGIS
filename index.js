@@ -19,22 +19,22 @@ var app = express();
 app.set('view engine', 'ejs');
 
 // HEROKU code
-// const { Pool } = require('pg');
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: true
-// });
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
+});
 
 //LOCALHOST code
-var config = {
-   user: 'postgres',
-   database: 'postgres',
-   password: 'star',
-   port: 5432,
-   max: 10,
-   idleTimeoutMillis: 30000,
- };
- var pool = new pg.Pool(config);
+// var config = {
+//    user: 'postgres',
+//    database: 'postgres',
+//    password: 'star',
+//    port: 5432,
+//    max: 10,
+//    idleTimeoutMillis: 30000,
+//  };
+//  var pool = new pg.Pool(config);
 
 app.use(session({ secret: 'godisgreat', saveUninitialized: true, resave: true }));
 
