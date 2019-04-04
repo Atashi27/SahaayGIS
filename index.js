@@ -27,14 +27,14 @@ const pool = new Pool({
 
 //LOCALHOST code
 // var config = {
-//    user: 'postgres',
-//    database: 'postgres',
-//    password: 'star',
-//    port: 5432,
-//    max: 10,
-//    idleTimeoutMillis: 30000,
-//  };
-//  var pool = new pg.Pool(config);
+//   user: 'postgres',
+//   database: 'postgres',
+//   password: 'star',
+//   port: 5432,
+//   max: 10,
+//   idleTimeoutMillis: 30000,
+// };
+// var pool = new pg.Pool(config);
 
 app.use(session({ secret: 'godisgreat', saveUninitialized: true, resave: true }));
 
@@ -230,46 +230,6 @@ app.post('/userlogin', function(req, res) {
               })
             }
             done();
-            app.post('/gohospital', function(req, res) {
-              pool.connect(function(err, client, done) {
-                if (err) {
-                  console.log("Connection error: " + err);
-                  res.status(400).send(err);
-                }
-                client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.key, req.body.hospital_name], function(err, result) {
-                  done();
-                  if (err) {
-                    console.log(err);
-                    res.status(400).send(err);
-                  }
-
-                  var transporter = nodemailer.createTransport({
-                    service: 'gmail',
-                    auth: {
-                      user: 'mediassistancegis@gmail.com',
-                      pass: 'GIS18&19'
-                    }
-                  });
-
-                  var mailOptions = {
-                    from: 'mediassistancegis@gmail.com',
-                    to: sess.key,
-                    subject: 'Please give us your feedback',
-                    text: 'Your feedback and suggestions are important to us.Therefore, we would like to hear about your experience and understand if we met your expectations. All you have to do is visit us http://sahaay.herokuapp.com and fill in the form .Thank you in advance for sharing your opinions with us and we assure you that we will utilise your opinions to serve you better. '
-                  };
-
-                  transporter.sendMail(mailOptions, function(error, info) {
-                    if (error) {
-                      console.log(error);
-                    } else {
-                      console.log('Email sent: ' + info.response);
-                    }
-                  });
-                  res.redirect('/');
-                });
-              });
-            });
-
             res.redirect('/');
           });
         } else {
@@ -281,6 +241,48 @@ app.post('/userlogin', function(req, res) {
       });
     });
   }
+});
+
+
+app.post('/gohospital', function(req, res) {
+  sess = req.session;
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Connection error: " + err);
+      res.status(400).send(err);
+    }
+    client.query('INSERT INTO user_history(user_id, hospital_name, visited_on) VALUES((SELECT user_id from user_details where email=$1), $2, NOW())', [sess.key, req.body.hospital_name], function(err, result) {
+      done();
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      }
+
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'mediassistancegis@gmail.com',
+          pass: 'GIS18&19'
+        }
+      });
+
+      var mailOptions = {
+        from: 'mediassistancegis@gmail.com',
+        to: sess.key,
+        subject: 'Feedback - Sahaay',
+        text: '        Your feedback and suggestions are important to us. Thus, we would like to hear about your recent experience with us and understand if we met your expectations. All you have to do is login at http://sahaay.herokuapp.com/login and fill in the feedback forms for the recently visited hospital and Sahaay.\n        Thank you in advance for sharing your opinions with us and we assure you that we will utilise your opinions to serve you better. Get well soon. \n \n \n Your well-wisher\'s at,\n SAHAAY'
+      };
+
+      transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      res.redirect('/');
+    });
+  });
 });
 
 app.post('/hospitallogin', function(req, res) {
@@ -399,13 +401,28 @@ app.get("/tips", function(req, res) {
   }
 });
 
-app.post('/sub', function(req, res) {
+app.post('/sendemergencymessage', function(req, res) {
+  var username;
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Connection error: " + err);
+      res.status(400).send(err);
+    }
+    client.query('SELECT * from user_details where email=$1', [sess.key], function(err, result) {
+      done();
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+      }
+      username = result.rows[0].name;
+    });
+  });
   const accountSid = 'AC0b9cb8dfa9cb0760245f16d22f685d50';
   const authToken = '9405cc05c122a6e81159f9d96f302079';
   client = require('twilio')(accountSid, authToken);
   client.messages
     .create({
-      body: 'Emergency!!' + sess.key,
+      body: 'Your contact ' + username + ' has faced an emergency just now!',
       from: '+12012988944',
       to: '+917506108340'
     })
@@ -496,14 +513,15 @@ app.post('/bookambulance', function(req, res) {
       if (err) {
         console.log(err);
         res.status(400).send(err);
-      } else if (result.rowCount == 0) {
-        client.query('INSERT INTO user_ambulance_tracking(user_id, userlklat,userlklong, last_updated_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, NOW())', [sess.key, latitude, longitude], function(error, result) {
-          if (error) {
-            console.log(error);
-            res.status(400).send(error);
-          }
-        });
       }
+      // else if (result.rowCount == 0) {
+      //   client.query('INSERT INTO user_ambulance_tracking(user_id, userlklat,userlklong, last_updated_on) VALUES((SELECT user_id from user_details where email=$1), $2, $3, NOW())', [sess.key, latitude, longitude], function(error, result) {
+      //     if (error) {
+      //       console.log(error);
+      //       res.status(400).send(error);
+      //     }
+      //   });
+      // }
       client.query('SELECT * FROM user_ambulance_tracking where status=$1 and user_id=(SELECT user_id from user_details where email=$2)', ["Ready", sess.key], function(err, result) {
         done();
         if (err) {
@@ -544,14 +562,15 @@ app.post('/trackmeasambulance', function(req, res) {
       if (err) {
         console.log(err);
         res.status(400).send(err);
-      } else if (myresult.rowCount == 0) {
-        client.query('INSERT INTO user_ambulance_tracking(ambulance_id, ambulancelklat,ambulancelklong, status, last_updated_on) VALUES((SELECT ambulance_id from ambulance_details where vehicle_no=$1), $2, $3, $4, NOW())', [sess.key, latitude, longitude, "Ready"], function(error, results) {
-          if (error) {
-            console.log(error);
-            res.status(400).send(error);
-          }
-        });
       }
+      // else if (myresult.rowCount == 0) {
+      //   client.query('INSERT INTO user_ambulance_tracking(ambulance_id, ambulancelklat,ambulancelklong, status, last_updated_on) VALUES((SELECT ambulance_id from ambulance_details where vehicle_no=$1), $2, $3, $4, NOW())', [sess.key, latitude, longitude, "Ready"], function(error, results) {
+      //     if (error) {
+      //       console.log(error);
+      //       res.status(400).send(error);
+      //     }
+      //   });
+      // }
       client.query('SELECT * FROM user_ambulance_tracking where ambulance_id=(SELECT ambulance_id from ambulance_details where vehicle_no=$1)', [sess.key], function(err, result) {
         done();
         if (err) {
