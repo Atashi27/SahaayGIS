@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * Install [Node.js](https://nodejs.org/en/download/) in your machine.
-* Login to [Google Developer Console](https://console.developers.google.com/).Create a project and search for the Youtube Data API then enable API for the project you have created. Copy and Paste the API Key in the public/pages/tips.html page.
+* Login to [Google Developer Console](https://console.developers.google.com/).Create a project and search for the Youtube Data API and generate an API key. Add API Key in the public/pages/tips.html page.
 * Signup and login with [Mapbox](https://www.mapbox.com/). Generate a mapbox access token and add it to the public/pages/nearesthospital.html, public/pages/nearestbloodbank.html, public/pages/nearestpharmacy.html page
 
 ### Installing
